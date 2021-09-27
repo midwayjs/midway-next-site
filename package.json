@@ -5,7 +5,8 @@
   "scripts": {
     "docusaurus": "docusaurus",
     "start": "docusaurus start",
-    "build": "esno scripts/yuque.ts && docusaurus build",
+    "build": "esno scripts/example2codesandbox.ts && esno scripts/yuque.ts && yarn format:docs && docusaurus build",
+    "format:docs": "prettier docs/*.md --write",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",
@@ -33,6 +34,7 @@
     "lodash": "^4.17.21",
     "nodejieba": "^2.5.2",
     "p-limit": "^4.0.0",
+    "prettier": "^2.4.1",
     "prism-react-renderer": "^1.2.1",
     "rc-collapse": "^3.1.2",
     "rc-motion": "^2.4.4",

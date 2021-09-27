@@ -59,9 +59,12 @@ class Yuque {
   private async downloadMarkdown(repo: string, toc: TOCItem) {
     const file = `https://www.yuque.com/${repo}/${toc.url}/markdown?plain=true&linebreak=false&anchor=false`
     try {
-      const { data } = await axios.get(file, {
+      let { data } = await axios.get<string>(file, {
         timeout: 5000,
       })
+
+      data = data.replace(/:::warning/g, ':::caution')
+
       const content = `
 ---
 title: ${this.formatTitle(toc.title)}

@@ -5,8 +5,8 @@ import 'rc-collapse/assets/index.css'
 import { VAR } from '../var'
 import CodeSandbox from '@uiw/react-codesandbox'
 import { collapseMotion } from './Preview/motion'
-import ClassDemo from './Preview/class'
-import FunctionDemo from './Preview/function'
+import ClassDemo from './Preview/class.json'
+import FunctionDemo from './Preview/function.json'
 import { styled } from '../styled'
 
 const activeVariants = {
@@ -125,16 +125,16 @@ const ClassSyntaxFeatures = [
   {
     title: 'Router',
     description: 'Midway.js 路由功能完善，支持通过装饰器定义路由，路由前缀等',
-    query: 'module=/src/home.ts',
+    query: 'module=/src/controller/home.ts',
   },
   {
     title: 'Service',
     description: '使用依赖注入，提供更为优雅的架构',
+    query: 'module=/src/controller/api.ts&initialpath=/api/get_user?uid=123456'
   },
   {
     title: 'Model',
     description: '使用依赖注入，提供更为优雅的架构',
-    query: 'module=/src/user.ts&initialpath=/user',
   },
   {
     title: 'Component',
