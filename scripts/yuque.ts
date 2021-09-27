@@ -62,7 +62,9 @@ class Yuque {
         timeout: 5000,
       })
 
-      data = data.replace(/:::warning/g, ':::caution')
+      data = data
+        .replace(/:::warning/g, ':::caution')
+        .replace(new RegExp('https://www.yuque.com/midwayjs/midway_v2/', 'g'), '/docs/')
 
       const content = `
 ---
