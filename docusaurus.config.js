@@ -31,8 +31,9 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula')
         }),
       ],
     ],
-    plugins: ['./plugin.js', [require.resolve('@cmfcmf/docusaurus-search-local'), {
-      language: 'zh'
+    plugins: ['./plugin.js', [require.resolve('@easyops-cn/docusaurus-search-local'), {
+      language: 'zh',
+      hashed: true,
     }]],
 
     themeConfig:

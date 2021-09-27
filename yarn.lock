@@ -1540,7 +1540,7 @@
     "@docusaurus/types" "2.0.0-beta.6"
     tslib "^2.2.0"
 
-"@docusaurus/utils-validation@2.0.0-beta.6":
+"@docusaurus/utils-validation@2.0.0-beta.6", "@docusaurus/utils-validation@^2.0.0-beta.4":
   version "2.0.0-beta.6"
   resolved "https://registry.npmjs.org/@docusaurus/utils-validation/-/utils-validation-2.0.0-beta.6.tgz#7b98216de844138e9606a128c09182185ed84621"
   integrity sha512-v0nk9bpawUd2JFDFyiHDmZuMG+/O1UvxtxvcRbvrxrul+rlzD7Q9CGxMgW3Grp2OCKQ4yFXRidBIccwqON5AVw==
@@ -1550,7 +1550,7 @@
     joi "^17.4.0"
     tslib "^2.1.0"
 
-"@docusaurus/utils@2.0.0-beta.6":
+"@docusaurus/utils@2.0.0-beta.6", "@docusaurus/utils@^2.0.0-beta.4":
   version "2.0.0-beta.6"
   resolved "https://registry.npmjs.org/@docusaurus/utils/-/utils-2.0.0-beta.6.tgz#1438df9f28b632fe7a4f50663340b463cff07cab"
   integrity sha512-S72/o7VDaTvrXJy+NpfuctghGGoMW30m94PMkrL3I6V+o5eE2Uzax7dbM++moclmHvi0/Khv+TXmRIQs6ZvwgQ==
@@ -1565,6 +1565,32 @@
     lodash "^4.17.20"
     micromatch "^4.0.4"
     resolve-pathname "^3.0.0"
+    tslib "^2.2.0"
+
+"@easyops-cn/autocomplete.js@^0.38.1":
+  version "0.38.1"
+  resolved "https://registry.npmjs.org/@easyops-cn/autocomplete.js/-/autocomplete.js-0.38.1.tgz#46dff5795a9a032fa9b9250fdf63ca6c61c07629"
+  integrity sha512-drg76jS6syilOUmVNkyo1c7ZEBPcPuK+aJA7AksM5ZIIbV57DMHCywiCr+uHyv8BE5jUTU98j/H7gVrkHrWW3Q==
+  dependencies:
+    cssesc "^3.0.0"
+    immediate "^3.2.3"
+
+"@easyops-cn/docusaurus-search-local@^0.19.1":
+  version "0.19.1"
+  resolved "https://registry.npmjs.org/@easyops-cn/docusaurus-search-local/-/docusaurus-search-local-0.19.1.tgz#cd0673624e6901a384f4cf1c289f18ec360734db"
+  integrity sha512-iBtFxP7y/eLuUABa7ODqn/RNcrWiao/LW5HiEjM56RR5hlOXjML5GmDwVdcazZHuPhR8K0sOjZE33vLRUFdCog==
+  dependencies:
+    "@docusaurus/utils" "^2.0.0-beta.4"
+    "@docusaurus/utils-validation" "^2.0.0-beta.4"
+    "@easyops-cn/autocomplete.js" "^0.38.1"
+    cheerio "^1.0.0-rc.3"
+    clsx "^1.1.1"
+    debug "^4.2.0"
+    fs-extra "^9.0.1"
+    klaw-sync "^6.0.0"
+    lunr "^2.3.9"
+    lunr-languages "^1.4.0"
+    mark.js "^8.11.1"
     tslib "^2.2.0"
 
 "@hapi/hoek@^9.0.0":
@@ -3006,7 +3032,7 @@ cheerio@^0.22.0:
     lodash.reject "^4.4.0"
     lodash.some "^4.4.0"
 
-cheerio@^1.0.0-rc.9:
+cheerio@^1.0.0-rc.3, cheerio@^1.0.0-rc.9:
   version "1.0.0-rc.10"
   resolved "https://registry.npmjs.org/cheerio/-/cheerio-1.0.0-rc.10.tgz#2ba3dcdfcc26e7956fc1f440e61d51c643379f3e"
   integrity sha512-g0J0q/O6mW8z5zxQ3A8E8J1hUgp4SMOvEoW/x84OwyHKe/Zccz83PVT4y5Crcr530FV6NgmKI1qvGTKVl9XXVw==
@@ -3791,7 +3817,7 @@ debug@3.1.0, debug@=3.1.0:
   dependencies:
     ms "2.0.0"
 
-debug@4, debug@^4.1.0, debug@^4.1.1:
+debug@4, debug@^4.1.0, debug@^4.1.1, debug@^4.2.0:
   version "4.3.2"
   resolved "https://registry.npmjs.org/debug/-/debug-4.3.2.tgz#f0a49c18ac8779e31d4a0c6029dfb76873c7428b"
   integrity sha512-mOp8wKcvj7XxC78zLgw/ZA+6TSgkoE2C/ienthhRD298T7UNwAg9diBpLRxC0mOezLl4B0xV7M0cCO6P/O0Xhw==
@@ -4904,7 +4930,7 @@ fs-extra@^8.1.0:
     jsonfile "^4.0.0"
     universalify "^0.1.0"
 
-fs-extra@^9.1.0:
+fs-extra@^9.0.1, fs-extra@^9.1.0:
   version "9.1.0"
   resolved "https://registry.npmjs.org/fs-extra/-/fs-extra-9.1.0.tgz#5954460c764a8da2094ba3554bf839e6b9a7c86d"
   integrity sha512-hcg3ZmepS30/7BSFqRvoo3DOMQu7IjqxO5nCDt+zM9XWjb33Wg7ziNT+Qvqbuc3+gWpzO02JubVyk2G4Zvo1OQ==
@@ -5714,6 +5740,11 @@ image-size@0.8.3:
   dependencies:
     queue "6.0.1"
 
+immediate@^3.2.3:
+  version "3.3.0"
+  resolved "https://registry.npmjs.org/immediate/-/immediate-3.3.0.tgz#1aef225517836bcdf7f2a2de2600c79ff0269266"
+  integrity sha512-HR7EVodfFUdQCTIeySw+WDRFJlPcLOJbXfwwZ7Oom6tjsvZ3bOkCDJHehQC3nxJrv7+f9XecwazynjU8e4Vw3Q==
+
 immer@8.0.1:
   version "8.0.1"
   resolved "https://registry.npmjs.org/immer/-/immer-8.0.1.tgz#9c73db683e2b3975c424fb0572af5889877ae656"
@@ -6446,6 +6477,13 @@ kind-of@^6.0.0, kind-of@^6.0.2:
   version "6.0.3"
   resolved "https://registry.npmjs.org/kind-of/-/kind-of-6.0.3.tgz#07c05034a6c349fa06e24fa35aa76db4580ce4dd"
   integrity sha512-dcS1ul+9tmeD95T+x28/ehLgd9mENa3LsvDTtzm3vyBEO7RPptvAD+t44WVXaUjTBRcrpFeFlC8WCruUR456hw==
+
+klaw-sync@^6.0.0:
+  version "6.0.0"
+  resolved "https://registry.npmjs.org/klaw-sync/-/klaw-sync-6.0.0.tgz#1fd2cfd56ebb6250181114f0a581167099c2b28c"
+  integrity sha512-nIeuVSzdCCs6TDPTqI8w1Yre34sSq7AkZ4B3sfOBbI2CgVSB4Du4aLQijFU2+lhAFCwt9+42Hel6lQNIv6AntQ==
+  dependencies:
+    graceful-fs "^4.1.11"
 
 kleur@^3.0.3:
   version "3.0.3"

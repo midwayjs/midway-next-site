@@ -48,7 +48,7 @@ class Yuque {
     const tasks = list.map((toc, index) =>
       limit(async () => {
         await this.downloadMarkdown(this.repo, toc)
-        console.log(`[${index + 1}/${list.length}]`, toc.title)
+        console.log(`[${index + 1}/${list.length}]`, toc.title, toc.url)
       })
     )
 
