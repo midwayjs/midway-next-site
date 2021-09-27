@@ -42,8 +42,7 @@ class Yuque {
     await remove(this.docDir)
     await ensureDir(this.docDir)
 
-    const limit = pLimit(3)
-
+    const limit = pLimit(2)
     const list = tocList.filter((toc) => !(toc.type === 'TITLE' || toc.type === 'LINK' || toc.slug === '#'))
 
     const tasks = list.map((toc, index) =>
