@@ -12,8 +12,9 @@ const Container = styled('div', {
   flexDirection: 'column',
   justifyContent: 'center',
   backgroundRepeat: 'no-repeat',
-  // backgroundPosition: '100% 50%',
-  // backgroundImage: 'url(https://img.alicdn.com/imgextra/i3/O1CN01GMX7K11HMnNVuBZ2X_!!6000000000744-2-tps-676-548.png)',
+  // backgroundPosition: '100% 50%'
+  backgroundSize: 'cover',
+  backgroundImage: 'url(https://img.alicdn.com/imgextra/i3/O1CN01U1n8RC1evopP9MIKi_!!6000000003934-2-tps-1440-707.png)',
   '@mobile': {
     alignItems: 'center',
     paddingLeft: 0,
