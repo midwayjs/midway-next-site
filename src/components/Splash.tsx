@@ -29,16 +29,6 @@ const Container = styled('div', {
   },
 })
 
-const Content = styled('div', {
-  display: 'flex',
-  flexDirection: 'column',
-  justifyContent: 'center',
-})
-
-const LightLogo = styled('img', {
-
-})
-
 const Title = styled('span', {
   fontFamily: 'DINAlternate-Bold',
   fontSize: 50,
@@ -143,7 +133,7 @@ export function Splash() {
         <SubTitle>
           The Node.js Framework For "
           {text.split('').map((char) => (
-            <Description key={char}>{char}</Description>
+            <Description key={Math.random().toString()}>{char}</Description>
           ))}
           "
         </SubTitle>
@@ -154,7 +144,6 @@ export function Splash() {
             Source Code
           </Button>
         </ButtonGroup>
-      {/* <LightLogo src="https://img.alicdn.com/imgextra/i3/O1CN01GMX7K11HMnNVuBZ2X_!!6000000000744-2-tps-676-548.png" /> */}
     </Container>
   )
 }
