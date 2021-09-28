@@ -20,6 +20,10 @@
   --ifm-footer-title-color: #fff;
 }
 
+nav input:focus-visible {
+  outline: none!important;
+}
+
 :root[data-theme='dark'] {
   --ifm-color-title: #fff;
   --ifm-color-text: #cccbcb;
