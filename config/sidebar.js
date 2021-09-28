@@ -173,6 +173,7 @@ module.exports = {
       "collapsed": false,
       "collapsible": false,
       "items": [
+        "render",
         "orm",
         "sequelize",
         "mongo",

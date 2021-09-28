@@ -39,7 +39,6 @@ class Yuque {
   }
 
   private async download(tocList: TOCItem[]) {
-    await remove(this.docDir)
     await ensureDir(this.docDir)
 
     const limit = pLimit(2)
@@ -74,7 +73,9 @@ title: ${this.formatTitle(toc.title)}
   ${data}
   `.trim()
 
-      await writeFile(resolve(this.docDir, `${toc.url}.md`), content, { encoding: 'utf-8' })
+      const md = resolve(this.docDir, `${toc.url}.md`)
+      await remove(md)
+      await writeFile(md, content, { encoding: 'utf-8' })
     } catch (error) {
       console.log(error)
       throw error
