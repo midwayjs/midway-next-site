@@ -110,7 +110,7 @@ const Button = styled('div', {
     },
   },
   '@mobile': {
-    fontSize: 22,
+    fontSize: 20,
     height: 50,
   },
 })
