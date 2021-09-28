@@ -134,11 +134,13 @@ const ClassSyntaxFeatures = [
   },
   {
     title: 'Model',
-    description: '使用依赖注入，提供更为优雅的架构',
+    description: '基于 TypeORM 轻松使用数据库',
+    query: 'module=/src/entity/photo.ts&initialpath=/api/get_photo'
   },
   {
     title: 'Component',
-    description: '快速生成 CRUD 接口',
+    description: '使用 Midway 组件快速开发',
+    query: 'module=/src/configuration.ts'
   },
 ] as FeatureProps[]
 

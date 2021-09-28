@@ -1,8 +1,7 @@
-import { join } from 'path'
-
 export const orm = {
   type: 'sqlite',
-  database: join(__dirname, '../../demo.sqlite'),
+  // TODO use tmp
+  database: '/tmp/test.sqlite',
   synchronize: true,
   logging: true,
 };

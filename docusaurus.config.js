@@ -22,7 +22,10 @@ module.exports = {
         docs: {
           sidebarPath: require.resolve('./config/sidebar.js'),
           // Please change this to your repo.
-          // editUrl: 'https://github.com/facebook/docusaurus/edit/main/website/',
+          editUrl (params) {
+            const url = params.permalink.replace('/docs/', '')
+            return `https://www.yuque.com/midwayjs/midway_v2/${url}`
+          }
         },
         theme: {
           customCss: [require.resolve('./src/css/custom.css')],

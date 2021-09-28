@@ -1,4 +1,3 @@
-// entity/photo.ts
 import { EntityModel } from '@midwayjs/orm';
 import { Column, PrimaryGeneratedColumn } from 'typeorm';
 
