@@ -6,6 +6,7 @@ import axios from 'axios'
 import { PropSidebarItem } from '@docusaurus/plugin-content-docs-types'
 import { TOCItem, YuqueSDK } from './typings'
 import pLimit from 'p-limit'
+import pRetry from 'p-retry'
 import assert from 'assert'
 
 class Yuque {
@@ -32,7 +33,7 @@ class Yuque {
   }
 
   async sync() {
-    const tocList = await this.sdk.repos.getTOC({ namespace: this.repo })
+    const tocList = await pRetry(() => this.sdk.repos.getTOC({ namespace: this.repo }), { retries: 3 })
 
     await this.generateConfig(tocList)
     await this.download(tocList)
@@ -57,9 +58,9 @@ class Yuque {
   private async downloadMarkdown(repo: string, toc: TOCItem) {
     const file = `https://www.yuque.com/${repo}/${toc.url}/markdown?plain=true&linebreak=false&anchor=false`
     try {
-      let { data } = await axios.get<string>(file, {
+      let { data } = await pRetry(() => axios.get<string>(file, {
         timeout: 5000,
-      })
+      }), { retries: 3 })
 
       data = data
         .replace(/:::warning/g, ':::caution')
