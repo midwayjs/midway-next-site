@@ -37,7 +37,7 @@
       "content": "import { Controller, Get, Provide } from '@midwayjs/decorator';\n\n@Provide()\n@Controller('/')\nexport class HomeController {\n  @Get('/')\n  async home(): Promise<string> {\n    return 'Hello Midwayjs!';\n  }\n}\n"
     },
     "src/entity/photo.ts": {
-      "content": "// entity/photo.ts\nimport { EntityModel } from '@midwayjs/orm';\nimport { Column, PrimaryGeneratedColumn } from 'typeorm';\n\n@EntityModel()\nexport class Photo {\n\n  @PrimaryGeneratedColumn()\n  id: number;\n\n  @Column({\n    length: 100\n  })\n  name: string;\n\n  @Column('text')\n  description: string;\n\n  @Column()\n  filename: string;\n\n  @Column(\"double\")\n  views: number;\n\n  @Column()\n  isPublished: boolean;\n}\n"
+      "content": "import { EntityModel } from '@midwayjs/orm';\nimport { Column, PrimaryGeneratedColumn } from 'typeorm';\n\n@EntityModel()\nexport class Photo {\n\n  @PrimaryGeneratedColumn()\n  id: number;\n\n  @Column({\n    length: 100\n  })\n  name: string;\n\n  @Column('text')\n  description: string;\n\n  @Column()\n  filename: string;\n\n  @Column(\"double\")\n  views: number;\n\n  @Column()\n  isPublished: boolean;\n}\n"
     },
     "src/service/photo.ts": {
       "content": "import { Provide } from '@midwayjs/decorator';\nimport { InjectEntityModel } from '@midwayjs/orm';\nimport { Photo } from '../entity/photo';\nimport { Repository } from 'typeorm';\n\n@Provide()\nexport class PhotoService {\n  @InjectEntityModel(Photo)\n  photoModel: Repository<Photo>;\n\n  async findPhoto () {\n    let allPhotos = await this.photoModel.find();\n    return allPhotos;\n  }\n}\n"

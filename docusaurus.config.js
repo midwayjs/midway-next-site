@@ -3,7 +3,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 // With JSDoc @type annotations, IDEs can provide config autocompletion
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
-module.exports = {
+const config = {
   title: 'Midway',
   tagline: 'Midway is a fullstack framework for web',
   url: 'https://your-docusaurus-test-site.com',
@@ -22,7 +22,7 @@ module.exports = {
         docs: {
           sidebarPath: require.resolve('./config/sidebar.js'),
           // Please change this to your repo.
-          editUrl (params) {
+          editUrl(params) {
             const url = params.permalink.replace('/docs/', '')
             return `https://www.yuque.com/midwayjs/midway_v2/${url}`
           }
@@ -34,14 +34,6 @@ module.exports = {
     ],
   ],
   plugins: [
-    [
-      require.resolve("@easyops-cn/docusaurus-search-local"),
-      {
-        indexBlog: false,
-        hashed: true,
-        language: ["en", "zh"],
-      },
-    ],
     './plugin.js',
   ],
   themeConfig:
@@ -54,6 +46,11 @@ module.exports = {
           src: 'img/logo.svg',
         },
         items: require('./config/navbar'),
+      },
+      algolia: {
+        apiKey: 'e1ea1dc67df77815018e6503e120586a',
+        indexName: 'midway',
+        contextualSearch: true,
       },
       // footer: {
       //   style: 'dark',
@@ -105,4 +102,17 @@ module.exports = {
         darkTheme: darkCodeTheme,
       },
     }),
-};
+}
+
+if (process.env.USE_LOCAL_SEARCH) {
+  config.plugins.push([
+    require.resolve("@easyops-cn/docusaurus-search-local"),
+    {
+      indexBlog: false,
+      hashed: true,
+      language: ["en", "zh"],
+    },
+  ])
+}
+
+module.exports = config;
