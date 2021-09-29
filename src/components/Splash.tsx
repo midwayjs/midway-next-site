@@ -73,7 +73,7 @@ const ButtonGroup = styled('div', {
   },
 })
 
-const Button = styled('div', {
+const Button = styled('a', {
   width: 252,
   height: 58,
   borderRadius: 4,
@@ -104,6 +104,10 @@ const Button = styled('div', {
     fontSize: 20,
     height: 50,
   },
+  '&:hover': {
+    color: '#ffffff',
+    textDecoration: 'none',
+  }
 })
 
 const Icon = styled('i', {
@@ -132,14 +136,14 @@ export function Splash() {
         <Title>Midway</Title>
         <SubTitle>
           The Node.js Framework For "
-          {text.split('').map((char) => (
-            <Description key={Math.random().toString()}>{char}</Description>
+          {text.split('').map((char, index) => (
+            <Description key={char + index}>{char}</Description>
           ))}
           "
         </SubTitle>
         <ButtonGroup>
-          <Button type="main">Documention</Button>
-          <Button type="secondary">
+          <Button type="main" href="/docs/introduction">Documention</Button>
+          <Button type="secondary" href="https://github.com/midwayjs/midway" target="_blank">
             <Icon className="iconfont icon-github-fill" />
             Source Code
           </Button>
