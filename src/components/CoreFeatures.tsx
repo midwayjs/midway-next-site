@@ -17,6 +17,7 @@ const Container = styled('div', {
   justifyContent: 'center',
   '@mobile': {
     flexDirection: 'column',
+    padding: '20px 0 36px 0',
   }
 })
 
@@ -30,6 +31,10 @@ const FeatureContainer = styled('div', {
       true: {
         marginLeft: 120,
         marginRight: 120,
+        '@mobile': {
+          marginLeft: 24,
+          marginRight: 24,
+        }
       }
     }
   },
@@ -40,7 +45,10 @@ const FeatureContainer = styled('div', {
 
 const Icon = styled('i', {
   color: 'var(--ifm-color-icon)',
-  fontSize: '4rem',
+  fontSize: 64,
+  '@mobile': {
+    fontSize: 52,
+  }
 })
 
 const Title = styled('span', {
@@ -52,14 +60,18 @@ const Title = styled('span', {
   '@mobile': {
     marginTop: 18,
     marginBottom: 12,
+    fontSize: 24
   }
 })
 
 const Description = styled('span', {
   fontFamily: 'PingFangSC-Regular',
-  fontSize: '1.5rem',
+  fontSize: 24,
   color: 'var(--ifm-color-text)',
   width: 315,
+  '@mobile': {
+    fontSize: 20
+  }
 })
 
 function Feature(props: FeatureProps) {
