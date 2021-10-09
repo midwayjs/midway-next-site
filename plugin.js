@@ -1,7 +1,7 @@
 
 module.exports = () => {
   return {
-    name: 'midway-plugin',
+    name: 'add-meta-tag',
     injectHtmlTags: () => {
       return {
         headTags: [
