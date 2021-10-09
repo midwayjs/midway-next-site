@@ -135,7 +135,7 @@ export function Splash() {
     <Container>
         <Title>Midway</Title>
         <SubTitle>
-          The Node.js Framework For "
+          Node.js Framework For "
           {text.split('').map((char, index) => (
             <Description key={char + index}>{char}</Description>
           ))}
