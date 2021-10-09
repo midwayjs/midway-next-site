@@ -6,13 +6,13 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const config = {
   title: 'Midway',
   tagline: 'Midway is a fullstack framework for web',
-  url: 'https://your-docusaurus-test-site.com',
+  url: 'https://midwayjs.org',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/logo.svg',
   organizationName: 'midwayjs', // Usually your GitHub org/user name.
-  projectName: 'midway', // Usually your repo name.
+  projectName: 'midway-next-site', // Usually your repo name.
   stylesheets: ['//at.alicdn.com/t/font_2797741_dnh1sm1jan.css'],
   i18n: {
     defaultLocale: 'zh-cn',
@@ -37,19 +37,23 @@ const config = {
       }),
     ],
   ],
-  plugins: [
-    './plugin.js',
-  ],
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      favicon: 'img/logo.svg',
+      metadatas: [{
+        name: 'referrer',
+        content: 'no-referrer'
+      }],
       navbar: {
         title: 'Midway.js',
         logo: {
           alt: 'midway logo',
           src: 'img/logo.svg',
         },
-        items: require('./config/navbar'),
+        items: [
+          ...require('./config/navbar')
+        ],
       },
       algolia: {
         apiKey: 'e1ea1dc67df77815018e6503e120586a',
