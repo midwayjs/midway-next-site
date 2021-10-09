@@ -22,7 +22,7 @@ title: 介绍
 
 > 目录结构
 
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/98602/1622788353126-95c182d2-1462-4ff0-b166-51d6f3405f2d.png#clientId=uaba2bffc-e32b-4&from=paste&height=1866&id=u2422df2b&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1866&originWidth=1948&originalType=binary&size=199238&status=done&style=none&taskId=u29d9d308-25ac-4631-ba44-adfa132e044&width=1948)
+![image.png](https://cdn.nlark.com/yuque/0/2021/png/98602/1622788353126-95c182d2-1462-4ff0-b166-51d6f3405f2d.png#clientId=uaba2bffc-e32b-4&from=paste&height=1866&id=u2422df2b&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1866&originWidth=1948&originalType=binary&ratio=1&size=199238&status=done&style=none&taskId=u29d9d308-25ac-4631-ba44-adfa132e044&width=1948)
 
 ## 🌰 代码示例
 

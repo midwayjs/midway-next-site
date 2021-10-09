@@ -14,6 +14,10 @@ const config = {
   organizationName: 'midwayjs', // Usually your GitHub org/user name.
   projectName: 'midway', // Usually your repo name.
   stylesheets: ['//at.alicdn.com/t/font_2797741_dnh1sm1jan.css'],
+  i18n: {
+    defaultLocale: 'zh-cn',
+    locales: ['zh-cn'],
+  },
   presets: [
     [
       '@docusaurus/preset-classic',

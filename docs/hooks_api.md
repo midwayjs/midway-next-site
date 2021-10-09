@@ -49,7 +49,7 @@ console.assert(method === 'POST');
 
 ## 创建接口与调用
 
-在 Midway Hooks 中，我们约定接口是在 `lambda` 文件夹下 任意 `.ts` 文件中导出的异步函数。
+在 Midway Hooks 中，我们默认配置的接口是在 `lambda` 文件夹下 任意 `.ts` 文件中导出的异步函数，你也可以通过[路由配置](/docs/hooks_route)来使用自定义的文件夹。
 
 ### Get
 
