@@ -1,0 +1,20 @@
+name: Sync
+
+on:
+  push:
+    branches:
+      - '*'
+
+jobs:
+  codeup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Sync to Aliyun CodeUp
+        uses: wearerequired/git-mirror-action@master
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.ALIYUN_CODEUP_RSA_PRIVATE_KEY }}
+        with:
+          # 注意替换为你的 GitHub 源仓库地址
+          source-repo: git@github.com:midwayjs/midway-next-site.git
+          # 注意替换为你的 Aliyun 目标仓库地址
+          destination-repo: ${{ secrets.ALIYUN_CODEUP_REPO }}
