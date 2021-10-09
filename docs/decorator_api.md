@@ -21,7 +21,7 @@ Midway 内部有一套标准的装饰器管理 API，用来将装饰器对接依
 - `savePropertyDataToClass`   保存属性的元信息到 class
 - `attachPropertyDataToClass`  附加属性的元信息到 class
 - `getPropertyDataFromClass`  从 class 获取属性元信息
-- `listPropertyDataFromClass`  列出输出所有的元数据
+- `listPropertyDataFromClass`  列出 class 上保存的所有的属性的元信息
 - `savePropertyMetadata`  保存属性元信息到属性本身
 - `attachPropertyMetadata`  附加属性元信息到属性本身
 - `getPropertyMetadata`   从属性上获取保存的元信息

@@ -10,18 +10,38 @@ title: MongoDB
 
 安装 Typegoose 组件，提供访问 MongoDB 的能力。
 
-**请务必使用下面的安装方式。**
+**请务必注意，依赖需要确保版本相关后单独安装。**
 
 ```bash
 npm i -s @midwayjs/typegoose @typegoose/typegoose   # install typegoose itself
 npm i -s mongoose 																	# install peer-dependencie mongoose
 ```
 
-:::caution
-注意一下版本，现在 typegoose 只支持下面特定的版本的 mongoose。
-:::
+Typegoose 和 mongoose 有特定版本的依赖关系，请查看下表或者 [官网](https://typegoose.github.io/typegoose/docs/guides/migration/migrate-9)。
 
-或者直接 `package.json`  增加依赖。
+| **版本**           | **依赖**          |
+| ------------------ | ----------------- |
+| Typegoose 9.0.0    | Mongoose >= 6.0.7 |
+| Typegoose 8.0.0    | Node.js > 12.22   |
+| Mongoose >= 5.13.3 |
+| Typegoose 7.0.0    | Node.js > 10.15   |
+| Mongoose >=5.9.10  |
+
+而 mongoose 和你服务器使用的 MongoDB Server 的版本也有着一定的关系，如下，请务必注意。
+​
+
+- MongoDB Server 2.4.x: mongoose ^3.8 or 4.x
+- MongoDB Server 2.6.x: mongoose ^3.8.8 or 4.x
+- MongoDB Server 3.0.x: mongoose ^3.8.22, 4.x, or 5.x
+- MongoDB Server 3.2.x: mongoose ^4.3.0 or 5.x
+- MongoDB Server 3.4.x: mongoose ^4.7.3 or 5.x
+- MongoDB Server 3.6.x: mongoose 5.x
+- MongoDB Server 4.0.x: mongoose ^5.2.0
+- MongoDB Server 4.2.x: mongoose ^5.7.0
+- MongoDB Server 4.4.x: mongoose ^5.10.0
+- MongoDB Server 5.x: mongoose ^6.0.0
+
+你也可以直接 `package.json`  增加依赖，比如，下面是 Typegoose 8.0.0 的依赖，对应 mongoose 5.13.3。
 
 ```json
   "dependencies": {

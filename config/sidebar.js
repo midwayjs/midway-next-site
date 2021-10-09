@@ -1,22 +1,14 @@
 module.exports = {
   "基础": [
-    "introduction"
+    "introduction",
+    "start_app",
+    "controller",
+    "service",
+    "req_res_app",
+    "web_middleware",
+    "deployment"
   ],
   "Web": [
-    {
-      "type": "category",
-      "label": "概述",
-      "collapsed": false,
-      "collapsible": false,
-      "items": [
-        "start_app",
-        "controller",
-        "service",
-        "req_res_app",
-        "web_middleware",
-        "deployment"
-      ]
-    },
     {
       "type": "category",
       "label": "Web 技术",
@@ -51,18 +43,6 @@ module.exports = {
       "items": [
         "socketio",
         "ws"
-      ]
-    },
-    {
-      "type": "category",
-      "label": "运维",
-      "collapsed": false,
-      "collapsible": false,
-      "items": [
-        "pm2",
-        "cfork",
-        "alinode",
-        "prometheus"
       ]
     },
     {
@@ -191,15 +171,14 @@ module.exports = {
     },
     {
       "type": "category",
-      "label": "工具",
+      "label": "运维",
       "collapsed": false,
       "collapsible": false,
       "items": [
-        "cli",
-        "mwts",
-        "luckyeye",
-        "typeorm_generator",
-        "egg-ts-helper"
+        "pm2",
+        "cfork",
+        "alinode",
+        "prometheus"
       ]
     },
     {
@@ -216,6 +195,19 @@ module.exports = {
         "service_factory",
         "custom_eggjs",
         "decorator_api"
+      ]
+    },
+    {
+      "type": "category",
+      "label": "工具",
+      "collapsed": false,
+      "collapsible": false,
+      "items": [
+        "cli",
+        "mwts",
+        "luckyeye",
+        "typeorm_generator",
+        "egg-ts-helper"
       ]
     }
   ],

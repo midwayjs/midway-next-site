@@ -207,8 +207,9 @@ export class ContainerLifeCycle {}
 ![image.png](https://cdn.nlark.com/yuque/0/2021/png/187105/1631090438583-d925c13c-371a-4037-9f53-edaa34580aab.png#clientId=u24adff00-2245-4&from=paste&height=459&id=u2862ab6b&margin=%5Bobject%20Object%5D&name=image.png&originHeight=918&originWidth=1470&originalType=binary&ratio=1&size=481525&status=done&style=none&taskId=ua4ce06b2-a75d-4e4a-8bd9-c94496dca33&width=735)
 一共新增 8 个指标。
 后续会提供 Grafana 的模版 ID 给大家使用。
+​
 
-## 功能介绍：
+## 功能介绍
 
 - [x] 根据 appName 进行分类
 - [x] 查看不同 path 的 qps 情况

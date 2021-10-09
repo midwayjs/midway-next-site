@@ -7,7 +7,7 @@ module.exports = [
   },
   {
     "type": "doc",
-    "docId": "start_app",
+    "docId": "cookies",
     "position": "right",
     "label": "Web"
   },

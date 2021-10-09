@@ -450,13 +450,15 @@ export class RabbitmqService {
 
   private connection: Connection;
 
+  private channelWrapper;
+
   @Init()
   async connect() {
     // 创建连接
     this.connection = await amqp.connect('amqp://localhost');
 
     // 创建 channel
-    const channelWrapper = connection.createChannel({
+    this.channelWrapper = connection.createChannel({
       json: true,
       setup: function (channel) {
         return Promise.all([

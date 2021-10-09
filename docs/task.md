@@ -49,6 +49,24 @@ export const taskConfig = {
 };
 ```
 
+有账号密码情况：
+
+```typescript
+export const taskConfig = {
+  redis: {
+    port: 6379,
+    host: '127.0.0.1',
+    password: 'foobared',
+  }, //此处相当于是ioredis的配置 https://www.npmjs.com/package/ioredis
+  prefix: 'midway-task', // 这些任务存储的key，都是midway-task开头，以便区分用户原有redis里面的配置。
+  defaultJobOptions: {
+    repeat: {
+      tz: 'Asia/Shanghai', // Task等参数里面设置的比如（0 0 0 * * *）本来是为了0点执行，但是由于时区不对，所以国内用户时区设置一下。
+    },
+  },
+};
+```
+
 ## 业务代码编写方式
 
 ### 分布式定时任务
@@ -169,6 +187,34 @@ let job = await this.queueService.getClassQueue(TestJob).getJob(id);
 ```
 
 然后 job 上面有类似停止的方法，或者查看进度的方法。
+​
+
+### 启动就触发
+
+有朋友由于只有一台机器，希望重启后立马能执行一下对应的定时任务。
+
+```typescript
+import { Context, ILifeCycle, IMidwayBaseApplication, IMidwayContainer } from '@midwayjs/core';
+import { Configuration } from '@midwayjs/decorator';
+import { Queue } from 'bull';
+import { join } from 'path';
+import * as task from '@midwayjs/task';
+import { QueueService } from '@midwayjs/task';
+
+@Configuration({
+  imports: [task],
+  importConfigs: [join(__dirname, './config')],
+})
+export class ContainerConfiguration implements ILifeCycle {
+  async onReady(container: IMidwayContainer, app?: IMidwayBaseApplication<Context>): Promise<void> {
+    let result: any = await container.getAsync(QueueService);
+    let job: Queue = await result.getQueueTask(`HelloTask`, 'task'); // 此处第一个是你任务的类名，第二个任务的名字
+    job.add({}, { delay: 0 }); // 表示立即执行。
+  }
+}
+```
+
+​
 
 ## 运维
 
@@ -322,5 +368,9 @@ export class QueueTask {
 │    └──────────────────── minute (0 - 59)
 └───────────────────────── second (0 - 59, optional)
 ```
+
+​
+
+​
 
 ​

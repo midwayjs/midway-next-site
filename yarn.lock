@@ -1456,25 +1456,9 @@
     fs-extra "^10.0.0"
     tslib "^2.1.0"
 
-"@docusaurus/theme-search-algolia@2.0.0-beta.6":
+"@docusaurus/theme-search-algolia@2.0.0-beta.6", "@docusaurus/theme-search-algolia@^2.0.0-beta.6":
   version "2.0.0-beta.6"
   resolved "https://registry.npmjs.org/@docusaurus/theme-search-algolia/-/theme-search-algolia-2.0.0-beta.6.tgz#c92214a075a23fe9fb87cfbc6f037ca07e83f628"
-  integrity sha512-GaaYdf6EEKL3jwmt9LRyiMtNvobOhw4vGuYJKbJcgba/M75kOJSbZPRrhALBAe6o4gOYbV44afzFC/jUUp7dsA==
-  dependencies:
-    "@docsearch/react" "^3.0.0-alpha.39"
-    "@docusaurus/core" "2.0.0-beta.6"
-    "@docusaurus/theme-common" "2.0.0-beta.6"
-    "@docusaurus/utils" "2.0.0-beta.6"
-    "@docusaurus/utils-validation" "2.0.0-beta.6"
-    algoliasearch "^4.8.4"
-    algoliasearch-helper "^3.3.4"
-    clsx "^1.1.1"
-    eta "^1.12.1"
-    lodash "^4.17.20"
-
-"@docusaurus/theme-search-algolia@^2.0.0-beta.6":
-  version "2.0.0-beta.6"
-  resolved "https://registry.yarnpkg.com/@docusaurus/theme-search-algolia/-/theme-search-algolia-2.0.0-beta.6.tgz#c92214a075a23fe9fb87cfbc6f037ca07e83f628"
   integrity sha512-GaaYdf6EEKL3jwmt9LRyiMtNvobOhw4vGuYJKbJcgba/M75kOJSbZPRrhALBAe6o4gOYbV44afzFC/jUUp7dsA==
   dependencies:
     "@docsearch/react" "^3.0.0-alpha.39"
