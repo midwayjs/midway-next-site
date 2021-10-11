@@ -1,2 +1,1 @@
-declare module '@yuque/sdk' 
-
+declare module '@yuque/sdk';
