@@ -233,7 +233,7 @@ const yuque = new Yuque({
   repo: process.env.REPO,
   docDir: process.env.DOCS_DIR || resolve(__dirname, '..', 'docs'),
   configDir: process.env.CONFIG_DIR || resolve(__dirname, '..', 'config'),
-  endpoint: process.env.ENDPOINT,
+  endpoint: process.env.YUQUE_ENDPOINT,
 });
 
 yuque
