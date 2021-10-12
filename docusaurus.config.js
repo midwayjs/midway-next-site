@@ -18,6 +18,9 @@ const config = {
     defaultLocale: 'zh-cn',
     locales: ['zh-cn'],
   },
+  plugins: [
+    './plugin.js'
+  ],
   presets: [
     [
       '@docusaurus/preset-classic',
