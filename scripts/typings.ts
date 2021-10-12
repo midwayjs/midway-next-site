@@ -1,3 +1,5 @@
+import { PropSidebarItem } from '@docusaurus/plugin-content-docs-types';
+
 export type TOCItem = {
   type: 'DOC' | 'TITLE' | 'LINK';
   title: string;
@@ -25,3 +27,5 @@ export interface YuqueSDK {
     getTOC(option: GetTOCOption): Promise<TOCItem[]>;
   };
 }
+
+export type SidebarItem = PropSidebarItem;

@@ -1,9 +1,9 @@
 import SDK from '@yuque/sdk';
 import { ensureDir, ensureFile, remove, writeFile, writeFileSync } from 'fs-extra';
-import { groupBy, Dictionary } from 'lodash';
+import { groupBy } from 'lodash';
 import { resolve } from 'path';
 import axios from 'axios';
-// import { PropSidebarItem } from '@docusaurus/plugin-content-docs-types';
+import { NavbarItem } from '@docusaurus/theme-common';
 import { TOCItem, YuqueSDK } from './typings';
 import pLimit from 'p-limit';
 import pRetry from 'p-retry';
@@ -13,9 +13,9 @@ type InitOption = { token: string; repo: string; docDir: string; configDir: stri
 
 class Yuque {
   private sdk: YuqueSDK;
-  private repo: string;
-  private docDir: string;
-  private configDir: string;
+  private readonly repo: string;
+  private readonly docDir: string;
+  private readonly configDir: string;
 
   constructor({ token, repo, docDir, configDir, endpoint }: InitOption) {
     assert.ok(typeof token === 'string');
@@ -124,8 +124,7 @@ title: ${this.formatTitle(toc.title)}
 
   private async generateNavbar(sidebar: any) {
     const dropdownList = ['Web', '函数式 & 一体化', '功能', '微服务'];
-
-    const navbar = [];
+    const navbar: NavbarItem[] = [];
 
     for (const key of Object.keys(sidebar)) {
       const sidebarItem = sidebar[key][0];
@@ -141,19 +140,19 @@ title: ${this.formatTitle(toc.title)}
                   type: 'doc',
                   docId: firstChild.id,
                   label: item.label,
-                };
+                } as NavbarItem;
               case 'link':
                 return {
                   label: item.label,
                   href: firstChild.href,
-                };
+                } as NavbarItem;
             }
           } else {
             return {
               type: 'doc',
               docId: item.id,
               label: item.label,
-            };
+            } as NavbarItem;
           }
         });
         navbar.push({
@@ -168,7 +167,7 @@ title: ${this.formatTitle(toc.title)}
           docId: this.getFirstChildren(sidebarItem).id,
           label: sidebarItem.label,
           position: 'right',
-        });
+        } as any);
       }
     }
     await this.writeConfig(this.configPaths.navbar, navbar);
@@ -184,7 +183,7 @@ title: ${this.formatTitle(toc.title)}
     return current;
   }
 
-  private getChildrenFromListGroup(group: Dictionary<TOCItem[]>, parentUUID: string) {
+  private getChildrenFromListGroup(group: Record<string, TOCItem[]>, parentUUID: string) {
     const children = group[parentUUID] || [];
     const list = [];
 
