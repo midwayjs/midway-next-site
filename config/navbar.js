@@ -2,43 +2,126 @@ module.exports = [
   {
     "type": "doc",
     "docId": "introduction",
-    "position": "right",
-    "label": "基础"
+    "label": "基础",
+    "position": "right"
   },
   {
-    "type": "doc",
-    "docId": "cookies",
+    "type": "dropdown",
+    "label": "Web",
     "position": "right",
-    "label": "Web"
+    "items": [
+      {
+        "type": "doc",
+        "docId": "cookies",
+        "label": "Web 技术"
+      },
+      {
+        "type": "doc",
+        "docId": "eggjs",
+        "label": "Web 框架"
+      },
+      {
+        "type": "doc",
+        "docId": "socketio",
+        "label": "WebSocket"
+      },
+      {
+        "label": "示例",
+        "href": "https://github.com/midwayjs/midway-examples"
+      },
+      {
+        "type": "doc",
+        "docId": "v1_upgrade_v2",
+        "label": "迁移和升级"
+      }
+    ]
   },
   {
-    "type": "doc",
-    "docId": "hooks_intro",
+    "type": "dropdown",
+    "label": "函数式 & 一体化",
     "position": "right",
-    "label": "函数式 & 一体化"
+    "items": [
+      {
+        "type": "doc",
+        "docId": "hooks_intro",
+        "label": "介绍"
+      },
+      {
+        "type": "doc",
+        "docId": "hooks_api",
+        "label": "函数式"
+      },
+      {
+        "type": "doc",
+        "docId": "hooks_create",
+        "label": "一体化"
+      }
+    ]
   },
   {
-    "type": "doc",
-    "docId": "testing",
+    "type": "dropdown",
+    "label": "功能",
     "position": "right",
-    "label": "功能"
+    "items": [
+      {
+        "type": "doc",
+        "docId": "testing",
+        "label": "基础能力"
+      },
+      {
+        "type": "doc",
+        "docId": "render",
+        "label": "组件"
+      },
+      {
+        "type": "doc",
+        "docId": "pm2",
+        "label": "运维"
+      },
+      {
+        "type": "doc",
+        "docId": "component_development",
+        "label": "自定义扩展"
+      },
+      {
+        "type": "doc",
+        "docId": "cli",
+        "label": "工具"
+      }
+    ]
   },
   {
-    "type": "doc",
-    "docId": "grpc",
+    "type": "dropdown",
+    "label": "微服务",
     "position": "right",
-    "label": "微服务"
+    "items": [
+      {
+        "type": "doc",
+        "docId": "grpc",
+        "label": "gRPC"
+      },
+      {
+        "type": "doc",
+        "docId": "rabbitmq",
+        "label": "RabbitMQ"
+      },
+      {
+        "type": "doc",
+        "docId": "consul",
+        "label": "Consul"
+      }
+    ]
   },
   {
     "type": "doc",
     "docId": "serverless_introduction",
-    "position": "right",
-    "label": "Serverless"
+    "label": "Serverless",
+    "position": "right"
   },
   {
     "type": "doc",
     "docId": "framework_problem",
-    "position": "right",
-    "label": "FAQ"
+    "label": "FAQ",
+    "position": "right"
   }
 ]

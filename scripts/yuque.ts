@@ -3,7 +3,7 @@ import { ensureDir, ensureFile, remove, writeFile, writeFileSync } from 'fs-extr
 import { groupBy, Dictionary } from 'lodash';
 import { resolve } from 'path';
 import axios from 'axios';
-import { PropSidebarItem } from '@docusaurus/plugin-content-docs-types';
+// import { PropSidebarItem } from '@docusaurus/plugin-content-docs-types';
 import { TOCItem, YuqueSDK } from './typings';
 import pLimit from 'p-limit';
 import pRetry from 'p-retry';
@@ -21,7 +21,12 @@ class Yuque {
     assert.ok(typeof token === 'string');
     assert.ok(typeof repo === 'string');
 
-    this.sdk = new SDK({ token, endpoint });
+    const options: any = { token };
+    if (endpoint) {
+      options.endpoint = endpoint;
+    }
+
+    this.sdk = new SDK(options);
     this.repo = repo;
     this.docDir = docDir;
     this.configDir = configDir;
@@ -38,7 +43,10 @@ class Yuque {
     const tocList = await pRetry(() => this.sdk.repos.getTOC({ namespace: this.repo }), { retries: 3 });
 
     await this.generateConfig(tocList);
-    await this.download(tocList);
+
+    if (!process.env.SKIP_DOWNLOAD) {
+      await this.download(tocList);
+    }
   }
 
   private async download(tocList: TOCItem[]) {
@@ -106,13 +114,7 @@ title: ${this.formatTitle(toc.title)}
       }
     }
 
-    const navbar = Object.values(sidebar).map((side: any) => ({
-      type: 'doc',
-      docId: this.getFirstChildren(side[0]),
-      position: 'right',
-      label: side[0].label,
-    }));
-    await this.writeConfig(this.configPaths.navbar, navbar);
+    await this.generateNavbar(sidebar);
 
     Object.keys(sidebar).forEach((key) => {
       sidebar[key] = sidebar[key][0].items;
@@ -120,7 +122,59 @@ title: ${this.formatTitle(toc.title)}
     await this.writeConfig(this.configPaths.sidebar, sidebar);
   }
 
-  private getFirstChildren(sidebarItem: Partial<PropSidebarItem>) {
+  private async generateNavbar(sidebar: any) {
+    const dropdownList = ['Web', '函数式 & 一体化', '功能', '微服务'];
+
+    const navbar = [];
+
+    for (const key of Object.keys(sidebar)) {
+      const sidebarItem = sidebar[key][0];
+
+      if (dropdownList.includes(sidebarItem.label)) {
+        const items = sidebarItem.items.map((item) => {
+          if (item.type === 'category') {
+            const firstChild = this.getFirstChildren(item);
+
+            switch (firstChild.type) {
+              case 'doc':
+                return {
+                  type: 'doc',
+                  docId: firstChild.id,
+                  label: item.label,
+                };
+              case 'link':
+                return {
+                  label: item.label,
+                  href: firstChild.href,
+                };
+            }
+          } else {
+            return {
+              type: 'doc',
+              docId: item.id,
+              label: item.label,
+            };
+          }
+        });
+        navbar.push({
+          type: 'dropdown',
+          label: sidebarItem.label,
+          position: 'right',
+          items,
+        });
+      } else {
+        navbar.push({
+          type: 'doc',
+          docId: this.getFirstChildren(sidebarItem).id,
+          label: sidebarItem.label,
+          position: 'right',
+        });
+      }
+    }
+    await this.writeConfig(this.configPaths.navbar, navbar);
+  }
+
+  private getFirstChildren(sidebarItem: any) {
     let current = sidebarItem;
 
     while (current && current?.type === 'category') {
@@ -153,7 +207,11 @@ title: ${this.formatTitle(toc.title)}
           });
           break;
         default:
-          list.push(child.url);
+          list.push({
+            type: 'doc',
+            id: child.url,
+            label: child.title,
+          });
           break;
       }
     }
@@ -176,7 +234,7 @@ const yuque = new Yuque({
   repo: process.env.REPO,
   docDir: process.env.DOCS_DIR || resolve(__dirname, '..', 'docs'),
   configDir: process.env.CONFIG_DIR || resolve(__dirname, '..', 'config'),
-  endpoint: process.env.ENDPOINT || '',
+  endpoint: process.env.ENDPOINT,
 });
 
 yuque
