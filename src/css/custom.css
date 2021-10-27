@@ -64,3 +64,7 @@ html[data-theme='dark'] .docusaurus-highlight-code-line {
   padding-left: 0px!important;
   background-color: transparent!important;
 }
+
+.navbar__title {
+  text-overflow: unset!important;
+}
