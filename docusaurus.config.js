@@ -49,7 +49,7 @@ const config = {
         content: 'no-referrer'
       }],
       navbar: {
-        title: 'Midway.js',
+        title: 'Midway',
         logo: {
           alt: 'midway logo',
           src: 'img/logo.svg',
