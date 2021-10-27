@@ -157,7 +157,9 @@ export class UserTask {
 #### 设置进度
 
 例如我们在做音视频或者发布这种比较耗时的任务的时候，我们希望能设置进度。
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/187105/1620884757992-fb18a58f-9e56-4eda-92d9-68965df73e8a.png#clientId=uecb893ec-cfee-4&from=paste&height=342&id=ubf7a3918&margin=%5Bobject%20Object%5D&name=image.png&originHeight=454&originWidth=576&originalType=binary&ratio=1&size=29448&status=done&style=none&taskId=uffac1111-2306-44ac-bd3e-906503e1764&width=434)
+
+<img src="https://cdn.nlark.com/yuque/0/2021/png/187105/1620884757992-fb18a58f-9e56-4eda-92d9-68965df73e8a.png#clientId=uecb893ec-cfee-4&from=paste&height=342&id=ubf7a3918&margin=%5Bobject%20Object%5D&name=image.png&originHeight=454&originWidth=576&originalType=binary&ratio=1&size=29448&status=done&style=none&taskId=uffac1111-2306-44ac-bd3e-906503e1764&width=434" width="434" />
+
 相当于第二个参数，将 bull 的 job 传递给了用户。用户可以通过 job.progress 来设置进度。
 ​
 
@@ -269,7 +271,8 @@ logger.info(`queue process end.`);
 
 ### 排查问题链路：
 
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/187105/1626926172431-ce41c896-fc64-4c73-8d3b-f2633a916b5f.png#clientId=u62783ce8-4645-4&from=paste&height=504&id=viDCK&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1008&originWidth=1992&originalType=binary&ratio=1&size=2693469&status=done&style=none&taskId=u467a4354-7dc2-49c3-9bb6-3c6dea1903e&width=996)
+<img src="https://cdn.nlark.com/yuque/0/2021/png/187105/1626926172431-ce41c896-fc64-4c73-8d3b-f2633a916b5f.png#clientId=u62783ce8-4645-4&from=paste&height=504&id=viDCK&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1008&originWidth=1992&originalType=binary&ratio=1&size=2693469&status=done&style=none&taskId=u467a4354-7dc2-49c3-9bb6-3c6dea1903e&width=996" width="996" />
+
 用户可以搜索这个相同的 id，找到同一次请求的日志。
 为了方便用户在自己的业务代码中串联对应的日志，我在 ctx 上面挂了 traceId 变量。
 ​
@@ -277,11 +280,17 @@ logger.info(`queue process end.`);
 例如异常情况：
 当异常的时候，
 **本地 可以在 console 栏内看到这个错误相关的情况：**
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/187105/1626929372403-df50b85d-c71e-4b87-b602-275d10d3dc83.png#clientId=u8f28ddc7-5bc1-4&from=paste&height=162&id=UlGrO&margin=%5Bobject%20Object%5D&name=image.png&originHeight=324&originWidth=1964&originalType=binary&ratio=1&size=669523&status=done&style=none&taskId=u4b77719b-978b-4a21-90f8-3ee205dbf9d&width=982)
+
+<img src="https://cdn.nlark.com/yuque/0/2021/png/187105/1626929372403-df50b85d-c71e-4b87-b602-275d10d3dc83.png#clientId=u8f28ddc7-5bc1-4&from=paste&height=162&id=UlGrO&margin=%5Bobject%20Object%5D&name=image.png&originHeight=324&originWidth=1964&originalType=binary&ratio=1&size=669523&status=done&style=none&taskId=u4b77719b-978b-4a21-90f8-3ee205dbf9d&width=982" width="982" />
+
 日志： 可以在 midway-task.log 文件中查看完整日志：
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/187105/1626929372403-df50b85d-c71e-4b87-b602-275d10d3dc83.png#clientId=u8f28ddc7-5bc1-4&from=paste&height=162&id=binL0&margin=%5Bobject%20Object%5D&name=image.png&originHeight=324&originWidth=1964&originalType=binary&ratio=1&size=669523&status=done&style=none&taskId=u4b77719b-978b-4a21-90f8-3ee205dbf9d&width=982)
+
+<img src="https://cdn.nlark.com/yuque/0/2021/png/187105/1626929372403-df50b85d-c71e-4b87-b602-275d10d3dc83.png#clientId=u8f28ddc7-5bc1-4&from=paste&height=162&id=binL0&margin=%5Bobject%20Object%5D&name=image.png&originHeight=324&originWidth=1964&originalType=binary&ratio=1&size=669523&status=done&style=none&taskId=u4b77719b-978b-4a21-90f8-3ee205dbf9d&width=982" width="982" />
+
 如果调用情况比较多的时候，会出现 A 还没执行完成，B 又进来，导致日志区分比较麻烦，所以用户可以搜索调用的 traceId，也就是下图红色圈起来的地方：
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/187105/1626929496543-7d79db19-622f-4f99-a2fd-60b7f00bd57d.png#clientId=u8f28ddc7-5bc1-4&from=paste&height=163&id=DM3xz&margin=%5Bobject%20Object%5D&name=image.png&originHeight=326&originWidth=2034&originalType=binary&ratio=1&size=691391&status=done&style=none&taskId=ucd8b1d59-b13d-4fc4-81e2-2d4f43bab7b&width=1017)
+
+<img src="https://cdn.nlark.com/yuque/0/2021/png/187105/1626929496543-7d79db19-622f-4f99-a2fd-60b7f00bd57d.png#clientId=u8f28ddc7-5bc1-4&from=paste&height=163&id=DM3xz&margin=%5Bobject%20Object%5D&name=image.png&originHeight=326&originWidth=2034&originalType=binary&ratio=1&size=691391&status=done&style=none&taskId=ucd8b1d59-b13d-4fc4-81e2-2d4f43bab7b&width=1017" width="1017" />
+
 相当于 ctrl + f 搜索相同的 traceId 即可。
 ​
 
@@ -371,6 +380,40 @@ export class QueueTask {
 
 ​
 
+### EVALSHA 错误
+
+<img src="https://cdn.nlark.com/yuque/0/2021/png/187105/1633771728525-1efeb2a6-cefd-4fc3-a16d-0e9a97f371d1.png#clientId=u52b8d912-3ffa-4&from=paste&height=51&id=u0c96f70a&margin=%5Bobject%20Object%5D&name=image.png&originHeight=102&originWidth=3540&originalType=binary&ratio=1&size=164783&status=done&style=none&taskId=uc38084d4-e2cf-435d-a8b9-6a9bec80c9b&width=1770" width="1770" />
+
+这个问题基本明确，问题会出现在 redis 的集群版本上。原因是 redis 会对 key 做 hash 来确定存储的 slot，集群下这一步@midwayjs/task 的 key 命中了不同的 slot。临时的解决办法是 taskConfig 里的 prefix 配置用{}包括，强制 redis 只计算{}里的 hash，例如 prefix: '{midway-task}'
 ​
 
-​
+### 历史日志删除
+
+当每次 redis 执行完他会有日志，那么如何让其在完成后删除：
+
+```typescript
+import { Provide, Task } from '@midwayjs/decorator';
+import { IUserOptions } from '../interface';
+
+@Provide()
+export class UserService {
+  async getUser(options: IUserOptions) {
+    return {
+      uid: options.uid,
+      username: 'mockedName',
+      phone: '12345678901',
+      email: 'xxx.xxx@xxx.com',
+    };
+  }
+
+  @Task({
+    repeat: { cron: '* * * * * *' },
+    removeOnComplete: true, // 加了一行这个
+  })
+  async test() {
+    console.log(`====`);
+  }
+}
+```
+
+目前是否默认删除，需要跟用户沟通

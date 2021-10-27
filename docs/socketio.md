@@ -4,7 +4,7 @@ title: SocketIO
 
 Socket.io 是一个业界常用库，可用于在浏览器和服务器之间进行实时，双向和基于事件的通信。
 
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/501408/1616508690266-37c60f43-99a5-4586-b96d-49fbe88a9db7.png#height=176&id=dC3sH&margin=%5Bobject%20Object%5D&name=image.png&originHeight=352&originWidth=1204&originalType=binary&ratio=1&size=26196&status=done&style=none&width=602)
+<img src="https://cdn.nlark.com/yuque/0/2021/png/501408/1616508690266-37c60f43-99a5-4586-b96d-49fbe88a9db7.png#height=176&id=dC3sH&margin=%5Bobject%20Object%5D&name=image.png&originHeight=352&originWidth=1204&originalType=binary&ratio=1&size=26196&status=done&style=none&width=602" width="602" />
 
 Midway 提供了对 Socket.io 的支持和封装，能够简单的创建一个 Socket.io 服务。本篇内容演示了如何在 Midway 体系下，提供 Socket.io 服务的方法。
 
@@ -70,7 +70,8 @@ Socket.io（Engine.io）实现了两种 Transports（传输方式）。
 
 第一种是 HTTP 长轮询。HTTP Get 请求用于 long-running（长连接），Post 请求用于 short-running（短连接）。
 
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/501408/1616509613529-24413e09-2173-4b68-94d2-f0c492e8a192.png#height=534&id=wNTnr&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1068&originWidth=1778&originalType=binary&ratio=1&size=97397&status=done&style=none&width=889)
+<img src="https://cdn.nlark.com/yuque/0/2021/png/501408/1616509613529-24413e09-2173-4b68-94d2-f0c492e8a192.png#height=534&id=wNTnr&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1068&originWidth=1778&originalType=binary&ratio=1&size=97397&status=done&style=none&width=889" width="889" />
+
 第二种是 WebSocket 协议，直接基于 [WebSocket Connection](https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API) 实现。它在服务器和客户端之间提供了双向且低延迟的通信通道。
 
 在默认的情况下，Socket.io 会先采用 HTTP 长轮询进行连接，并发送一个类似下面结构的数据。
@@ -85,7 +86,8 @@ Socket.io（Engine.io）实现了两种 Transports（传输方式）。
 ```
 
 当当前的服务满足升级到 WebSocket 协议的要求时，会自动升级到 WebSocket 协议，如下图。
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/501408/1616510929886-2eed0b2e-0ca2-44e4-b471-a342e2a916b0.png#height=210&id=XUhOM&margin=%5Bobject%20Object%5D&name=image.png&originHeight=216&originWidth=585&originalType=binary&ratio=1&size=28233&status=done&style=none&width=568)
+
+<img src="https://cdn.nlark.com/yuque/0/2021/png/501408/1616510929886-2eed0b2e-0ca2-44e4-b471-a342e2a916b0.png#height=210&id=XUhOM&margin=%5Bobject%20Object%5D&name=image.png&originHeight=216&originWidth=585&originalType=binary&ratio=1&size=28233&status=done&style=none&width=568" width="568" />
 
 - 1、第一次握手，传输 sid 等结构
 - 2、使用 HTTP 长轮询发送数据

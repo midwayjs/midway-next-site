@@ -57,7 +57,8 @@ $ midway-bin dev --ts --port=7002
 ### 本地单步 Debug 调试
 
 建议使用 vscode 的 js debug terminal，在其中执行 dev 命令启动就可以打断点调试了。
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/128621/1625237917317-8e7bf448-fded-4bc7-b743-6aade0ebcba2.png#clientId=u7c8a3183-c32b-4&from=paste&height=650&id=u75e3aec7&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1300&originWidth=2868&originalType=binary&ratio=1&size=1140427&status=done&style=none&taskId=ubcffa6c8-02eb-4256-ba7e-7ab3128c1ee&width=1434)
+
+<img src="https://cdn.nlark.com/yuque/0/2021/png/128621/1625237917317-8e7bf448-fded-4bc7-b743-6aade0ebcba2.png#clientId=u7c8a3183-c32b-4&from=paste&height=650&id=u75e3aec7&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1300&originWidth=2868&originalType=binary&ratio=1&size=1140427&status=done&style=none&taskId=ubcffa6c8-02eb-4256-ba7e-7ab3128c1ee&width=1434" width="1434" />
 
 ### test 单元测试
 
@@ -143,6 +144,30 @@ $ midway-bin package
   --tsConfig    		 tsConfig json 字符串或文件位置
 ```
 
+## 实验性功能
+
+在 `f.yml` 中通过 `experimentalFeatures` 配置开启实验性功能
+
+### 1. ignoreTsError
+
+在构建时忽略 ts error，不中断构建过程。
+
+```
+experimentalFeatures:
+    ignoreTsError: true
+```
+
+### 2. removeUselessFiles
+
+在构建时移除大量无效文件，例如 `LICENSE`、`*.ts.map`、`**/test/` 等文件，可以有效减少构建包尺寸。
+
+```
+experimentalFeatures:
+    removeUselessFiles: true
+```
+
+##
+
 ## 扩展
 
 ### 1. 生命周期扩展
@@ -157,7 +182,7 @@ $ midway-bin package
 {
 	"midway-integration": {
   	"lifecycle": {
-    	"before:package:installDevDep": "npm run build"
+    	"after:package:installDevDep": "npm run build"
     }
   }
 }

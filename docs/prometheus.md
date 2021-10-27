@@ -9,7 +9,8 @@ Grafana 是一个开源的度量分析与可视化套件。纯 Javascript 开发
 本篇介绍了 Midway 如何接入 Grafana + Prometheus。
 
 接入效果如下：
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/187105/1617259935548-a2df4339-3229-4391-bd3d-4ba8e6979d4d.png#height=498&id=KoiiE&margin=%5Bobject%20Object%5D&name=image.png&originHeight=996&originWidth=1914&originalType=binary&ratio=1&size=969345&status=done&style=none&width=957)
+
+<img src="https://cdn.nlark.com/yuque/0/2021/png/187105/1617259935548-a2df4339-3229-4391-bd3d-4ba8e6979d4d.png#height=498&id=KoiiE&margin=%5Bobject%20Object%5D&name=image.png&originHeight=996&originWidth=1914&originalType=binary&ratio=1&size=969345&status=done&style=none&width=957" width="957" />
 
 ## 安装组件
 
@@ -41,7 +42,8 @@ Prometheus 基于 HTTP 获取监控数据，请加载 web/koa/express 任一框�
 :::
 
 访问接口，返回如下，里面的内容是当前的指标。
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/187105/1617260048533-4f725824-9471-40c9-be8b-6dcbf27d9cca.png#height=997&id=DIl0G&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1994&originWidth=2276&originalType=binary&ratio=1&size=1070956&status=done&style=none&width=1138)
+
+<img src="https://cdn.nlark.com/yuque/0/2021/png/187105/1617260048533-4f725824-9471-40c9-be8b-6dcbf27d9cca.png#height=997&id=DIl0G&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1994&originWidth=2276&originalType=binary&ratio=1&size=1070956&status=done&style=none&width=1138" width="1138" />
 
 ## 其他配置
 
@@ -165,15 +167,23 @@ $ docker run -d --name=grafana -p 3000:3000 grafana/grafana
 
 然后我们访问 127.0.0.1:3000，默认账号密码：admin:admin。
 然后访问后如下效果：
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/187105/1617260561047-c2643a69-6258-491b-937d-9bfc4558252f.png#height=346&id=yNdWZ&margin=%5Bobject%20Object%5D&name=image.png&originHeight=692&originWidth=1496&originalType=binary&ratio=1&size=551202&status=done&style=none&width=748)
+
+<img src="https://cdn.nlark.com/yuque/0/2021/png/187105/1617260561047-c2643a69-6258-491b-937d-9bfc4558252f.png#height=346&id=yNdWZ&margin=%5Bobject%20Object%5D&name=image.png&originHeight=692&originWidth=1496&originalType=binary&ratio=1&size=551202&status=done&style=none&width=748" width="748" />
+
 然后我们让 Grafana 接入我们的 Prometheus 数据源：
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/187105/1617260581029-1e2e06a8-3054-4ad8-96b5-d50ab9bb1612.png#height=286&id=atAvT&margin=%5Bobject%20Object%5D&name=image.png&originHeight=572&originWidth=1490&originalType=binary&ratio=1&size=169944&status=done&style=none&width=745)
+
+<img src="https://cdn.nlark.com/yuque/0/2021/png/187105/1617260581029-1e2e06a8-3054-4ad8-96b5-d50ab9bb1612.png#height=286&id=atAvT&margin=%5Bobject%20Object%5D&name=image.png&originHeight=572&originWidth=1490&originalType=binary&ratio=1&size=169944&status=done&style=none&width=745" width="745" />
+
 然后我们点击 Grafana 添加图表：
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/187105/1620725466020-28793a78-c03b-48fa-bf16-0c9c8ecc1a94.png#clientId=u070308fc-4e5d-4&from=paste&height=741&id=uce167575&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1482&originWidth=2626&originalType=binary&ratio=1&size=310590&status=done&style=none&taskId=uedd61eb7-8e61-488f-963f-f70adb9a651&width=1313)
+
+<img src="https://cdn.nlark.com/yuque/0/2021/png/187105/1620725466020-28793a78-c03b-48fa-bf16-0c9c8ecc1a94.png#clientId=u070308fc-4e5d-4&from=paste&height=741&id=uce167575&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1482&originWidth=2626&originalType=binary&ratio=1&size=310590&status=done&style=none&taskId=uedd61eb7-8e61-488f-963f-f70adb9a651&width=1313" width="1313" />
+
 这边 ID 选择 14403，然后点击 load，然后点击下一步，然后点击 import 后，就能看到我们刚刚接入的效果了。
 
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/187105/1620725497338-a32a8982-d51f-4e74-b511-dc10a7c66d80.png#clientId=u070308fc-4e5d-4&from=paste&height=996&id=uba6ac1f0&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1992&originWidth=3836&originalType=binary&ratio=1&size=1951604&status=done&style=none&taskId=ua7c2fc08-0633-4614-9af0-5bf2da800ef&width=1918)
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/187105/1620725514630-4f654f10-ef3a-41f7-b403-02832d3ef7d8.png#clientId=u070308fc-4e5d-4&from=paste&height=998&id=u27a3ae30&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1996&originWidth=3830&originalType=binary&ratio=1&size=2201307&status=done&style=none&taskId=ucee30610-4c1f-4fa8-82fd-a952d5aa9e1&width=1915)
+<img src="https://cdn.nlark.com/yuque/0/2021/png/187105/1620725497338-a32a8982-d51f-4e74-b511-dc10a7c66d80.png#clientId=u070308fc-4e5d-4&from=paste&height=996&id=uba6ac1f0&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1992&originWidth=3836&originalType=binary&ratio=1&size=1951604&status=done&style=none&taskId=ua7c2fc08-0633-4614-9af0-5bf2da800ef&width=1918" width="1918" />
+
+<img src="https://cdn.nlark.com/yuque/0/2021/png/187105/1620725514630-4f654f10-ef3a-41f7-b403-02832d3ef7d8.png#clientId=u070308fc-4e5d-4&from=paste&height=998&id=u27a3ae30&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1996&originWidth=3830&originalType=binary&ratio=1&size=2201307&status=done&style=none&taskId=ucee30610-4c1f-4fa8-82fd-a952d5aa9e1&width=1915" width="1915" />
+
 这样开发者可以运维自己的 Node 程序了，例如，是否最近引入了一个 NPM 包导致了什么内存泄漏的情况，是否最近有应用重启的情况了。
 
 当然还能支持其他的自定义操作。
@@ -204,7 +214,9 @@ export class ContainerLifeCycle {}
 ```
 
 然后在/metrics 这边就能看到 socket-io 的数据了。
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/187105/1631090438583-d925c13c-371a-4037-9f53-edaa34580aab.png#clientId=u24adff00-2245-4&from=paste&height=459&id=u2862ab6b&margin=%5Bobject%20Object%5D&name=image.png&originHeight=918&originWidth=1470&originalType=binary&ratio=1&size=481525&status=done&style=none&taskId=ua4ce06b2-a75d-4e4a-8bd9-c94496dca33&width=735)
+
+<img src="https://cdn.nlark.com/yuque/0/2021/png/187105/1631090438583-d925c13c-371a-4037-9f53-edaa34580aab.png#clientId=u24adff00-2245-4&from=paste&height=459&id=u2862ab6b&margin=%5Bobject%20Object%5D&name=image.png&originHeight=918&originWidth=1470&originalType=binary&ratio=1&size=481525&status=done&style=none&taskId=ua4ce06b2-a75d-4e4a-8bd9-c94496dca33&width=735" width="735" />
+
 一共新增 8 个指标。
 后续会提供 Grafana 的模版 ID 给大家使用。
 ​

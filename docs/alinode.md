@@ -14,7 +14,8 @@ title: 接入 Alinode
 
 **第二步**
 
-创建新应用，获取 APP ID 和 App Secret。![image.png](https://cdn.nlark.com/yuque/0/2021/png/187105/1617267785895-dd0fb702-91c7-4b25-9c64-8a9358f2d254.png#align=left&display=inline&height=351&margin=%5Bobject%20Object%5D&name=image.png&originHeight=702&originWidth=1548&size=106487&status=done&style=none&width=774)
+创建新应用，获取 APP ID 和 App Secret。
+<img src="https://cdn.nlark.com/yuque/0/2021/png/187105/1617267785895-dd0fb702-91c7-4b25-9c64-8a9358f2d254.png#align=left&display=inline&height=351&margin=%5Bobject%20Object%5D&name=image.png&originHeight=702&originWidth=1548&size=106487&status=done&style=none&width=774" width="774" />
 
 ## 安装监控依赖
 

@@ -17,13 +17,14 @@ $ npm init midway -- --type=web my_midway_app
 `my_midway_app`   是你即将创建的项目根目录名，CLI 会自动创建该目录，并将初始化示例代码写入其中。
 
 流程示例如下（npm7 效果）：
-![create.svg](https://cdn.nlark.com/yuque/0/2021/svg/501408/1617863129019-55f49eaa-4507-4bd5-9481-1e59d6295103.svg#height=776&id=iYjWX&margin=%5Bobject%20Object%5D&name=create.svg&originHeight=776&originWidth=1390&originalType=binary&ratio=1&size=119483&status=done&style=none&width=1390)
+
+<img src="https://cdn.nlark.com/yuque/0/2021/svg/501408/1617863129019-55f49eaa-4507-4bd5-9481-1e59d6295103.svg#height=776&id=iYjWX&margin=%5Bobject%20Object%5D&name=create.svg&originHeight=776&originWidth=1390&originalType=binary&ratio=1&size=119483&status=done&style=none&width=1390" width="1390" />
 
 :::info
 可以使用 `npm init midway`  查看完整的脚手架列表，选中某个项目后，Midway 会自动创建示例目录，代码，以及安装依赖。
 :::
 
-![create-with-cli.svg](https://cdn.nlark.com/yuque/0/2021/svg/501408/1619947815582-6283808a-b092-439b-b47f-f8a98852d2ed.svg#clientId=ub91e37c7-a0d3-4&from=ui&id=uc666f20c&margin=%5Bobject%20Object%5D&name=create-with-cli.svg&originHeight=928&originWidth=1770&originalType=binary&ratio=1&size=122976&status=done&style=none&taskId=uc9e17831-bc48-4ee0-a3ca-11de139c454)
+<img src="https://cdn.nlark.com/yuque/0/2021/svg/501408/1619947815582-6283808a-b092-439b-b47f-f8a98852d2ed.svg#clientId=ub91e37c7-a0d3-4&from=ui&id=uc666f20c&margin=%5Bobject%20Object%5D&name=create-with-cli.svg&originHeight=928&originWidth=1770&originalType=binary&ratio=1&size=122976&status=done&style=none&taskId=uc9e17831-bc48-4ee0-a3ca-11de139c454" width="undefined" />
 
 **可能会碰到的问题：**
 
@@ -109,7 +110,7 @@ $ open http://localhost:7001
 
 Midway 会启动 HTTP 服务器，打开浏览器，访问 `http://127.0.0.1:7001` ，浏览器会打印出 `Hello midwayjs!`   的信息。
 
-![image.png](https://cdn.nlark.com/yuque/0/2020/png/501408/1600531997433-eee21874-3f72-4ebf-bcfa-baa6c97ce4bf.png#height=384&id=JfkIS&margin=%5Bobject%20Object%5D&name=image.png&originHeight=768&originWidth=1268&originalType=binary&ratio=1&size=85918&status=done&style=none&width=634)
+<img src="https://cdn.nlark.com/yuque/0/2020/png/501408/1600531997433-eee21874-3f72-4ebf-bcfa-baa6c97ce4bf.png#height=384&id=JfkIS&margin=%5Bobject%20Object%5D&name=image.png&originHeight=768&originWidth=1268&originalType=binary&ratio=1&size=85918&status=done&style=none&width=634" width="634" />
 
 如果需要修改开发的启动端口，可以在 `package.json`  的 scripts 段落里修改，如修改为 6001：
 

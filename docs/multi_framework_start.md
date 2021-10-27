@@ -13,7 +13,9 @@ title: 多框架研发
 Midway 现有的框架（Framework）每个是独立的，每一个框架都可以单独在进程中运行，理论上来说，每个框架都是一个独立的依赖注入容器，加上特定框架包含的三方库的组合。
 
 这些独立的框架，都遵循 `IMidwayFramewok` 的接口定义，由 `@midwayjs/bootstrap` 库加载起来。
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/501408/1612086965489-9d1659ff-7440-40ac-a57a-f9195c57a73e.png#height=642&id=uuRd5&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1284&originWidth=1888&originalType=binary&ratio=1&size=159418&status=done&style=none&width=944)
+
+<img src="https://cdn.nlark.com/yuque/0/2021/png/501408/1612086965489-9d1659ff-7440-40ac-a57a-f9195c57a73e.png#height=642&id=uuRd5&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1284&originWidth=1888&originalType=binary&ratio=1&size=159418&status=done&style=none&width=944" width="944" />
+
 所以在提供的单进程部署方案中，我们可以通过一个 `bootstrap.js` 入口来启动应用。
 
 ```typescript
@@ -119,7 +121,9 @@ export class AutoConfiguration {
 所有的框架将共享同一个依赖注入容器。
 
 如下图，启动器（@midwayjs/bootstrap）模块将提前初始化一个依赖注入容器 A，在后续所有的框架中，都将复用这个依赖注入容器 A。
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/501408/1616483855279-c4efe465-6783-4aa7-b156-1fee8fedd777.png#height=878&id=FXtTw&margin=%5Bobject%20Object%5D&name=image.png&originHeight=878&originWidth=1148&originalType=binary&ratio=1&size=86904&status=done&style=none&width=1148)
+
+<img src="https://cdn.nlark.com/yuque/0/2021/png/501408/1616483855279-c4efe465-6783-4aa7-b156-1fee8fedd777.png#height=878&id=FXtTw&margin=%5Bobject%20Object%5D&name=image.png&originHeight=878&originWidth=1148&originalType=binary&ratio=1&size=86904&status=done&style=none&width=1148" width="1148" />
+
 这意味这，在任意框架注入到容器中的单例，在其他框架也可以取到。
 
 ## 多框架获取应用（app）对象

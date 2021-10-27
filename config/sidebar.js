@@ -532,47 +532,55 @@ module.exports = {
     {
       "type": "doc",
       "id": "serverless_introduction",
-      "label": "基础介绍"
+      "label": "介绍"
     },
     {
-      "type": "doc",
-      "id": "serverless_dev",
-      "label": "开发函数"
-    },
-    {
-      "type": "doc",
-      "id": "serverless_testing",
-      "label": "测试函数"
-    },
-    {
-      "type": "doc",
-      "id": "serverless_aggr",
-      "label": "聚合部署"
-    },
-    {
-      "type": "doc",
-      "id": "serverless_context",
-      "label": "函数上下文"
-    },
-    {
-      "type": "doc",
-      "id": "serverless_yml",
-      "label": "f.yml 定义"
-    },
-    {
-      "type": "doc",
-      "id": "serverless_environment",
-      "label": "部署环境"
-    },
-    {
-      "type": "doc",
-      "id": "serverless_error",
-      "label": "默认错误行为"
-    },
-    {
-      "type": "doc",
-      "id": "serverless_to_app",
-      "label": "Serverless 函数部署为应用"
+      "type": "category",
+      "label": "基础",
+      "collapsed": false,
+      "collapsible": false,
+      "items": [
+        {
+          "type": "doc",
+          "id": "serverless_dev",
+          "label": "开发函数"
+        },
+        {
+          "type": "doc",
+          "id": "serverless_testing",
+          "label": "测试函数"
+        },
+        {
+          "type": "doc",
+          "id": "serverless_aggr",
+          "label": "聚合部署"
+        },
+        {
+          "type": "doc",
+          "id": "serverless_context",
+          "label": "函数上下文"
+        },
+        {
+          "type": "doc",
+          "id": "serverless_yml",
+          "label": "f.yml 定义"
+        },
+        {
+          "type": "doc",
+          "id": "serverless_environment",
+          "label": "部署环境"
+        },
+        {
+          "type": "doc",
+          "id": "serverless_error",
+          "label": "默认错误行为"
+        },
+        {
+          "type": "doc",
+          "id": "serverless_to_app",
+          "label": "Serverless 函数部署为应用"
+        }
+      ]
     },
     {
       "type": "category",

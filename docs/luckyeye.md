@@ -46,7 +46,8 @@ npm run check
 **蓝色**代表输出的信息，用于排错，**绿色**代表检查项通过，**红色**代表检查项有问题，需要修改，**黄色**代表检查项可以做修改，但是可选。
 
 执行效果如下。
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/501408/1610983986151-79c54e7c-3ff0-4f94-98bc-359dda0fa694.png#align=left&display=inline&height=464&margin=%5Bobject%20Object%5D&name=image.png&originHeight=928&originWidth=1234&size=155051&status=done&style=none&width=617)
+
+<img src="https://cdn.nlark.com/yuque/0/2021/png/501408/1610983986151-79c54e7c-3ff0-4f94-98bc-359dda0fa694.png#align=left&display=inline&height=464&margin=%5Bobject%20Object%5D&name=image.png&originHeight=928&originWidth=1234&size=155051&status=done&style=none&width=617" width="617" />
 
 ## 自定义规则包
 

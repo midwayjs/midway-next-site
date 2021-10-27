@@ -9,6 +9,11 @@ title: GraphQL
 - 在 Midway Serverless 中，Apollo-Server-Midway 通过将 Apollo-Server 作为一个 GraphQL 专有的响应处理器来工作，同时内置了 [TypeGraphQL](https://typegraphql.com/) 支持来配合 MidwayJS 的装饰器体系（TypeGraphQL 使用 TypeScript 的 Class 以及装饰器声明 GraphQL Schema 以及 GraphQL Resolvers 等一系列能力）。
 - 在 Midway Node 应用中，它主要通过将 Apollo-Server 作为一个仅针对 GraphQL API 路径（如`/graphql`）的中间件进行工作，所以你可以同时构建 RESTFul API 与 GraphQL API，不同的基座框架需要使用不同的中间件，在不同的框架下也对应了不同版本的 Apollo-Server 集成（如 Apollo-Server-Koa、Apollo-Server-Express）。
 - 这两部分都对 TypeGraphQL 做了内置支持，但你同样可以仅使用 Apollo-Server 的能力，如从外部传入 GraphQL Schema，以及使用 Apollo Server 内置的能力来实现 GraphQL Resolver。在这种情况下，TypeGraphQL 的选项将被忽略。
+- 在 Node 应用中，实际上更推荐使用自定义的 GraphQL 中间件，而不是使用框架内置。
+  - 对于框架内置的版本，你无法直观的控制被包含在 GraphQL Context 中的数据，而是只能在 config 下单独定义一些不具有外部依赖的数据，对于依赖应用上下文、请求上下文或者其他注入进来的数据则束手无策。
+  - 使用自定义的 GraphQL 中间件，你可以进行更加灵活的逻辑定制，包括但不限于 Apollo Server Plugin、GraphQL Context 以及 TypeGraphQL AuthChecker 等等。
+  - Apollo-Server-Midway 的重心在于提供 Midway Serverless 下低成本接入 GraphQL 的能力，对于 Node 应用的支持只是附带，同时，由于 Node 应用中可能存在各种可能的定制需求，在框架层定制同样不现实。
+  - 参考下方 定制 GraphQL 中间件 一节了解更多。
 
 ## Serverless 应用
 
@@ -117,6 +122,144 @@ export class ContainerConfiguration implements ILifeCycle {
 
 上面展示了通过 `config.default.ts` 注入配置的能力，你也可以通过 `@Config` 的方式将配置注入到 `ContainerConfiguration` 类中进行配置。
 ​
+
+​
+
+## 定制 GraphQL 中间件
+
+定制 GraphQL 中间件的成本实际上非常低的，不到 100 行代码即可实现：
+
+> 示例参考 [koa-app-sample](https://github.com/LinbuduLab/apollo-server-midway/blob/main/packages/koa-app-sample/src/middlewares/extend.ts)​
+
+以下示例以 Koa 为例
+​
+
+首先定义中间件
+
+```typescript
+import { Provide, Config, App } from '@midwayjs/decorator';
+import { IWebMiddleware, IMidwayKoaApplication, IMidwayKoaContext, IMidwayKoaNext } from '@midwayjs/koa';
+
+import { ApolloServer, ServerRegistration } from 'apollo-server-koa';
+import { buildSchemaSync } from 'type-graphql';
+import {
+  ApolloServerPluginLandingPageGraphQLPlayground,
+  ApolloServerPluginLandingPageDisabled,
+} from 'apollo-server-core';
+
+import { SampleResolver } from '../resolvers/sample.resolver';
+
+@Provide('extend:GraphQLKoaMiddleware')
+export class GraphQLMiddleware implements IWebMiddleware {
+  @Config('apollo')
+  config: ServerRegistration;
+
+  @App()
+  app: IMidwayKoaApplication;
+
+  resolve() {
+    return async (_ctx: IMidwayKoaContext, next: IMidwayKoaNext) => {
+      const container = this.app.getApplicationContext();
+
+      const schema = buildSchemaSync({
+        resolvers: [SampleResolver],
+        // 直接传入 container，意味着使用应用上下文作为容器
+        // container,
+        // 从 Apollo Context 中获取 container ，意味着使用请求上下文作为容器
+        container: ({ context }: ResolverData<{ container: IMidwayContainer }>) => context.container,
+        emitSchemaFile: 'schema.graphql',
+      });
+
+      const server = new ApolloServer({
+        schema,
+        // 这里的 ctx 实际上是被 Midway 处理过的，所以你可以拿到 requestContext
+        context: ({ ctx }: { ctx: IMidwayKoaContext }) => {
+          return {
+            // 返回请求上下文容器供 TypeGraphQL 使用
+            container: ctx.requestContext,
+            // 返回请求上下文供 Resolver 中使用
+            reqCtx: ctx,
+          };
+        },
+        plugins: [
+          ['production'].includes(process.env.NODE_ENV) || process.env.DISABLE_PLAYGROUND
+            ? ApolloServerPluginLandingPageDisabled()
+            : ApolloServerPluginLandingPageGraphQLPlayground({
+                settings: {
+                  // playground settings
+                },
+              }),
+        ],
+      });
+      await server.start();
+
+      server.applyMiddleware({
+        app: this.app,
+        ...this.config,
+      });
+
+      await next();
+    };
+  }
+}
+```
+
+可以看到这里的逻辑其实是很简单的，与框架内置不同的是定制了 GraphQL Context，包含应用上下文与请求上下文。**另外，需要注意的是，这里的 **`**Context**`** 需要使用函数，来确保每次请求来时能保持更新，尤其是当你需要使用请求上下文信息如 cookie、headers 等时。**
+在 Resolver 中你就可以拿到关联请求上下文的信息了：
+
+```typescript
+import { IMidwayContainer } from '@midwayjs/core';
+import { Provide, Inject, App } from '@midwayjs/decorator';
+import { IMidwayKoaContext } from '@midwayjs/koa';
+import { Resolver, Query, Ctx } from 'type-graphql';
+
+import { SampleType } from '../graphql/sample.type';
+
+interface IContext {
+  container: IMidwayContainer;
+  reqCtx: IMidwayKoaContext;
+}
+
+@Provide()
+@Resolver((type) => SampleType)
+export class SampleResolver {
+  @Query((type) => SampleType)
+  QueryApplicationContext(@Ctx() ctx: IContext): SampleType {
+    console.log(ctx.reqCtx.header['authorization']);
+    return {
+      SampleField: 'SampleField',
+      Child: {
+        ChildField: 'ChildField',
+      },
+    };
+  }
+}
+```
+
+加载方式仍然保持一致：
+
+```typescript
+import { Configuration, App } from '@midwayjs/decorator';
+import { ILifeCycle, IMidwayContainer } from '@midwayjs/core';
+import { IMidwayKoaApplication } from '@midwayjs/koa';
+
+@Configuration({
+  importConfigs: ['./config'],
+})
+export class ContainerConfiguration implements ILifeCycle {
+  @App()
+  app: IMidwayKoaApplication;
+
+  async onReady(container: IMidwayContainer): Promise<void> {
+    this.app.use(
+      // Use extend middleware
+      await this.app.generateMiddleware('extend:GraphQLKoaMiddleware')
+    );
+  }
+
+  async onStop(): Promise<void> {}
+}
+```
 
 ## 注意事项
 

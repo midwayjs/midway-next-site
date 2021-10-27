@@ -1,5 +1,5 @@
 ---
-title: 基础介绍
+title: 介绍
 ---
 
 ## Midway Serverless 能做什么

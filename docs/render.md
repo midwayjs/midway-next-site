@@ -1,8 +1,9 @@
 ---
-title: 渲染模板
+title: 模板渲染
 ---
 
 本组件用于在 midway 体系使用服务端渲染 ejs，nunjucks 模板。
+​
 
 ## 使用 ejs
 
@@ -37,7 +38,7 @@ export class ContainerLifeCycle {}
 ### 配置
 
 ```typescript
-// src/config/config.default.js
+// src/config/config.default.ts
 export const view = {
   defaultViewEngine: 'ejs',
   mapping: {
@@ -132,7 +133,7 @@ export class ContainerLifeCycle {}
 3、增加 nunjucks 的配置，比如默认使用 nunjucks。
 
 ```typescript
-// src/config/config.default.js
+// src/config/config.default.ts
 export const view = {
   defaultViewEngine: 'nunjucks',
   mapping: {
@@ -178,7 +179,7 @@ export class HomeController {
 
 ```typescript
 import { App, Configuration, Inject } from '@midwayjs/decorator';
-import * as view from '../../../../src';
+import * as view from '@midwayjs/view-nunjucks';
 import { join } from 'path';
 
 @Configuration({
@@ -219,3 +220,25 @@ await ctx.render('test.nj', { name: 'midway' });
 ```
 
 也会输出 `hi, midway` 。
+​
+
+## 注意事项
+
+如需在 egg(@midwayjs/web) 场景下使用，请在 `plugint.ts` 中关闭 view 和其相关插件。
+​
+
+```typescript
+import { EggPlugin } from 'egg';
+export default {
+  // ...
+  view: false,
+} as EggPlugin;
+```
+
+​
+
+否则会出现下面类似的错误。
+
+```
+TypeError: Cannot set property view of #<EggApplication> which has only a getter
+```

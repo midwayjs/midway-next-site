@@ -25,7 +25,9 @@ npm i ali-oss -S && npm i @types/ali-oss -D
 1. 单击**权限管理 > 跨域设置**，在**跨域设置**区域单击**设置**。
 1. 单击**创建规则**，配置如下图所示。
 
-[![](https://cdn.nlark.com/yuque/0/2020/png/98602/1607502650388-1a12351a-99f3-4099-87b4-830d8f700681.png#height=866&id=BlST2&originHeight=866&originWidth=688&originalType=binary&size=0&status=done&style=none&width=688)](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/1152398851/p12308.png)
+[
+<img src="https://cdn.nlark.com/yuque/0/2020/png/98602/1607502650388-1a12351a-99f3-4099-87b4-830d8f700681.png#height=866&id=BlST2&originHeight=866&originWidth=688&originalType=binary&size=0&status=done&style=none&width=688" width="688" />
+](https://static-aliyun-doc.oss-cn-hangzhou.aliyuncs.com/assets/img/zh-CN/1152398851/p12308.png)
 
 ### 后端代码
 
@@ -103,7 +105,8 @@ export default () => {
 ### 注意事项
 
 获取上传文件地址的时候有很多的权限设置可以在 阿里云的 OSS 控制台设置，如果返回的 url 在页面中打不开，那么需要在 OSS 控制台授权
-![image.png](https://cdn.nlark.com/yuque/0/2020/png/98602/1607502650376-2efc20dd-6387-42e5-a8ec-21543f6fa751.png#height=179&id=NebVF&margin=%5Bobject%20Object%5D&name=image.png&originHeight=358&originWidth=2194&originalType=binary&size=119122&status=done&style=none&width=1097)
+
+<img src="https://cdn.nlark.com/yuque/0/2020/png/98602/1607502650376-2efc20dd-6387-42e5-a8ec-21543f6fa751.png#height=179&id=NebVF&margin=%5Bobject%20Object%5D&name=image.png&originHeight=358&originWidth=2194&originalType=binary&size=119122&status=done&style=none&width=1097" width="1097" />
 
 ## 前端 OSS SDK 直传
 

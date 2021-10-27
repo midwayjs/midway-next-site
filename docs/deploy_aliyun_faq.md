@@ -45,16 +45,18 @@ midway-bin deploy --resetConfig
 ## CLI 发布红色提示
 
 在 HTTP 触发器发布后，会出现下面的红色提示。这是**一个提示**，原因为，未配置域名的情况下，阿里云将默认添加 `Content-Disposition: attachment` 头到响应中，浏览器打开地址会变为附件下载。可以通过绑定自定义域名或者本地 curl 的方式来测试结果。
-![image.png](https://cdn.nlark.com/yuque/0/2020/png/501408/1587036400388-b2ebe43f-fa7d-463b-b9b6-b38bf9e18430.png#height=268&id=H2BJz&margin=%5Bobject%20Object%5D&name=image.png&originHeight=268&originWidth=958&originalType=binary&ratio=1&size=242934&status=done&style=none&width=958)
+
+<img src="https://cdn.nlark.com/yuque/0/2020/png/501408/1587036400388-b2ebe43f-fa7d-463b-b9b6-b38bf9e18430.png#height=268&id=H2BJz&margin=%5Bobject%20Object%5D&name=image.png&originHeight=268&originWidth=958&originalType=binary&ratio=1&size=242934&status=done&style=none&width=958" width="958" />
 
 ## HTTP 函数绑定自定义域名
 
 阿里云的 http 函数绑定自定义域名的菜单就在左侧函数下。
-![image.png](https://cdn.nlark.com/yuque/0/2020/png/501408/1588753540328-1198bf42-6b57-4062-8e7b-ba4a9cc5ec0b.png#height=572&id=f9LRZ&margin=%5Bobject%20Object%5D&name=image.png&originHeight=572&originWidth=1185&originalType=binary&ratio=1&size=64810&status=done&style=none&width=1185)
+
+<img src="https://cdn.nlark.com/yuque/0/2020/png/501408/1588753540328-1198bf42-6b57-4062-8e7b-ba4a9cc5ec0b.png#height=572&id=f9LRZ&margin=%5Bobject%20Object%5D&name=image.png&originHeight=572&originWidth=1185&originalType=binary&ratio=1&size=64810&status=done&style=none&width=1185" width="1185" />
 
 阿里云绑定域名会检测实名，备案等，请提前准备。
 
-![image.png](https://cdn.nlark.com/yuque/0/2020/png/501408/1588753614297-b391fe03-2fef-4d8d-a065-ce7322016085.png#height=887&id=ZndLt&margin=%5Bobject%20Object%5D&name=image.png&originHeight=887&originWidth=880&originalType=binary&ratio=1&size=72499&status=done&style=none&width=880)
+<img src="https://cdn.nlark.com/yuque/0/2020/png/501408/1588753614297-b391fe03-2fef-4d8d-a065-ce7322016085.png#height=887&id=ZndLt&margin=%5Bobject%20Object%5D&name=image.png&originHeight=887&originWidth=880&originalType=binary&ratio=1&size=72499&status=done&style=none&width=880" width="880" />
 
 ## 发布时指定 accessKey 等
 
@@ -70,7 +72,9 @@ export ACCESS_KEY_SECRET=xxx
 ## 发布时超时问题
 
 有时候包比较大， `midway-bin deploy`  上传可能会碰到超时的问题，这个超时时间是 funcraft 工具内部控制的。
-![image.png](https://cdn.nlark.com/yuque/0/2020/png/501408/1598423950078-15838cbb-95f3-41f9-94ac-a31741b111d3.png#height=179&id=EOCLm&margin=%5Bobject%20Object%5D&name=image.png&originHeight=358&originWidth=2784&originalType=binary&ratio=1&size=310195&status=done&style=none&width=1392)
+
+<img src="https://cdn.nlark.com/yuque/0/2020/png/501408/1598423950078-15838cbb-95f3-41f9-94ac-a31741b111d3.png#height=179&id=EOCLm&margin=%5Bobject%20Object%5D&name=image.png&originHeight=358&originWidth=2784&originalType=binary&ratio=1&size=310195&status=done&style=none&width=1392" width="1392" />
+
 解决方案： `~/.fcli/config.yaml`  里面配置 timeout，单位是 s（秒）。
 
 一般来说，midway 默认脚手架（eggjs）构建完在 9M 左右，其他框架会更小，请尝试先删除 `package-lock.json` 后再尝试。

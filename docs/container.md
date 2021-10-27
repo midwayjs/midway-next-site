@@ -68,7 +68,8 @@ container.bind(UserService);
 ```
 
 这里的依赖注入容器类似于一个 Map。Map 的 key 是**类名的驼峰形式**，Value 则是**类本身**。
-![image.png](https://cdn.nlark.com/yuque/0/2020/png/501408/1600847625069-c32258a0-9332-4691-896f-27b19d7b2534.png#height=269&id=Wi3Zx&margin=%5Bobject%20Object%5D&name=image.png&originHeight=269&originWidth=623&originalType=binary&ratio=1&size=16422&status=done&style=none&width=623)
+
+<img src="https://cdn.nlark.com/yuque/0/2020/png/501408/1600847625069-c32258a0-9332-4691-896f-27b19d7b2534.png#height=269&id=Wi3Zx&margin=%5Bobject%20Object%5D&name=image.png&originHeight=269&originWidth=623&originalType=binary&ratio=1&size=16422&status=done&style=none&width=623" width="623" />
 
 在请求时，会动态实例化这些 Class，并且处理属性的赋值，比如下面的伪代码，很容易理解。
 
@@ -267,7 +268,9 @@ export class UserService {
 ```
 
 调用的情况如下。
-![image.png](https://cdn.nlark.com/yuque/0/2020/png/501408/1606918854743-338c689a-21d1-4ed3-893a-1ac6e0d009a4.png#height=194&id=7zjMV&margin=%5Bobject%20Object%5D&name=image.png&originHeight=388&originWidth=1110&originalType=binary&ratio=1&size=32617&status=done&style=none&width=555)
+
+<img src="https://cdn.nlark.com/yuque/0/2020/png/501408/1606918854743-338c689a-21d1-4ed3-893a-1ac6e0d009a4.png#height=194&id=7zjMV&margin=%5Bobject%20Object%5D&name=image.png&originHeight=388&originWidth=1110&originalType=binary&ratio=1&size=32617&status=done&style=none&width=555" width="555" />
+
 这种情况下，不论调用 `HomeController` 多少次，每次请求的 `HomeController` 实例是不同的，而 `UserService` 都会固定的那个。
 
 我们再来举个例子演示单例中注入的服务是否还会保留原有作用域。
@@ -275,7 +278,8 @@ export class UserService {
 :::info
 这里的 `DBManager` 我们特地设置成请求作用域，来演示一下特殊场景。
 :::
-![image.png](https://cdn.nlark.com/yuque/0/2020/png/501408/1600597162226-5960d3e5-ac89-47c3-ab27-022005836225.png#height=167&id=oR5we&margin=%5Bobject%20Object%5D&name=image.png&originHeight=334&originWidth=1964&originalType=binary&ratio=1&size=44473&status=done&style=none&width=982)
+
+<img src="https://cdn.nlark.com/yuque/0/2020/png/501408/1600597162226-5960d3e5-ac89-47c3-ab27-022005836225.png#height=167&id=oR5we&margin=%5Bobject%20Object%5D&name=image.png&originHeight=334&originWidth=1964&originalType=binary&ratio=1&size=44473&status=done&style=none&width=982" width="982" />
 
 ```typescript
 // 这个类是默认的请求作用域（Request）
@@ -304,7 +308,8 @@ export class DBManager {}
 
 这种情况下，不论调用 `HomeController` 多少次，每次请求的 `HomeController` 实例是不同的，而 `UserService` 和 `DBManager` 都会固定的那个。
 
-![image.png](https://cdn.nlark.com/yuque/0/2020/png/501408/1600597433574-a3c46886-146f-4e54-8659-858f4af307a6.png#height=381&id=COok3&margin=%5Bobject%20Object%5D&name=image.png&originHeight=762&originWidth=1870&originalType=binary&ratio=1&size=85746&status=done&style=none&width=935)
+<img src="https://cdn.nlark.com/yuque/0/2020/png/501408/1600597433574-a3c46886-146f-4e54-8659-858f4af307a6.png#height=381&id=COok3&margin=%5Bobject%20Object%5D&name=image.png&originHeight=762&originWidth=1870&originalType=binary&ratio=1&size=85746&status=done&style=none&width=935" width="935" />
+
 简单的理解为，单例就像一个缓存，**其中依赖的所有对象都将被冻结，不再变化。**
 
 ## 异步初始化

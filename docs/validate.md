@@ -59,6 +59,14 @@ export class HomeController {
 
 Midway 提供了 `@Validate`  和 `@Rule`  装饰器，用来**快速定义校验的规则**，帮助用户**减少这些重复的代码**。
 
+## 适用场景
+
+- HTTP 请求
+- Websocket 的处理场景
+- MQ 的处理场景
+- Task 的处理场景
+- service 等其他场景
+
 ## 定义检查规则
 
 按照上面的逻辑，我们需要 **重新定义一个新的 Class**，因为装饰器只能装饰在实际的 Class 上，而不是 interface。

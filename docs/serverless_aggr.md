@@ -109,7 +109,7 @@ $ open http://localhost:7001
 
 Midway 会启动 HTTP 服务器，打开浏览器，访问 `[http://127.0.0.1:7001](http://127.0.0.1:7001)` ，浏览器会打印出 `Hello midwayjs`   的信息。
 
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/501408/1615045887650-73a90be7-1d49-4024-82c4-fd6b5192e75e.png#height=384&id=JCH29&margin=%5Bobject%20Object%5D&name=image.png&originHeight=768&originWidth=1268&originalType=binary&ratio=1&size=85174&status=done&style=none&width=634)
+<img src="https://cdn.nlark.com/yuque/0/2021/png/501408/1615045887650-73a90be7-1d49-4024-82c4-fd6b5192e75e.png#height=384&id=JCH29&margin=%5Bobject%20Object%5D&name=image.png&originHeight=768&originWidth=1268&originalType=binary&ratio=1&size=85174&status=done&style=none&width=634" width="634" />
 
 ## 本地测试
 
@@ -159,11 +159,11 @@ describe('test/index.test.ts', () => {
 
 坏处就是，如果调用量较少，函数的冷启动概率就大，调用的时间会明显变大，由于每个函数都会有开销，资源没有复用，最终的收费也会变多。
 
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/501408/1618156727582-20f0df7c-9f91-430b-87a6-1796b1ee35e1.png#height=494&id=Rdl50&margin=%5Bobject%20Object%5D&name=image.png&originHeight=988&originWidth=1912&originalType=binary&ratio=1&size=85218&status=done&style=none&width=956)
+<img src="https://cdn.nlark.com/yuque/0/2021/png/501408/1618156727582-20f0df7c-9f91-430b-87a6-1796b1ee35e1.png#height=494&id=Rdl50&margin=%5Bobject%20Object%5D&name=image.png&originHeight=988&originWidth=1912&originalType=binary&ratio=1&size=85218&status=done&style=none&width=956" width="956" />
 
 而聚合部署，会将所有的路由都注册到 `/*`  路由上，由框架内部的路由代码进行分发，所有的函数共享同一个容器，任意的请求都会让这个容器保活，使得冷启动的可能性大大减少。同时，由于代码是复用的，容器的复用率大大增加，比较适合于中后台这类请求均衡且接口的调用量相对均衡的场景。
 
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/501408/1618156735858-4ddb1d49-357d-4cec-8201-b2e49bde4b5f.png#height=456&id=I9ZeD&margin=%5Bobject%20Object%5D&name=image.png&originHeight=912&originWidth=1770&originalType=binary&ratio=1&size=59657&status=done&style=none&width=885)
+<img src="https://cdn.nlark.com/yuque/0/2021/png/501408/1618156735858-4ddb1d49-357d-4cec-8201-b2e49bde4b5f.png#height=456&id=I9ZeD&margin=%5Bobject%20Object%5D&name=image.png&originHeight=912&originWidth=1770&originalType=binary&ratio=1&size=59657&status=done&style=none&width=885" width="885" />
 
 ## 函数名规则
 

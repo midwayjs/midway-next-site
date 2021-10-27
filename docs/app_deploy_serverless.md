@@ -26,7 +26,9 @@ Midway Serverless 从 v1.1 版本开始提供了一套应用迁移到  Serverle
 ​
 
 迁移方案通过一套中间的代理层（Proxy Layer），将函数的入参转换为传统请求到原函数，而纯函数不经过这层代理，所以性能会比迁移方案高。
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/501408/1623937490756-27bcb3d0-8d61-49af-a1f1-0efe72b5c1dc.png#clientId=ub2750586-4d72-4&from=paste&height=542&id=u06931f71&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1084&originWidth=2290&originalType=binary&ratio=2&size=120683&status=done&style=none&taskId=u4f359237-b2d5-46ad-9dfa-42fd42375fa&width=1145)
+
+<img src="https://cdn.nlark.com/yuque/0/2021/png/501408/1623937490756-27bcb3d0-8d61-49af-a1f1-0efe72b5c1dc.png#clientId=ub2750586-4d72-4&from=paste&height=542&id=u06931f71&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1084&originWidth=2290&originalType=binary&ratio=2&size=120683&status=done&style=none&taskId=u4f359237-b2d5-46ad-9dfa-42fd42375fa&width=1145" width="1145" />
+
 ​
 
 如需纯函数，可以新起一个纯函数项目。

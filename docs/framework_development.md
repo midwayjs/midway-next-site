@@ -21,14 +21,16 @@ Midway 有着组件和框架的概念，两者有一些区别。
 
 整个区分如下图，任意一个框架（暴露服务）加上大部分组件（下游调用+复用扩展）为业务场景服务。
 
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/501408/1612541348981-bc32540f-e9b2-4375-9bdd-c77231b17c81.png#height=550&id=HPSqp&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1100&originWidth=1930&originalType=binary&ratio=1&size=282162&status=done&style=none&width=965)
+<img src="https://cdn.nlark.com/yuque/0/2021/png/501408/1612541348981-bc32540f-e9b2-4375-9bdd-c77231b17c81.png#height=550&id=HPSqp&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1100&originWidth=1930&originalType=binary&ratio=1&size=282162&status=done&style=none&width=965" width="965" />
 
 ## 框架（Framework）概念
 
 Midway 现有的框架（Framework）每个是独立的，每一个框架都可以单独在进程中运行，理论上来说，每个框架都是一个独立的依赖注入容器，加上特定框架包含的三方库的组合。
 
 这些独立的框架，都遵循 `IMidwayFramewok`  的接口定义，由 `@midwayjs/bootstrap`  库加载起来。
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/501408/1612086965489-9d1659ff-7440-40ac-a57a-f9195c57a73e.png#height=642&id=TLWHg&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1284&originWidth=1888&originalType=binary&ratio=1&size=159418&status=done&style=none&width=944)
+
+<img src="https://cdn.nlark.com/yuque/0/2021/png/501408/1612086965489-9d1659ff-7440-40ac-a57a-f9195c57a73e.png#height=642&id=TLWHg&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1284&originWidth=1888&originalType=binary&ratio=1&size=159418&status=done&style=none&width=944" width="944" />
+
 所以在提供的单进程部署方案中，我们可以通过一个 `bootstrap.js`  入口来启动应用。
 
 ```typescript
@@ -51,7 +53,8 @@ Bootstrap.load(web).run();
 
 如下图，左侧是 `@midwayjs/bootstrap`  启动提供的阶段，右侧是对应阶段框架（Framework）所执行的方法。
 
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/501408/1612086533035-970240ed-6ea9-48d8-aaef-985082b7dacd.png#height=944&id=HXGoc&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1888&originWidth=1784&originalType=binary&ratio=1&size=170229&status=done&style=none&width=892)
+<img src="https://cdn.nlark.com/yuque/0/2021/png/501408/1612086533035-970240ed-6ea9-48d8-aaef-985082b7dacd.png#height=944&id=HXGoc&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1888&originWidth=1784&originalType=binary&ratio=1&size=170229&status=done&style=none&width=892" width="892" />
+
 对于完全自定义框架，每个阶段都可以进行修改和覆盖。
 
 | **启动流程**                |                                                          |

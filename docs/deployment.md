@@ -107,7 +107,8 @@ const currentFramework = [
 
 整个部署分为几个部分，由于 Midway 是 TypeScript 编写，比传统 JavaScript 代码增加了一个构建的步骤，整个部署的过程如下。
 
-![image.png](https://cdn.nlark.com/yuque/0/2020/png/501408/1607238098956-563e8219-182d-4494-b9b4-311745be32f2.png#height=121&id=WtwR3&margin=%5Bobject%20Object%5D&name=image.png&originHeight=242&originWidth=2212&originalType=binary&ratio=1&size=51328&status=done&style=none&width=1106)
+<img src="https://cdn.nlark.com/yuque/0/2020/png/501408/1607238098956-563e8219-182d-4494-b9b4-311745be32f2.png#height=121&id=WtwR3&margin=%5Bobject%20Object%5D&name=image.png&originHeight=242&originWidth=2212&originalType=binary&ratio=1&size=51328&status=done&style=none&width=1106" width="1106" />
+
 由于部署和平台、环境非常相关，下面我们都将以 Linux 来演示，其他平台可以视情况参考。
 
 ### 编译代码和安装依赖
@@ -169,7 +170,7 @@ $ npm prune --production														# 移除开发依赖
 
 ### 上传和解压
 
-有很多中方式可以上传到服务器，比如常见的 `ssh/FTP/git`  等。也可以使用 [OSS](https://www.aliyun.com/product/oss) 等在线服务进行中转。
+有很多种方式可以上传到服务器，比如常见的 `ssh/FTP/git`  等。也可以使用 [OSS](https://www.aliyun.com/product/oss) 等在线服务进行中转。
 ​
 
 ### 启动方式一：使用纯 Node.js 或者 pm2 等工具启动
@@ -187,7 +188,7 @@ Midway 构建出来的项目是单进程的，不管是采用 `fork`  模式还
 ├── src
 ├── dist                # Midway 构建产物目录
 ├── test
-├── server.js						# 部署启动文件
+├── bootstrap.js						# 部署启动文件
 ├── package.json
 └── tsconfig.json
 ```
@@ -358,7 +359,9 @@ deployType: egg ## 部署的应用类型
 :::
 
 3、执行 `npm run deploy`  即可，发布后，阿里云会输出一个临时可用的域名，打开浏览器访问即可。
-![image.png](https://cdn.nlark.com/yuque/0/2020/png/501408/1600835297676-1753de7a-fb0d-46ca-98f0-944eba5b2f2b.png#height=193&id=s5j4s&margin=%5Bobject%20Object%5D&name=image.png&originHeight=193&originWidth=1219&originalType=binary&ratio=1&size=35152&status=done&style=none&width=1219)
+
+<img src="https://cdn.nlark.com/yuque/0/2020/png/501408/1600835297676-1753de7a-fb0d-46ca-98f0-944eba5b2f2b.png#height=193&id=s5j4s&margin=%5Bobject%20Object%5D&name=image.png&originHeight=193&originWidth=1219&originalType=binary&ratio=1&size=35152&status=done&style=none&width=1219" width="1219" />
+
 如需更详细的发布文档，请查阅 [**Serverless 发布 FAQ**](https://www.yuque.com/midwayjs/faas/deploy_aliyun_faq)。
 
 ### 部署到 Serverless 平台的限制
@@ -402,7 +405,8 @@ CMD ["npm", "run", "online"]
 步骤二: 新增 `.dockerignore`  文件（类似 git 的 ignore 文件），可以把 `.gitignore`  的内容拷贝到 `.dockerignore`  里面
 
 步骤三：package.json 文件的 scripts 里面新增 online，对比 start，把 `--daemon`  去掉。如下图
-![image.png](https://cdn.nlark.com/yuque/0/2020/png/187105/1608881958246-5b5da75e-2f60-4582-81b8-1b0645c91bd7.png#height=39&id=SeRTA&margin=%5Bobject%20Object%5D&name=image.png&originHeight=55&originWidth=904&originalType=binary&ratio=1&size=92433&status=done&style=none&width=634)
+
+<img src="https://cdn.nlark.com/yuque/0/2020/png/187105/1608881958246-5b5da75e-2f60-4582-81b8-1b0645c91bd7.png#height=39&id=SeRTA&margin=%5Bobject%20Object%5D&name=image.png&originHeight=55&originWidth=904&originalType=binary&ratio=1&size=92433&status=done&style=none&width=634" width="634" />
 
 这里使用的是 egg-scripts 部署，当使用 pm2 部署时，请将命令修改为 `pm2-runtime start` ，pm2 行为请参考 [pm2 容器部署说明](https://www.npmjs.com/package/pm2#container-support)。
 
@@ -419,9 +423,13 @@ docker run -itd -P helloworld
 ```
 
 运行效果如下：
-![image.png](https://cdn.nlark.com/yuque/0/2020/png/187105/1608882492099-49160b6a-601c-4f08-ba65-b95a1335aedf.png#height=33&id=BtUCB&margin=%5Bobject%20Object%5D&name=image.png&originHeight=45&originWidth=1024&originalType=binary&ratio=1&size=33790&status=done&style=none&width=746)
+
+<img src="https://cdn.nlark.com/yuque/0/2020/png/187105/1608882492099-49160b6a-601c-4f08-ba65-b95a1335aedf.png#height=33&id=BtUCB&margin=%5Bobject%20Object%5D&name=image.png&originHeight=45&originWidth=1024&originalType=binary&ratio=1&size=33790&status=done&style=none&width=746" width="746" />
+
 然后大写的 `-P`  由于给我们默认分配了一个端口，所以我们访问可以访问 `32791`  端口（这个 `-P`  是随机分配，我们也可以使用 `-p 7001:7001`  指定特定端口）
-![image.png](https://cdn.nlark.com/yuque/0/2020/png/187105/1608882559686-031bcf0d-2185-42cd-a838-80f008777395.png#height=94&id=dfag9&margin=%5Bobject%20Object%5D&name=image.png&originHeight=188&originWidth=578&originalType=binary&ratio=1&size=24488&status=done&style=none&width=289)
+
+<img src="https://cdn.nlark.com/yuque/0/2020/png/187105/1608882559686-031bcf0d-2185-42cd-a838-80f008777395.png#height=94&id=dfag9&margin=%5Bobject%20Object%5D&name=image.png&originHeight=188&originWidth=578&originalType=binary&ratio=1&size=24488&status=done&style=none&width=289" width="289" />
+
 关于别的推送到 dockerhub 或者 docker 的 registry，可以大家搜索对应的方法。
 ​
 
@@ -511,7 +519,8 @@ docker-compose build
 docker-compose up -d
 ```
 
-![image.png](https://cdn.nlark.com/yuque/0/2020/png/187105/1608884158660-02bd2d3c-08b4-4ecc-a4dd-a18d4b9d2c12.png#height=44&id=jWw4i&margin=%5Bobject%20Object%5D&name=image.png&originHeight=62&originWidth=1054&originalType=binary&ratio=1&size=47727&status=done&style=none&width=746)
+<img src="https://cdn.nlark.com/yuque/0/2020/png/187105/1608884158660-02bd2d3c-08b4-4ecc-a4dd-a18d4b9d2c12.png#height=44&id=jWw4i&margin=%5Bobject%20Object%5D&name=image.png&originHeight=62&originWidth=1054&originalType=binary&ratio=1&size=47727&status=done&style=none&width=746" width="746" />
+
 那么 redis 比如怎么用，因为 docker-compose 里面加了一个 redis，并且 link 了，所以我们代码里面如下写：
 
 在 service 目录下添加 `redis.service.ts`  文件，代码如下：
@@ -572,5 +581,7 @@ export class HomeController {
 
 然后访问 `127.0.0.1:7001`  ，会调用 redisService 获取 key 为 foo 的值，并返回给页面。
 如下：
-![image.png](https://cdn.nlark.com/yuque/0/2020/png/187105/1608886309353-2a65279f-8164-45c0-ab41-a759d31f1492.png#height=92&id=APR77&margin=%5Bobject%20Object%5D&name=image.png&originHeight=184&originWidth=686&originalType=binary&ratio=1&size=26724&status=done&style=none&width=343)
+
+<img src="https://cdn.nlark.com/yuque/0/2020/png/187105/1608886309353-2a65279f-8164-45c0-ab41-a759d31f1492.png#height=92&id=APR77&margin=%5Bobject%20Object%5D&name=image.png&originHeight=184&originWidth=686&originalType=binary&ratio=1&size=26724&status=done&style=none&width=343" width="343" />
+
 关于更多关于 docker-compose 的详情，可以查看网上关于 docker-compose 的使用方法。

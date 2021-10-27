@@ -37,7 +37,8 @@ Midway 可以使用 EggJS 作为上层 Web 框架，EggJS 提供了非常多常�
 - 2、baseDir 默认调整为 `src`  目录，服务器上为 `dist`  目录
 
 整个架构如下:
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/501408/1614842824740-fc0c1432-3ace-4f77-b51f-15212984b168.png#height=828&id=Lv3hN&margin=%5Bobject%20Object%5D&name=image.png&originHeight=828&originWidth=1716&originalType=binary&ratio=1&size=117877&status=done&style=none&width=1716)
+
+<img src="https://cdn.nlark.com/yuque/0/2021/png/501408/1614842824740-fc0c1432-3ace-4f77-b51f-15212984b168.png#height=828&id=Lv3hN&margin=%5Bobject%20Object%5D&name=image.png&originHeight=828&originWidth=1716&originalType=binary&ratio=1&size=117877&status=done&style=none&width=1716" width="1716" />
 
 ## 目录结构
 
@@ -688,7 +689,9 @@ export const middleware = ['notfoundHandler'];
 ## 不存在定义的问题
 
 一些 egg 插件未提供 ts 定义，导致使用会出现未声明方法的情况，比如 egg-mysql。
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/501408/1623158462288-d55fc0ff-dcc3-4c58-b952-101a552efe12.png#clientId=u9825f56d-757f-4&from=paste&height=438&id=uec9c4ff6&margin=%5Bobject%20Object%5D&name=image.png&originHeight=876&originWidth=1478&originalType=binary&ratio=2&size=581313&status=done&style=none&taskId=ubcf947b0-1a9d-43b5-9b57-f678da05da9&width=739)
+
+<img src="https://cdn.nlark.com/yuque/0/2021/png/501408/1623158462288-d55fc0ff-dcc3-4c58-b952-101a552efe12.png#clientId=u9825f56d-757f-4&from=paste&height=438&id=uec9c4ff6&margin=%5Bobject%20Object%5D&name=image.png&originHeight=876&originWidth=1478&originalType=binary&ratio=2&size=581313&status=done&style=none&taskId=ubcf947b0-1a9d-43b5-9b57-f678da05da9&width=739" width="739" />
+
 可以使用 any 绕过。
 
 ```typescript

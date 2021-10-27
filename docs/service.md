@@ -4,7 +4,7 @@ title: 服务和注入
 
 在业务中，只有控制器（Controller）的代码是不够的，一般来说会有一些业务逻辑被抽象到一个特定的逻辑单元中，我们一般称为服务（Service）。
 
-![image.png](https://cdn.nlark.com/yuque/0/2020/png/501408/1600604974682-f5309741-dda9-484b-bcf3-ac054f98fe78.png#height=172&id=xMfop&margin=%5Bobject%20Object%5D&name=image.png&originHeight=344&originWidth=2130&originalType=binary&ratio=1&size=46493&status=done&style=none&width=1065)
+<img src="https://cdn.nlark.com/yuque/0/2020/png/501408/1600604974682-f5309741-dda9-484b-bcf3-ac054f98fe78.png#height=172&id=xMfop&margin=%5Bobject%20Object%5D&name=image.png&originHeight=344&originWidth=2130&originalType=binary&ratio=1&size=46493&status=done&style=none&width=1065" width="1065" />
 
 提供这个抽象有以下几个好处：
 

@@ -358,6 +358,10 @@ provider:
 ## functions
 
 一个 functions 结构中包含多个 函数（function）。每个函数是一个对象（function）结构。
+​
+
+functions 中的字段和结构，在 midway v2 开始已经变为 `@ServerlessFunction` 和 `@ServerlessTrigger` 装饰器，下面的参数只是原始的描述。
+​
 
 ### functions/function 结构
 
@@ -390,22 +394,23 @@ export interface FunctionStructure {
 Functions 是一个由多个 function 组成的对象（非数组），**以函数名作为 key**，函数信息作为值。
 
 单个函数结构如下：
-| **FunctionStructure** | | |
-| --- | --- | --- |
-| handler | string | 必选，指定入口文件，以 "." 分割，前半部分指定**入口文件名**，后半部分指定**入口函数名**。 |
-| name | string | 函数名 |
-| description | string | 描述 |
-| memorySize | string | 内存限制大小，单位 M，如果不配置，默认取 provider.memorySize |
-| timeout | number | 超时时间，单位秒，
-如果不配置，默认取 provider.timeout |
-| runtime | number | 单独对函数指定运行时，同 provider.runtime |
-| initTimeout | number | 阿里云字段，初始化函数超时时间，单位秒，默认 3 |
-| environment | object | 函数级别的环境变量 |
-| concurrency | number | 阿里云字段，为函数设置一个实例并发度 (最小为 1，最大为 100)，表示单个函数实例可以同时处理多少个请求，默认为 1 |
-| stage | string | 腾讯云字段，函数发布的环境 |
-| events | EventStructureType[] | 事件，函数触发器 |
-| | | |
-| | | |
+
+| **FunctionStructure**               |                      |                                                                                                               |
+| ----------------------------------- | -------------------- | ------------------------------------------------------------------------------------------------------------- |
+| handler                             | string               | 必选，指定入口文件，以 "." 分割，前半部分指定**入口文件名**，后半部分指定**入口函数名**。                     |
+| name                                | string               | 函数名                                                                                                        |
+| description                         | string               | 描述                                                                                                          |
+| memorySize                          | string               | 内存限制大小，单位 M，如果不配置，默认取 provider.memorySize                                                  |
+| timeout                             | number               | 超时时间，单位秒，                                                                                            |
+| 如果不配置，默认取 provider.timeout |
+| runtime                             | number               | 单独对函数指定运行时，同 provider.runtime                                                                     |
+| initTimeout                         | number               | 阿里云字段，初始化函数超时时间，单位秒，默认 3                                                                |
+| environment                         | object               | 函数级别的环境变量                                                                                            |
+| concurrency                         | number               | 阿里云字段，为函数设置一个实例并发度 (最小为 1，最大为 100)，表示单个函数实例可以同时处理多少个请求，默认为 1 |
+| stage                               | string               | 腾讯云字段，函数发布的环境                                                                                    |
+| events                              | EventStructureType[] | 事件，函数触发器                                                                                              |
+|                                     |                      |                                                                                                               |
+|                                     |                      |                                                                                                               |
 
 ### 示例
 
@@ -622,13 +627,14 @@ export interface LayersStructure {
 ### 字段描述
 
 layers 是一个由多个 layer 组成的对象（非数组），**以 layer 名作为 key**，信息作为值。
-| **LayersStructure** | | |
-| --- | --- | --- |
-| key: layerName | string | layer 名 |
-| value: path | string | layer 路径 |
-| value: name | string | layer 名 |
-| | | |
-| | | |
+
+| **LayersStructure** |        |            |
+| ------------------- | ------ | ---------- |
+| key: layerName      | string | layer 名   |
+| value: path         | string | layer 路径 |
+| value: name         | string | layer 名   |
+|                     |        |            |
+|                     |        |            |
 
 ### 示例
 

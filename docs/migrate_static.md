@@ -105,7 +105,7 @@ provider:
 deployType:
 	type: static
   config:
-  	prefix: api
+  	prefix: /api
 
 package:
   include: build

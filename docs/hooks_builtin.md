@@ -17,7 +17,6 @@ Context 类型可以通过泛型注入，如：
 ```typescript
 // Koa
 import { Context } from '@midwayjs/koa';
-
 const ctx = useContext<Context>();
 
 // FaaS
@@ -80,7 +79,7 @@ Midway Hooks 中，相关的函数文件默认存放于 `./src/apis/` 目录下�
 const logger = useLogger();
 ```
 
-useLogger 可以获取 logger 并输出日志。
+`useLogger` 可以获取 `logger` 并输出日志。
 
 输出日志：
 

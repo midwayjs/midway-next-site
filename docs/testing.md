@@ -517,15 +517,18 @@ $ midway-bin cov --ts --runInBand
 ### Jetbrain Webstorm/Idea 配置
 
 在 Jetbrain 的编辑器使用，需要启用 "jest" 插件，由于使用了子进程的方式启动，我们依旧需要在启动时指定加载 `--require=ts-node/register` 。
-![image.png](https://cdn.nlark.com/yuque/0/2020/png/501408/1602178225943-8502d66a-0fa4-43b8-b133-4f2cc47acdbd.png#height=692&id=a4cFb&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1384&originWidth=2184&originalType=binary&ratio=1&size=275268&status=done&style=none&width=1092)
+
+<img src="https://cdn.nlark.com/yuque/0/2020/png/501408/1602178225943-8502d66a-0fa4-43b8-b133-4f2cc47acdbd.png#height=692&id=a4cFb&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1384&originWidth=2184&originalType=binary&ratio=1&size=275268&status=done&style=none&width=1092" width="1092" />
 
 ### VSCode 配置
 
 先搜索插件，安装 Jest Runner。
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/501408/1617707260369-933cc245-e1e1-4ed2-8065-bc46026e7618.png#height=877&id=ylNin&margin=%5Bobject%20Object%5D&name=image.png&originHeight=877&originWidth=1242&originalType=binary&ratio=1&size=193316&status=done&style=none&width=1242)
+
+<img src="https://cdn.nlark.com/yuque/0/2021/png/501408/1617707260369-933cc245-e1e1-4ed2-8065-bc46026e7618.png#height=877&id=ylNin&margin=%5Bobject%20Object%5D&name=image.png&originHeight=877&originWidth=1242&originalType=binary&ratio=1&size=193316&status=done&style=none&width=1242" width="1242" />
+
 打开配置，配置 jest 命令路径。
 
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/501408/1617707314603-0a8ef997-8cea-493c-ab84-2ca76c0980dd.png#height=849&id=JVfV0&margin=%5Bobject%20Object%5D&name=image.png&originHeight=849&originWidth=1266&originalType=binary&ratio=1&size=94311&status=done&style=none&width=1266)
+<img src="https://cdn.nlark.com/yuque/0/2021/png/501408/1617707314603-0a8ef997-8cea-493c-ab84-2ca76c0980dd.png#height=849&id=JVfV0&margin=%5Bobject%20Object%5D&name=image.png&originHeight=849&originWidth=1266&originalType=binary&ratio=1&size=94311&status=done&style=none&width=1266" width="1266" />
 
 在 jest command 处填入 `node --require=ts-node/register ./node_modules/.bin/jest` 。
 

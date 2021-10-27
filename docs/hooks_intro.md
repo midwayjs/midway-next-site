@@ -18,11 +18,11 @@ title: 介绍
 
 - **易于开发**，前后端同仓库，无缝融合一体开发
 - **易于部署**，前后端一同发布与部署
-- **易于维护**，后端代码可使用 Serverless 部署，运维难度低
+- **易于维护**，在同一仓库中排查问题，后端支持使用 Serverless 部署，降低运维难度
 
 > 目录结构
 
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/98602/1622788353126-95c182d2-1462-4ff0-b166-51d6f3405f2d.png#clientId=uaba2bffc-e32b-4&from=paste&height=1866&id=u2422df2b&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1866&originWidth=1948&originalType=binary&ratio=1&size=199238&status=done&style=none&taskId=u29d9d308-25ac-4631-ba44-adfa132e044&width=1948)
+<img src="https://cdn.nlark.com/yuque/0/2021/png/98602/1622788353126-95c182d2-1462-4ff0-b166-51d6f3405f2d.png#clientId=uaba2bffc-e32b-4&from=paste&height=1866&id=u2422df2b&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1866&originWidth=1948&originalType=binary&ratio=1&size=199238&status=done&style=none&taskId=u29d9d308-25ac-4631-ba44-adfa132e044&width=1948" width="1948" />
 
 ## 🌰 代码示例
 

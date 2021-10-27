@@ -7,7 +7,8 @@ title: 方法拦截器（切面）
 Midway 设计了一套通用的方法拦截器（切面），用于在不同场景中，统一编写逻辑。
 
 拦截器和传统的 Web 中间件和装饰器都不同，是由 Midway 框架提供的能力，在执行顺序上，处于中间的位置，这个能力能对任意的 Class 方法做拦截。
-![image.png](https://cdn.nlark.com/yuque/0/2020/png/501408/1600855555973-cd9b43fa-5a7b-4d4f-a6fb-8dfb07ef3816.png#align=left&display=inline&height=133&margin=%5Bobject%20Object%5D&name=image.png&originHeight=133&originWidth=823&size=13193&status=done&style=none&width=823)
+
+<img src="https://cdn.nlark.com/yuque/0/2020/png/501408/1600855555973-cd9b43fa-5a7b-4d4f-a6fb-8dfb07ef3816.png#height=133&id=Ye2oM&margin=%5Bobject%20Object%5D&name=image.png&originHeight=133&originWidth=823&originalType=binary&ratio=1&size=13193&status=done&style=none&width=823" width="823" />
 
 ## 使用拦截器（切面）
 
@@ -223,7 +224,7 @@ export class ReportInfo implements IMethodAspect {
 
 `afterThrow`  能拦截错误，相应的，它不能在流程中返回结果，一般用来记录错误日志。
 
-`after`  用来做最后的处理，不管是成功或者失败，都可以用它执行一些事情，比如记录所有日志。
+`after`  用来做最后的处理，不管是成功或者失败，都可以用它执行一些事情，比如记录所有成功或者失败的次数。
 
 ```typescript
 // src/controller/home.ts
@@ -341,16 +342,18 @@ export class ReportInfo implements IMethodAspect {
 如果多个拦截器（切面）同时针对一个方法做操作，可能会出现顺序错乱的问题，如果在两个文件中，这个顺序是随机的。
 
 `@Aspect`  的第三个参数用于指定拦截器的优先级，默认为 0，数字越大，优先级越高，即先被注册到方法上，**先注册的方法会被后调用，**即洋葱模型**。**
-\*\*
+**​**
+
 以下面的代码作为示例。 `MyAspect2`  的优先级高于 `MyAspect1` ，所以会优先注册。示意图如下，整个拦截流程分为两部分，先是注册，后是执行。
 
 **注册流程**
-\*\*
-![image.png](https://cdn.nlark.com/yuque/0/2020/png/501408/1600919962582-e0715385-828e-48c0-9b47-47a2b7018a18.png#align=left&display=inline&height=497&margin=%5Bobject%20Object%5D&name=image.png&originHeight=497&originWidth=924&size=38903&status=done&style=none&width=924)
+**​**
+
+<img src="https://cdn.nlark.com/yuque/0/2020/png/501408/1600919962582-e0715385-828e-48c0-9b47-47a2b7018a18.png#height=497&id=WZ6J3&margin=%5Bobject%20Object%5D&name=image.png&originHeight=497&originWidth=924&originalType=binary&ratio=1&size=38903&status=done&style=none&width=924" width="924" />
 
 **执行流程**
 
-![image.png](https://cdn.nlark.com/yuque/0/2020/png/501408/1600920671419-2d846c20-514c-4c54-a087-a91a1d42f7ef.png#align=left&display=inline&height=311&margin=%5Bobject%20Object%5D&name=image.png&originHeight=311&originWidth=769&size=28489&status=done&style=none&width=769)
+<img src="https://cdn.nlark.com/yuque/0/2020/png/501408/1600920671419-2d846c20-514c-4c54-a087-a91a1d42f7ef.png#height=311&id=nOAew&margin=%5Bobject%20Object%5D&name=image.png&originHeight=311&originWidth=769&originalType=binary&ratio=1&size=28489&status=done&style=none&width=769" width="769" />
 
 代码如下。
 

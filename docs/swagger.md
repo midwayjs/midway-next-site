@@ -95,7 +95,7 @@ async getUser(@Param() userId: number, @Query() name?: string) {
 }
 ```
 
-![image.png](https://cdn.nlark.com/yuque/0/2020/png/501408/1605013889037-58cb5bc5-cc37-43e6-8512-834d9c2e0ba9.png#height=150&id=jRI8p&margin=%5Bobject%20Object%5D&name=image.png&originHeight=300&originWidth=750&originalType=binary&size=18686&status=done&style=none&width=375)
+<img src="https://cdn.nlark.com/yuque/0/2020/png/501408/1605013889037-58cb5bc5-cc37-43e6-8512-834d9c2e0ba9.png#height=150&id=jRI8p&margin=%5Bobject%20Object%5D&name=image.png&originHeight=300&originWidth=750&originalType=binary&size=18686&status=done&style=none&width=375" width="375" />
 
 ### 3.2 参数描述
 
@@ -125,7 +125,7 @@ async getUser(@Param() userId: number, @Query() name?: string) {
 }
 ```
 
-![image.png](https://cdn.nlark.com/yuque/0/2020/png/501408/1605016059585-e2bce9f0-bf62-4d25-b794-f54340b555ab.png#height=347&id=YwKAq&margin=%5Bobject%20Object%5D&name=image.png&originHeight=694&originWidth=1270&originalType=binary&size=51562&status=done&style=none&width=635)
+<img src="https://cdn.nlark.com/yuque/0/2020/png/501408/1605016059585-e2bce9f0-bf62-4d25-b794-f54340b555ab.png#height=347&id=YwKAq&margin=%5Bobject%20Object%5D&name=image.png&originHeight=694&originWidth=1270&originalType=binary&size=51562&status=done&style=none&width=635" width="635" />
 
 在更为复杂的情况下，参数可以更加精确的描述。
 
@@ -163,7 +163,7 @@ async getUser(@Param() userId: number, @Query() name?: string) {
 }
 ```
 
-![image.png](https://cdn.nlark.com/yuque/0/2020/png/501408/1605016872114-640ff1e2-88d9-4c1e-969b-a1c8794180bd.png#height=340&id=UdmiX&margin=%5Bobject%20Object%5D&name=image.png&originHeight=680&originWidth=1112&originalType=binary&size=47848&status=done&style=none&width=556)
+<img src="https://cdn.nlark.com/yuque/0/2020/png/501408/1605016872114-640ff1e2-88d9-4c1e-969b-a1c8794180bd.png#height=340&id=UdmiX&margin=%5Bobject%20Object%5D&name=image.png&originHeight=680&originWidth=1112&originalType=binary&size=47848&status=done&style=none&width=556" width="556" />
 
 ### 3.3 返回值描述
 
@@ -215,7 +215,8 @@ export interface APIResponseFormat {
 你可以直接设置一个状态码，也可以在设置状态码之后，紧跟着设置描述，以及返回的 header，数据类型和示例。
 
 展示的效果为
-![image.png](https://cdn.nlark.com/yuque/0/2020/png/501408/1605023356892-77af3cf9-949d-49d5-adfe-8da98e888b60.png#height=829&id=nFEky&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1658&originWidth=2860&originalType=binary&size=194050&status=done&style=none&width=1430)
+
+<img src="https://cdn.nlark.com/yuque/0/2020/png/501408/1605023356892-77af3cf9-949d-49d5-adfe-8da98e888b60.png#height=829&id=nFEky&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1658&originWidth=2860&originalType=binary&size=194050&status=done&style=none&width=1430" width="1430" />
 
 ### 3.4 通用描述
 
@@ -228,7 +229,7 @@ export interface APIResponseFormat {
 export class HomeController {}
 ```
 
-![image.png](https://cdn.nlark.com/yuque/0/2020/png/501408/1605011893128-f72e4916-24c7-4c59-ba76-4cd3f17c7bc9.png#height=143&id=Fqp8z&margin=%5Bobject%20Object%5D&name=image.png&originHeight=286&originWidth=808&originalType=binary&size=16673&status=done&style=none&width=404)
+<img src="https://cdn.nlark.com/yuque/0/2020/png/501408/1605011893128-f72e4916-24c7-4c59-ba76-4cd3f17c7bc9.png#height=143&id=Fqp8z&margin=%5Bobject%20Object%5D&name=image.png&originHeight=286&originWidth=808&originalType=binary&size=16673&status=done&style=none&width=404" width="404" />
 
 #### 路由描述
 
@@ -239,7 +240,7 @@ async home() {
 }
 ```
 
-![image.png](https://cdn.nlark.com/yuque/0/2020/png/501408/1605011937991-8fb2136a-f091-4016-9745-8434d8130a6a.png#height=173&id=UdC82&margin=%5Bobject%20Object%5D&name=image.png&originHeight=346&originWidth=942&originalType=binary&size=19218&status=done&style=none&width=471)
+<img src="https://cdn.nlark.com/yuque/0/2020/png/501408/1605011937991-8fb2136a-f091-4016-9745-8434d8130a6a.png#height=173&id=UdC82&margin=%5Bobject%20Object%5D&name=image.png&originHeight=346&originWidth=942&originalType=binary&size=19218&status=done&style=none&width=471" width="471" />
 
 ##
 

@@ -8,6 +8,8 @@ import { TOCItem, YuqueSDK } from './typings';
 import pLimit from 'p-limit';
 import pRetry from 'p-retry';
 import assert from 'assert';
+import url from 'url'
+import qs from 'querystring'
 
 type InitOption = { token: string; repo: string; docDir: string; configDir: string; endpoint: string };
 
@@ -79,6 +81,26 @@ class Yuque {
       data = data
         .replace(/:::warning/g, ':::caution')
         .replace(new RegExp('https://www.yuque.com/midwayjs/midway_v2/', 'g'), '/docs/');
+
+      // get all images from markdown
+      const imageRe = /!\[.*?\]\((.*?)\)/igm
+      const matches = data.matchAll(imageRe)
+
+      for (const match of matches) {
+        const [source, imageUrl] = match
+        
+        if (!imageUrl.includes('cdn.nlark.com')) {
+          continue
+        }
+
+        const instance = url.parse(imageUrl)
+        const query = qs.parse(instance.hash.slice(1))
+
+        const imageTag = `\n<img src="${imageUrl}" width="${query.width}" />\n`
+
+        data = data.replace(source, imageTag)
+      }
+
 
       const content = `
 ---

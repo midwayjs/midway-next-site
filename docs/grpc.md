@@ -50,7 +50,8 @@ $ npm init midway -- --type=grpc my_midway_app
 序列化协议独立于语言和平台，提供了多种语言的实现，Java，C++，Go 等等,每一种实现都包含了相应语言的编译器和库文件。所以 gRPC 是一个提供和调用都可以跨语言的服务框架。
 
 一个 gRPC 服务的大体架构可以用官网上的一幅图表示。
-![](https://cdn.nlark.com/yuque/0/2021/png/501408/1612885948978-1d2ce3ba-66a6-4372-b220-84ffc8202bc1.png#height=445&id=YAYtB&originHeight=445&originWidth=621&originalType=binary&size=0&status=done&style=none&width=621)
+
+<img src="https://cdn.nlark.com/yuque/0/2021/png/501408/1612885948978-1d2ce3ba-66a6-4372-b220-84ffc8202bc1.png#height=445&id=YAYtB&originHeight=445&originWidth=621&originalType=binary&size=0&status=done&style=none&width=621" width="621" />
 
 Protocol Buffers 协议的文件，默认的后缀为 `.proto` 。.proto 后缀的 IDL 文件,并通过其编译器生成特定语言的数据结构、服务端接口和客户端 Stub 代码。
 

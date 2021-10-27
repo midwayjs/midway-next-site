@@ -3,7 +3,9 @@ title: RabbitMQ
 ---
 
 在复杂系统的架构中，会有负责处理消息队列的微服务，如下图：服务 A 负责产生消息给消息队列，而服务 B 则负责消费消息队列中的任务。
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/187105/1610433906644-871308e0-01de-4f33-a9b2-b9c53fc362be.png#height=174&id=im7Ob&margin=%5Bobject%20Object%5D&name=image.png&originHeight=251&originWidth=646&originalType=binary&ratio=1&size=26456&status=done&style=none&width=448)
+
+<img src="https://cdn.nlark.com/yuque/0/2021/png/187105/1610433906644-871308e0-01de-4f33-a9b2-b9c53fc362be.png#height=174&id=im7Ob&margin=%5Bobject%20Object%5D&name=image.png&originHeight=251&originWidth=646&originalType=binary&ratio=1&size=26456&status=done&style=none&width=448" width="448" />
+
 在 Midway 中，我们提供了订阅 rabbitMQ 的能力，专门来满足用户的这类需求。
 ​
 
@@ -28,7 +30,8 @@ AMQP 有一些概念，Queue、Exchange 和 Binding 构成了 AMQP 协议的核�
 简单的理解，消息通过 Publisher 发布到 Exchange（交换机），Consumer 通过订阅 Queue 来接受消息，Exchange 和 Queue 通过路由做连接。
 ​
 
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/501408/1623914924280-ad0d2f20-018f-4d5e-9825-1120c52c747f.png#clientId=u2ace4f48-26d7-4&from=paste&height=328&id=uaa4f930a&margin=%5Bobject%20Object%5D&name=image.png&originHeight=328&originWidth=700&originalType=binary&ratio=1&size=59458&status=done&style=none&taskId=ua324994f-d9b2-414c-960a-d20c5824834&width=700)
+<img src="https://cdn.nlark.com/yuque/0/2021/png/501408/1623914924280-ad0d2f20-018f-4d5e-9825-1120c52c747f.png#clientId=u2ace4f48-26d7-4&from=paste&height=328&id=uaa4f930a&margin=%5Bobject%20Object%5D&name=image.png&originHeight=328&originWidth=700&originalType=binary&ratio=1&size=59458&status=done&style=none&taskId=ua324994f-d9b2-414c-960a-d20c5824834&width=700" width="700" />
+
 ​
 
 ​

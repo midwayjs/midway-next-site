@@ -9,8 +9,10 @@ consul 用于微服务下的服务治理，主要特点有：服务发现、服�
 感谢 [boostbob](https://github.com/boostbob) 提供的组件。
 
 效果如下图：
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/187105/1617690430023-1749c2da-14f3-4064-9388-b3e15669d7a2.png#height=494&id=zSztd&margin=%5Bobject%20Object%5D&name=image.png&originHeight=988&originWidth=3144&originalType=binary&ratio=1&size=245867&status=done&style=none&width=1572)
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/187105/1617690444687-cf583ac5-82ec-4f31-a528-772491964184.png#height=937&id=X6FNK&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1874&originWidth=3140&originalType=binary&ratio=1&size=682382&status=done&style=none&width=1570)
+
+<img src="https://cdn.nlark.com/yuque/0/2021/png/187105/1617690430023-1749c2da-14f3-4064-9388-b3e15669d7a2.png#height=494&id=zSztd&margin=%5Bobject%20Object%5D&name=image.png&originHeight=988&originWidth=3144&originalType=binary&ratio=1&size=245867&status=done&style=none&width=1572" width="1572" />
+
+<img src="https://cdn.nlark.com/yuque/0/2021/png/187105/1617690444687-cf583ac5-82ec-4f31-a528-772491964184.png#height=937&id=X6FNK&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1874&originWidth=3140&originalType=binary&ratio=1&size=682382&status=done&style=none&width=1570" width="1570" />
 
 ## 安装组件
 
@@ -68,16 +70,22 @@ config.consul = {
 
 然后启动 midway 项目，然后同时打开我们 consul server 的 ui 地址：
 就呈现了如下效果：
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/187105/1617690430023-1749c2da-14f3-4064-9388-b3e15669d7a2.png#height=494&id=N82Ws&margin=%5Bobject%20Object%5D&name=image.png&originHeight=988&originWidth=3144&originalType=binary&ratio=1&size=245867&status=done&style=none&width=1572)
+
+<img src="https://cdn.nlark.com/yuque/0/2021/png/187105/1617690430023-1749c2da-14f3-4064-9388-b3e15669d7a2.png#height=494&id=N82Ws&margin=%5Bobject%20Object%5D&name=image.png&originHeight=988&originWidth=3144&originalType=binary&ratio=1&size=245867&status=done&style=none&width=1572" width="1572" />
+
 相当于我们的 my-midway-project 项目注册上来了。
 
 然后我们停止我们的 midway 项目。
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/187105/1617690952779-9b4b5293-47ca-4379-a7cb-2e1033785fc2.png#height=417&id=1RHPp&margin=%5Bobject%20Object%5D&name=image.png&originHeight=834&originWidth=3122&originalType=binary&ratio=1&size=280981&status=done&style=none&width=1561)
+
+<img src="https://cdn.nlark.com/yuque/0/2021/png/187105/1617690952779-9b4b5293-47ca-4379-a7cb-2e1033785fc2.png#height=417&id=1RHPp&margin=%5Bobject%20Object%5D&name=image.png&originHeight=834&originWidth=3122&originalType=binary&ratio=1&size=280981&status=done&style=none&width=1561" width="1561" />
+
 我们可以看到我们项目的状态就变为红色了。
 
 我们演示多台的情况，如下表现：（1 台在线+1 台不在线）
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/187105/1617691097036-3484b9c1-0825-4890-a275-59140ca57f1b.png#height=420&id=dW4kg&margin=%5Bobject%20Object%5D&name=image.png&originHeight=840&originWidth=3108&originalType=binary&ratio=1&size=293770&status=done&style=none&width=1554)
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/187105/1617691111593-4ef18594-179e-45bf-ac34-8bd16839a13b.png#height=369&id=AnxNA&margin=%5Bobject%20Object%5D&name=image.png&originHeight=738&originWidth=3076&originalType=binary&ratio=1&size=419244&status=done&style=none&width=1538)
+
+<img src="https://cdn.nlark.com/yuque/0/2021/png/187105/1617691097036-3484b9c1-0825-4890-a275-59140ca57f1b.png#height=420&id=dW4kg&margin=%5Bobject%20Object%5D&name=image.png&originHeight=840&originWidth=3108&originalType=binary&ratio=1&size=293770&status=done&style=none&width=1554" width="1554" />
+
+<img src="https://cdn.nlark.com/yuque/0/2021/png/187105/1617691111593-4ef18594-179e-45bf-ac34-8bd16839a13b.png#height=369&id=AnxNA&margin=%5Bobject%20Object%5D&name=image.png&originHeight=738&originWidth=3076&originalType=binary&ratio=1&size=419244&status=done&style=none&width=1538" width="1538" />
 
 ## 作为客户端
 
@@ -227,8 +235,10 @@ export class ConfigService {
 上面的代码，相当于定时去获取对应的配置，当每个请求进来的时候，获取 Scope 为 ScopeEnum.Singleton 服务的 `getConfig`  方法，这样每 5s 一次获取请求，就减少了对服务的压力。
 
 Consul 界面上如下图：
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/187105/1617703213009-850f48b3-e3ef-4036-bb8e-c7999986e668.png#height=391&id=4ccIQ&margin=%5Bobject%20Object%5D&name=image.png&originHeight=782&originWidth=3140&originalType=binary&ratio=1&size=193680&status=done&style=none&width=1570)
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/187105/1617703225726-5e069b9d-cddd-4777-9a42-df4a1d30443d.png#height=619&id=1jAvc&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1238&originWidth=2784&originalType=binary&ratio=1&size=213448&status=done&style=none&width=1392)
+
+<img src="https://cdn.nlark.com/yuque/0/2021/png/187105/1617703213009-850f48b3-e3ef-4036-bb8e-c7999986e668.png#height=391&id=4ccIQ&margin=%5Bobject%20Object%5D&name=image.png&originHeight=782&originWidth=3140&originalType=binary&ratio=1&size=193680&status=done&style=none&width=1570" width="1570" />
+
+<img src="https://cdn.nlark.com/yuque/0/2021/png/187105/1617703225726-5e069b9d-cddd-4777-9a42-df4a1d30443d.png#height=619&id=1jAvc&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1238&originWidth=2784&originalType=binary&ratio=1&size=213448&status=done&style=none&width=1392" width="1392" />
 
 一共提供如下几种方法：
 
@@ -264,7 +274,8 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 [http://127.0.0.1:32779/ui/](http://127.0.0.1:32779/ui/dc1/kv)
 
 打开后效果如下：
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/187105/1617690430023-1749c2da-14f3-4064-9388-b3e15669d7a2.png#height=494&id=pZQL5&margin=%5Bobject%20Object%5D&name=image.png&originHeight=988&originWidth=3144&originalType=binary&ratio=1&size=245867&status=done&style=none&width=1572)
+
+<img src="https://cdn.nlark.com/yuque/0/2021/png/187105/1617690430023-1749c2da-14f3-4064-9388-b3e15669d7a2.png#height=494&id=pZQL5&margin=%5Bobject%20Object%5D&name=image.png&originHeight=988&originWidth=3144&originalType=binary&ratio=1&size=245867&status=done&style=none&width=1572" width="1572" />
 
 然后我们的 `config.default.ts`  中的 port 就是 32779 端口。
 
@@ -294,4 +305,5 @@ export class HomeController {
 ```
 
 13 行的 deregister 里面，就是对应 consul 界面上的名字了：
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/187105/1617707700852-c21f6855-e587-4b1c-affb-b96dc576ff4a.png#height=577&id=IgPIB&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1154&originWidth=3724&originalType=binary&ratio=1&size=836136&status=done&style=none&width=1862)
+
+<img src="https://cdn.nlark.com/yuque/0/2021/png/187105/1617707700852-c21f6855-e587-4b1c-affb-b96dc576ff4a.png#height=577&id=IgPIB&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1154&originWidth=3724&originalType=binary&ratio=1&size=836136&status=done&style=none&width=1862" width="1862" />

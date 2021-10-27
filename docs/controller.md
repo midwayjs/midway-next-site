@@ -4,7 +4,7 @@ title: 控制器（Controller）
 
 在常见的 MVC 架构中，C 即代表控制器，控制器用于负责**解析用户的输入，处理后返回相应的结果。**
 
-![image.png](https://cdn.nlark.com/yuque/0/2020/png/501408/1600592027849-679b4cfc-cf11-466a-a467-403907bd6a3e.png#height=317&id=Hffdy&margin=%5Bobject%20Object%5D&name=image.png&originHeight=634&originWidth=1600&originalType=binary&ratio=1&size=57905&status=done&style=none&width=800)
+<img src="https://cdn.nlark.com/yuque/0/2020/png/501408/1600592027849-679b4cfc-cf11-466a-a467-403907bd6a3e.png#height=317&id=Hffdy&margin=%5Bobject%20Object%5D&name=image.png&originHeight=634&originWidth=1600&originalType=binary&ratio=1&size=57905&status=done&style=none&width=800" width="800" />
 
 常见的有：
 

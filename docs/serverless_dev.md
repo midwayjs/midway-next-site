@@ -166,7 +166,7 @@ $ open http://localhost:7001
 
 Midway 会启动 HTTP 服务器，打开浏览器，访问 [http://127.0.0.1:7001](http://127.0.0.1:7001) ，浏览器会打印出 `Hello midwayjs`   的信息。
 
-![image.png](https://cdn.nlark.com/yuque/0/2021/png/501408/1615045887650-73a90be7-1d49-4024-82c4-fd6b5192e75e.png#height=384&id=X8Jmz&margin=%5Bobject%20Object%5D&name=image.png&originHeight=768&originWidth=1268&originalType=binary&ratio=1&size=85174&status=done&style=none&width=634)
+<img src="https://cdn.nlark.com/yuque/0/2021/png/501408/1615045887650-73a90be7-1d49-4024-82c4-fd6b5192e75e.png#height=384&id=X8Jmz&margin=%5Bobject%20Object%5D&name=image.png&originHeight=768&originWidth=1268&originalType=binary&ratio=1&size=85174&status=done&style=none&width=634" width="634" />
 
 ## 部署函数
 
@@ -183,20 +183,27 @@ $ npm run deploy
 这里我们用阿里云 FC 平台来演示，如需部署到腾讯云，请参考 [腾讯云部署](deploy_to_tencent)。
 
 阿里云部署首次需要配置 `accountId`、`accountKey`、`accountSecret`
-![](https://cdn.nlark.com/yuque/0/2020/png/501408/1585718654967-11e1bcbd-5a56-4239-99e1-5a1472ad49fd.png#height=514&id=cd07s&margin=%5Bobject%20Object%5D&originHeight=514&originWidth=1152&originalType=binary&ratio=1&size=0&status=done&style=none&width=1152)
+
+<img src="https://cdn.nlark.com/yuque/0/2020/png/501408/1585718654967-11e1bcbd-5a56-4239-99e1-5a1472ad49fd.png#height=514&id=cd07s&margin=%5Bobject%20Object%5D&originHeight=514&originWidth=1152&originalType=binary&ratio=1&size=0&status=done&style=none&width=1152" width="1152" />
 
 相关配置获取，可参照下方图片：
-![](https://cdn.nlark.com/yuque/0/2020/png/501408/1585718654949-9c14958c-3aff-403a-b89b-d03a3a95cd18.png#height=696&id=XCMN7&margin=%5Bobject%20Object%5D&originHeight=696&originWidth=1832&originalType=binary&ratio=1&size=0&status=done&style=none&width=1832)
+
+<img src="https://cdn.nlark.com/yuque/0/2020/png/501408/1585718654949-9c14958c-3aff-403a-b89b-d03a3a95cd18.png#height=696&id=XCMN7&margin=%5Bobject%20Object%5D&originHeight=696&originWidth=1832&originalType=binary&ratio=1&size=0&status=done&style=none&width=1832" width="1832" />
+
 点击此处跳转阿里云[安全设置页](https://account.console.aliyun.com/#/secure)。
 
 ---
 
-![](https://cdn.nlark.com/yuque/0/2020/png/501408/1585718654950-19a811c5-2cf3-4843-a619-cfd744430fae.png#height=184&id=H5HaQ&margin=%5Bobject%20Object%5D&originHeight=592&originWidth=2406&originalType=binary&ratio=1&size=0&status=done&style=none&width=746)
+<img src="https://cdn.nlark.com/yuque/0/2020/png/501408/1585718654950-19a811c5-2cf3-4843-a619-cfd744430fae.png#height=184&id=H5HaQ&margin=%5Bobject%20Object%5D&originHeight=592&originWidth=2406&originalType=binary&ratio=1&size=0&status=done&style=none&width=746" width="746" />
+
 点击跳转阿里云个人 [AccessKey 页面](https://usercenter.console.aliyun.com/#/manage/ak)。
 
 整个部署效果如下：
-![](https://cdn.nlark.com/yuque/0/2021/svg/501408/1618722302423-d7d159b3-45b0-4a93-a2b1-daf50f46bc9f.svg#clientId=ude874b22-3d94-4&from=ui&id=w8IDi&margin=%5Bobject%20Object%5D&originHeight=1015&originWidth=1620&originalType=binary&ratio=1&size=458083&status=done&style=none&taskId=u53dbfdb6-ec4e-4b4e-866d-ab578d3839a)
+
+<img src="https://cdn.nlark.com/yuque/0/2021/svg/501408/1618722302423-d7d159b3-45b0-4a93-a2b1-daf50f46bc9f.svg#clientId=ude874b22-3d94-4&from=ui&id=w8IDi&margin=%5Bobject%20Object%5D&originHeight=1015&originWidth=1620&originalType=binary&ratio=1&size=458083&status=done&style=none&taskId=u53dbfdb6-ec4e-4b4e-866d-ab578d3839a" width="undefined" />
 
 发布完后，从控制台获取当前的 url 即可访问。
-![](https://cdn.nlark.com/yuque/0/2021/png/501408/1618722353090-bf9e0061-ea62-46a2-a77e-57236a4e4024.png#clientId=ude874b22-3d94-4&from=paste&height=361&id=u7afbff35&margin=%5Bobject%20Object%5D&originHeight=722&originWidth=2084&originalType=binary&ratio=1&size=156355&status=done&style=none&taskId=u39af502c-85b3-4eeb-b387-a5d70448c89&width=1042)
+
+<img src="https://cdn.nlark.com/yuque/0/2021/png/501408/1618722353090-bf9e0061-ea62-46a2-a77e-57236a4e4024.png#clientId=ude874b22-3d94-4&from=paste&height=361&id=u7afbff35&margin=%5Bobject%20Object%5D&originHeight=722&originWidth=2084&originalType=binary&ratio=1&size=156355&status=done&style=none&taskId=u39af502c-85b3-4eeb-b387-a5d70448c89&width=1042" width="1042" />
+
 由于开启了自动域名，阿里云会免费增送一个临时域名用开发和调试，后续也可以自己绑定新域名。

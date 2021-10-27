@@ -53,6 +53,25 @@ export const redis = {
 };
 ```
 
+**Sentinel 配置**
+
+```typescript
+export const redis = {
+  client: {
+    sentinels: [
+      {
+        // Sentinel instances
+        port: 26379, // Sentinel port
+        host: '127.0.0.1', // Sentinel host
+      },
+    ],
+    name: 'mymaster', // Master name
+    password: 'auth',
+    db: 0,
+  },
+};
+```
+
 **Cluster 模式配置，需要配置多个**
 
 ```typescript

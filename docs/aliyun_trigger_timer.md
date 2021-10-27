@@ -121,4 +121,5 @@ describe('test/hello_aliyun.test.ts', () => {
 ## 关闭触发器
 
 如果不再使用，请务必关闭触发器或者直接删除。
-![](https://cdn.nlark.com/yuque/0/2021/png/501408/1618734441838-7a943f47-bbf7-4398-b63e-4b249f83d711.png#clientId=u77edf6bf-5564-4&from=paste&height=405&id=u9e6b7d20&margin=%5Bobject%20Object%5D&originHeight=810&originWidth=2280&originalType=binary&ratio=1&size=134297&status=done&style=none&taskId=u261c1c9a-06a0-4664-9a2b-4f0188cd9b8&width=1140)
+
+<img src="https://cdn.nlark.com/yuque/0/2021/png/501408/1618734441838-7a943f47-bbf7-4398-b63e-4b249f83d711.png#clientId=u77edf6bf-5564-4&from=paste&height=405&id=u9e6b7d20&margin=%5Bobject%20Object%5D&originHeight=810&originWidth=2280&originalType=binary&ratio=1&size=134297&status=done&style=none&taskId=u261c1c9a-06a0-4664-9a2b-4f0188cd9b8&width=1140" width="1140" />
