@@ -55,7 +55,12 @@ const config = {
           src: 'img/logo.svg',
         },
         items: [
-          ...require('./config/navbar')
+          ...require('./config/navbar'),
+          {
+            label: 'Node 地下铁',
+            href: 'https://subway.midwayjs.org/',
+            position: 'right',
+          },
         ],
       },
       algolia: {
