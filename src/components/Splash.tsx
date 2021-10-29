@@ -1,8 +1,8 @@
-import React from 'react'
-import { useWindupString, CharWrapper } from 'windups'
-import { styled } from '../styled'
-import { keyframes } from '@stitches/react'
-import { VAR } from '../var'
+import React from 'react';
+import { useWindupString, CharWrapper } from 'windups';
+import { styled } from '../styled';
+import { keyframes } from '@stitches/react';
+import { VAR } from '../var';
 
 const Container = styled('div', {
   paddingTop: 100,
@@ -20,20 +20,20 @@ const Container = styled('div', {
     paddingLeft: 0,
     paddingTop: 50,
     paddingBottom: 88,
-    backgroundImage: 'none'
+    backgroundImage: 'none',
   },
   ':root[data-theme="dark"] &': {
     backgroundSize: 'cover',
     backgroundImage:
       'url(https://img.alicdn.com/imgextra/i4/O1CN012rXL8D1s2lqX6AqdY_!!6000000005709-2-tps-1440-650.png)',
   },
-})
+});
 
 const Title = styled('span', {
   fontFamily: 'DINAlternate-Bold',
   fontSize: 50,
   color: VAR.title,
-})
+});
 
 const SubTitle = styled('span', {
   fontFamily: 'DINAlternate-Bold',
@@ -42,7 +42,7 @@ const SubTitle = styled('span', {
   '@mobile': {
     fontSize: 20,
   },
-})
+});
 
 const opacityKeyframe = keyframes({
   from: {
@@ -51,7 +51,7 @@ const opacityKeyframe = keyframes({
   to: {
     opacity: 1,
   },
-})
+});
 
 const Description = styled('span', {
   paddingBottom: 2,
@@ -62,7 +62,7 @@ const Description = styled('span', {
   animation: `${opacityKeyframe} 0.3s ease`,
   animationIterationCount: 1,
   transition: '0.3s all',
-})
+});
 
 const ButtonGroup = styled('div', {
   display: 'flex',
@@ -71,7 +71,7 @@ const ButtonGroup = styled('div', {
   '@mobile': {
     flexDirection: 'column',
   },
-})
+});
 
 const Button = styled('a', {
   width: 252,
@@ -107,47 +107,56 @@ const Button = styled('a', {
   '&:hover': {
     color: '#ffffff',
     textDecoration: 'none',
-  }
-})
+  },
+});
 
 const Icon = styled('i', {
   fontSize: '2rem',
   marginRight: 8,
   display: 'flex',
+});
+
+const StarContainer = styled('div', {
+  marginTop: 36
 })
 
-const targets = ['Web', 'Fullstack', 'Achitecture', 'API', 'Production', 'Microservice', 'Serverless']
+const targets = ['Web', 'Fullstack', 'Achitecture', 'API', 'Production', 'Microservice', 'Serverless'];
 
 export function Splash() {
-  const [index, setIndex] = React.useState(0)
+  const [index, setIndex] = React.useState(0);
 
   const [text] = useWindupString(targets[index], {
     onFinished() {
-      const nextIndex = index === targets.length - 1 ? 0 : index + 1
+      const nextIndex = index === targets.length - 1 ? 0 : index + 1;
       setTimeout(() => {
-        setIndex(nextIndex)
-      }, 3000)
+        setIndex(nextIndex);
+      }, 3000);
     },
     pace: () => 100,
-  })
+  });
 
   return (
     <Container>
-        <Title>Midway</Title>
-        <SubTitle>
-          Node.js Framework For "
-          {text.split('').map((char, index) => (
-            <Description key={char + index}>{char}</Description>
-          ))}
-          "
-        </SubTitle>
-        <ButtonGroup>
-          <Button type="main" href="/docs/introduction">Documention</Button>
-          <Button type="secondary" href="https://github.com/midwayjs/midway" target="_blank">
-            <Icon className="iconfont icon-github-fill" />
-            Source Code
-          </Button>
-        </ButtonGroup>
+      <Title>Midway</Title>
+      <SubTitle>
+        Node.js Framework For "
+        {text.split('').map((char, index) => (
+          <Description key={char + index}>{char}</Description>
+        ))}
+        "
+      </SubTitle>
+      <ButtonGroup>
+        <Button type="main" href="/docs/introduction">
+          Documention
+        </Button>
+        <Button type="secondary" href="https://github.com/midwayjs/midway" target="_blank">
+          <Icon className="iconfont icon-github-fill" />
+          Github
+        </Button>
+      </ButtonGroup>
+      <StarContainer>
+        <iframe src="https://ghbtns.com/github-btn.html?user=twbs&repo=bootstrap&type=star&count=true&size=large" frameBorder="0" scrolling="0" width="170" height="30" title="GitHub"></iframe>
+      </StarContainer>
     </Container>
-  )
+  );
 }
