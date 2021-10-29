@@ -155,7 +155,7 @@ export function Splash() {
         </Button>
       </ButtonGroup>
       <StarContainer>
-        <iframe src="https://ghbtns.com/github-btn.html?user=twbs&repo=bootstrap&type=star&count=true&size=large" frameBorder="0" scrolling="0" width="170" height="30" title="GitHub"></iframe>
+        <iframe src="https://ghbtns.com/github-btn.html?user=midwayjs&repo=midway&type=star&count=true&size=large" frameBorder="0" scrolling="0" width="170" height="30" title="GitHub"></iframe>
       </StarContainer>
     </Container>
   );
