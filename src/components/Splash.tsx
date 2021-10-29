@@ -117,10 +117,22 @@ const Icon = styled('i', {
 });
 
 const StarContainer = styled('div', {
-  marginTop: 36
-})
+  marginTop: 36,
+});
 
-const targets = ['Web', 'Fullstack', 'Achitecture', 'API', 'Production', 'Microservice', 'Serverless'];
+const targets = [
+  'Web',
+  'Fullstack',
+  'Achitecture',
+  'API',
+  'Production',
+  'Microservice',
+  'Serverless',
+  'Speed',
+  'Efficiency',
+  'Developer',
+  'Experience',
+];
 
 export function Splash() {
   const [index, setIndex] = React.useState(0);
@@ -155,7 +167,14 @@ export function Splash() {
         </Button>
       </ButtonGroup>
       <StarContainer>
-        <iframe src="https://ghbtns.com/github-btn.html?user=midwayjs&repo=midway&type=star&count=true&size=large" frameBorder="0" scrolling="0" width="170" height="30" title="GitHub"></iframe>
+        <iframe
+          src="https://ghbtns.com/github-btn.html?user=midwayjs&repo=midway&type=star&count=true&size=large"
+          frameBorder="0"
+          scrolling="0"
+          width="170"
+          height="30"
+          title="GitHub"
+        />
       </StarContainer>
     </Container>
   );
