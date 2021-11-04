@@ -40,8 +40,8 @@ module.exports = {
     {
       "type": "category",
       "label": "Web 技术",
-      "collapsed": false,
-      "collapsible": false,
+      "collapsed": true,
+      "collapsible": true,
       "items": [
         {
           "type": "doc",
@@ -83,8 +83,8 @@ module.exports = {
     {
       "type": "category",
       "label": "Web 框架",
-      "collapsed": false,
-      "collapsible": false,
+      "collapsed": true,
+      "collapsible": true,
       "items": [
         {
           "type": "doc",
@@ -106,8 +106,8 @@ module.exports = {
     {
       "type": "category",
       "label": "WebSocket",
-      "collapsed": false,
-      "collapsible": false,
+      "collapsed": true,
+      "collapsible": true,
       "items": [
         {
           "type": "doc",
@@ -124,8 +124,8 @@ module.exports = {
     {
       "type": "category",
       "label": "示例",
-      "collapsed": false,
-      "collapsible": false,
+      "collapsed": true,
+      "collapsible": true,
       "items": [
         {
           "type": "link",
@@ -135,8 +135,8 @@ module.exports = {
         {
           "type": "category",
           "label": "社区示例",
-          "collapsed": false,
-          "collapsible": false,
+          "collapsed": true,
+          "collapsible": true,
           "items": [
             {
               "type": "link",
@@ -165,8 +165,8 @@ module.exports = {
     {
       "type": "category",
       "label": "迁移和升级",
-      "collapsed": false,
-      "collapsible": false,
+      "collapsed": true,
+      "collapsible": true,
       "items": [
         {
           "type": "doc",
@@ -185,8 +185,8 @@ module.exports = {
     {
       "type": "category",
       "label": "函数式",
-      "collapsed": false,
-      "collapsible": false,
+      "collapsed": true,
+      "collapsible": true,
       "items": [
         {
           "type": "doc",
@@ -233,8 +233,8 @@ module.exports = {
     {
       "type": "category",
       "label": "一体化",
-      "collapsed": false,
-      "collapsible": false,
+      "collapsed": true,
+      "collapsible": true,
       "items": [
         {
           "type": "doc",
@@ -268,8 +268,8 @@ module.exports = {
     {
       "type": "category",
       "label": "基础能力",
-      "collapsed": false,
-      "collapsible": false,
+      "collapsed": true,
+      "collapsible": true,
       "items": [
         {
           "type": "doc",
@@ -326,8 +326,8 @@ module.exports = {
     {
       "type": "category",
       "label": "组件",
-      "collapsed": false,
-      "collapsible": false,
+      "collapsed": true,
+      "collapsible": true,
       "items": [
         {
           "type": "doc",
@@ -404,8 +404,8 @@ module.exports = {
     {
       "type": "category",
       "label": "运维",
-      "collapsed": false,
-      "collapsible": false,
+      "collapsed": true,
+      "collapsible": true,
       "items": [
         {
           "type": "doc",
@@ -432,8 +432,8 @@ module.exports = {
     {
       "type": "category",
       "label": "自定义扩展",
-      "collapsed": false,
-      "collapsible": false,
+      "collapsed": true,
+      "collapsible": true,
       "items": [
         {
           "type": "doc",
@@ -480,8 +480,8 @@ module.exports = {
     {
       "type": "category",
       "label": "工具",
-      "collapsed": false,
-      "collapsible": false,
+      "collapsed": true,
+      "collapsible": true,
       "items": [
         {
           "type": "doc",
@@ -537,8 +537,8 @@ module.exports = {
     {
       "type": "category",
       "label": "基础",
-      "collapsed": false,
-      "collapsible": false,
+      "collapsed": true,
+      "collapsible": true,
       "items": [
         {
           "type": "doc",
@@ -585,8 +585,8 @@ module.exports = {
     {
       "type": "category",
       "label": "平台能力：阿里云 FC",
-      "collapsed": false,
-      "collapsible": false,
+      "collapsed": true,
+      "collapsible": true,
       "items": [
         {
           "type": "doc",
@@ -633,8 +633,8 @@ module.exports = {
     {
       "type": "category",
       "label": "平台能力：腾讯云 SCF",
-      "collapsed": false,
-      "collapsible": false,
+      "collapsed": true,
+      "collapsible": true,
       "items": [
         {
           "type": "doc",
@@ -676,8 +676,8 @@ module.exports = {
     {
       "type": "category",
       "label": "迁移和升级",
-      "collapsed": false,
-      "collapsible": false,
+      "collapsed": true,
+      "collapsible": true,
       "items": [
         {
           "type": "doc",

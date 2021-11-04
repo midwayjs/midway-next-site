@@ -215,8 +215,8 @@ title: ${this.formatTitle(toc.title)}
           list.push({
             type: 'category',
             label: child.title,
-            collapsed: false,
-            collapsible: false,
+            collapsed: true,
+            collapsible: true,
             items: this.getChildrenFromListGroup(group, child.uuid),
           });
           break;

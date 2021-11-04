@@ -54,11 +54,20 @@ $ mw dev --ts
 $ midway-bin dev --ts --port=7002
 ```
 
+###
+
 ### 本地单步 Debug 调试
 
-建议使用 vscode 的 js debug terminal，在其中执行 dev 命令启动就可以打断点调试了。
+- 支持 `--debug` 参数启动 debug 模式，可以通过 `chrome devtools` 进行单步代码调试：
 
-<img src="https://cdn.nlark.com/yuque/0/2021/png/128621/1625237917317-8e7bf448-fded-4bc7-b743-6aade0ebcba2.png#clientId=u7c8a3183-c32b-4&from=paste&height=650&id=u75e3aec7&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1300&originWidth=2868&originalType=binary&ratio=1&size=1140427&status=done&style=none&taskId=ubcffa6c8-02eb-4256-ba7e-7ab3128c1ee&width=1434" width="1434" />
+<img src="https://cdn.nlark.com/yuque/0/2021/png/128621/1635994136312-f1eda8ba-165d-4322-82b8-b21d3b9c6beb.png#clientId=u32db4720-b7d0-4&from=ui&height=177&id=z4u1f&margin=%5Bobject%20Object%5D&name=69456694-513D-4388-B52F-001562D4A520.png&originHeight=666&originWidth=1538&originalType=binary&ratio=1&size=276022&status=done&style=none&taskId=ud161d835-1e96-4246-8061-c795e9a0ff1&width=409" width="409" />
+
+通过 chrome 浏览器打开上述 `devtools` 协议的链接，给对应代码添加断点后，访问接口即可调试：
+
+<img src="https://cdn.nlark.com/yuque/0/2021/png/128621/1635994137067-f663409a-483d-41f5-bc86-4798182edb38.png#clientId=u32db4720-b7d0-4&from=ui&height=135&id=RvNKH&margin=%5Bobject%20Object%5D&name=10016148-385E-46A4-8B3A-0A0110BECD18.png&originHeight=950&originWidth=2878&originalType=binary&ratio=1&size=744085&status=done&style=none&taskId=u892d9925-9206-4946-a1ed-cb6043c557d&width=409" width="409" />
+
+- 如果您使用 `vscode` ，那么您可以使用 vscode 的 js debug terminal，在其中执行 dev 命令（无需添加 `--debug` 参数）启动就可以打断点调试了。
+  <img src="https://cdn.nlark.com/yuque/0/2021/png/128621/1625237917317-8e7bf448-fded-4bc7-b743-6aade0ebcba2.png#clientId=u7c8a3183-c32b-4&from=paste&height=650&id=u75e3aec7&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1300&originWidth=2868&originalType=binary&ratio=1&size=1140427&status=done&style=none&taskId=ubcffa6c8-02eb-4256-ba7e-7ab3128c1ee&width=1434" width="1434" />
 
 ### test 单元测试
 

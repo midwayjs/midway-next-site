@@ -44,3 +44,30 @@ export class HomeController {
   userService!: UserService;
 }
 ```
+
+## tsconfig 中定义 typings 不生效
+
+在 tsconfig.json 中，如果定义了 typeRoots，且定义了 include，如果 include 中不包含 typeRoot 中的内容，则会在 dev/build 时报错。
+​
+
+此为 ts/ts-node 的问题，issue 见 [#782](https://github.com/TypeStrong/ts-node/issues/782) [#22217](https://github.com/microsoft/TypeScript/issues/22217)
+​
+
+比如：
+
+```json
+"typeRoots": [
+    "./node_modules/@types",
+    "./typings"
+  ],
+  "include": [
+    "src",
+    "typings"
+  ],
+  "exclude": [
+    "dist",
+    "node_modules"
+  ],
+```
+
+上述，如果 include 中不写 typings，则会在 dev/build 时找不到定义而报错。

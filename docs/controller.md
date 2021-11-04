@@ -52,7 +52,7 @@ export class HomeController {
 }
 ```
 
-`@Controller`  装饰器用户告诉框架，这是一个 Web 控制器类型的类，而 `@Get`  装饰器告诉框架，被修饰的 `home`  方法，将被暴露为 `/`  这个路由，可以由 `GET`  请求来访问。
+`@Controller`  装饰器告诉框架，这是一个 Web 控制器类型的类，而 `@Get`  装饰器告诉框架，被修饰的 `home`  方法，将被暴露为 `/`  这个路由，可以由 `GET`  请求来访问。
 
 整个方法返回了一个字符串，在浏览器中你会收到 `text/plain`  的响应类型，以及一个 `200`  的状态码。
 
@@ -179,15 +179,15 @@ Midway 提供了更多从 Query、Body 、Header 等位置获取值的装饰器�
 
 下面是这些装饰器，以及对应的等价框架取值方式。
 
-| **装饰器**              | **Express**                     | **Koa/EggJS**                   |
-| ----------------------- | ------------------------------- | ------------------------------- |
-| @Session(key?: string)  | req.session / req.session[key]  | ctx.session / ctx.session[key]  |
-| @Param(key?: string)    | req.params / req.params[key]    | ctx.params / ctx.params[key]    |
-| @Body(key?: string)     | req.body / req.body[key]        | ctx.body / ctx.body[key]        |
-| @Query(key?: string)    | req.query / req.query[key]      | ctx.query / ctx.query[key]      |
-| @Queries(key?: string)  | 无                              | 无 / ctx.queries[key]           |
-| @Headers(name?: string) | req.headers / req.headers[name] | ctx.headers / ctx.headers[name] |
-|                         |                                 |                                 |
+| **装饰器**              | **Express**                     | **Koa/EggJS**                            |
+| ----------------------- | ------------------------------- | ---------------------------------------- |
+| @Session(key?: string)  | req.session / req.session[key]  | ctx.session / ctx.session[key]           |
+| @Param(key?: string)    | req.params / req.params[key]    | ctx.params / ctx.params[key]             |
+| @Body(key?: string)     | req.body / req.body[key]        | ctx.request.body / ctx.request.body[key] |
+| @Query(key?: string)    | req.query / req.query[key]      | ctx.query / ctx.query[key]               |
+| @Queries(key?: string)  | 无                              | 无 / ctx.queries[key]                    |
+| @Headers(name?: string) | req.headers / req.headers[name] | ctx.headers / ctx.headers[name]          |
+|                         |                                 |                                          |
 
 :::info
 注意：ALL 这个 key 这些装饰器都可用， `ALL`  和 `All`  是不同的， `ALL`  用来获取到所有的属性，是一个变量，而 `All`  是一个装饰器，用于匹配所有 method 的请求。

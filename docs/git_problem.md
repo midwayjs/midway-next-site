@@ -32,10 +32,11 @@ Delete `␍`eslint(prettier/prettier)
 - Windows 在换行的时候，同时使用了回车符 CR(carriage-return character) 和换行符 LF(linefeed character)
 - 而 Mac 和 Linux 系统，仅仅使用了换行符 LF
 - 老版本的 Mac 系统使用的是回车符 CR
-  | Windows | Linux/Mac | Old Mac(pre-OSX |
-  | --- | --- | --- |
-  | CRLF | LF | CR |
-  | '\n\r' | '\n' | '\r' |
+
+| Windows | Linux/Mac | Old Mac(pre-OSX |
+| ------- | --------- | --------------- |
+| CRLF    | LF        | CR              |
+| '\n\r'  | '\n'      | '\r'            |
 
 因此，文本文件在不同系统下创建和使用时就会出现不兼容的问题。
 
