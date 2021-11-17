@@ -1041,9 +1041,9 @@ ctx.logger.info('hello world');
 | ------------------------ | ------------------------ |
 | level                    | 文本日志等级             |
 | consoleLevel             | 控制台日志等级           |
-| fileLogName              | 文本日志文件名           |
+| errorLogName             | 错误日志文件名           |
 | coreLogName              | core 日志文件名          |
-| agnetLogName             | agent 日志名             |
+| agentLogName             | agent 日志名             |
 | appLogName               | 应用日志名               |
 | disableConsoleAfterReady | ready 之后禁止控制台输出 |
 

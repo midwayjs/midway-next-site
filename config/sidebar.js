@@ -278,6 +278,11 @@ module.exports = {
         },
         {
           "type": "doc",
+          "id": "debugger",
+          "label": "本地调试"
+        },
+        {
+          "type": "doc",
           "id": "container",
           "label": "依赖注入"
         },
@@ -305,11 +310,6 @@ module.exports = {
           "type": "doc",
           "id": "logger",
           "label": "日志"
-        },
-        {
-          "type": "doc",
-          "id": "debugger",
-          "label": "本地调试"
         },
         {
           "type": "doc",
@@ -669,9 +669,37 @@ module.exports = {
       ]
     },
     {
-      "type": "doc",
-      "id": "app_deploy_serverless",
-      "label": "应用部署 Serverless 环境"
+      "type": "category",
+      "label": "应用部署到 Serverless 环境",
+      "collapsed": true,
+      "collapsible": true,
+      "items": [
+        {
+          "type": "doc",
+          "id": "app_deploy_serverless",
+          "label": "应用迁移方案说明"
+        },
+        {
+          "type": "doc",
+          "id": "migrate_koa",
+          "label": "Koa 应用迁移"
+        },
+        {
+          "type": "doc",
+          "id": "migrate_express",
+          "label": "Express 应用迁移"
+        },
+        {
+          "type": "doc",
+          "id": "migrate_egg",
+          "label": "Egg/Midway 应用迁移"
+        },
+        {
+          "type": "doc",
+          "id": "migrate_static",
+          "label": "静态网站托管"
+        }
+      ]
     },
     {
       "type": "category",

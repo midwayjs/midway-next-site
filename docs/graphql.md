@@ -271,6 +271,61 @@ export class ContainerConfiguration implements ILifeCycle {
 
 ​
 
+## 自动生成 TypeGraphQL 类型定义
+
+对于从 RESTFul API 迁移，或已有确定的接口文件格式，你可以使用 [json-type-graphql](https://github.com/LinbuduLab/json-to-type-graphql) 这个库（与 Apollo-Server-Midway 是同一个作者）来进行一些自动化的代码生成，最简单的使用如图所示：
+​
+
+```typescript
+import transformer from 'json-type-graphql';
+import path from 'path';
+
+(async () => {
+  await transformer({
+    reader: {
+      url: 'http://127.0.0.1:7001/',
+    },
+    writter: {
+      outputPath: path.join(__dirname, './generated.ts'),
+    },
+  });
+})();
+```
+
+​
+
+以上代码会生成这样一个文件：
+
+```typescript
+import { ObjectType, Field, Int, ID } from 'type-graphql';
+
+@ObjectType()
+export class Root {
+  @Field()
+  success!: boolean;
+
+  @Field()
+  message!: string;
+}
+```
+
+​
+
+目前，json-to-type-graphql 提供了以下能力：
+​
+
+- 使用对象、JSON 文件或者是 URL 作为数据源
+- 支持自定义的预处理器（pre-processer）、后处理器（post-processer）来 hook 进入执行逻辑内部
+- 支持嵌套的对象，以及数组入口的 JSON（如 `[{},{}]`）
+- 支持对具有父子关系的 Class 进行排序，如`P-C1-C11-C12-C2-C21-C3-C31`.
+- 支持 Class 名的前缀与后缀配置，支持 TypeGraphQL `@Field()` 装饰器的 ReturnType
+
+​
+
+​
+
+如果你在使用 Prisma 作为 ORM，你也可以使用 [typegraphql-prisma](https://github.com/MichalLytek/typegraphql-prisma) 这个库（来自于 TypeGraphQL 作者）来从 Prisma Schema 生成 TypeGraphQL Class、Resolver。
+
 ## 配置
 
 ### Serverless

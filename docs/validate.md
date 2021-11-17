@@ -168,6 +168,8 @@ RuleType.array().items(RuleType.string()); // 数组，每个元素是字符串
 RuleType.array().max(10); // 数组，最大长度为 10
 RuleType.array().min(10); // 数组，最小长度为 10
 RuleType.array().length(10); // 数组，长度为 10
+
+RuleType.string().allow(''); // 非必填字段传入空字符串
 ```
 
 ## 级联校验
@@ -200,6 +202,10 @@ export class UserDTO {
   // 如果用户不想要required，则@Rule(SchoolDTO, {required: false})
   @Rule(SchoolDTO)
   school: SchoolDTO;
+
+  // 如果是数组，则也只要下面这样写，这边装饰器会判断类型是否是数组，只能适用这种class类型
+  @Rule(SchoolDTO)
+  xxxx: SchoolDTO[];
 }
 ```
 
@@ -232,6 +238,46 @@ export class UserDTO extends CommonUserDTO {
 :::info
 如果属性名相同，则取当前属性的规则进行校验，不会和父类合并。
 :::
+
+## 参数校验技巧
+
+有人如果我很多都是字符串必填，或者类似需求，写 `RuleType.string().required()` 有点长，有点烦，那应该怎么办？
+
+```typescript
+const requiredString = RuleType.string().required(); // 自己在一个文件中定义一下你们部门的规范或常用的。
+
+export class UserDTO {
+  @Rule(requiredString) // 这样就不用写上面这么长的了
+  name: string;
+
+  @Rule(requiredString) // 同上
+  nickName: string;
+
+  @Rule(requiredString) // 同上
+  description: string;
+}
+
+const maxString = (length) => RuleType.string().max(length); // 自己在一个文件中定义一下你们部门的规范或常用的。
+
+export class UserDTO {
+  @Rule(requiredString) // 同上
+  name: string;
+
+  @Rule(requiredString) // 同上
+  nickName: string;
+
+  @Rule(requiredString) // 同上
+  description: string;
+
+  @Rule(maxString(50)) // 这样通过换个参数即可
+  info: string;
+
+  @Rule(maxString(50).required()) //这样也行
+  info2: string;
+}
+```
+
+相当于通过定义常用方法或变量。
 
 ## 参数转换
 

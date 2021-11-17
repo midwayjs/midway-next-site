@@ -55,6 +55,8 @@ import { join } from 'path';
 export class ContainerLifeCycle {}
 ```
 
+### 1、目录或者文件查找加载
+
 可以指定加载一个目录，目录里所有的 `config.*.ts` 都会被扫描加载。
 
 :::info
@@ -123,6 +125,32 @@ import { join } from 'path';
 })
 export class ContainerLifeCycle {}
 ```
+
+### 2、对象形式加载
+
+在特殊场景下，比如希望 bundle/package 等和目录结构无关的需求，可以使用标准的模块加载方式来加载配置。
+​
+
+```typescript
+// src/configuration.ts
+import { Configuration } from '@midwayjs/decorator';
+import { join } from 'path';
+
+import * as DefaultConfig from './config/config.default';
+import * as LocalConfig from './config/config.local';
+
+@Configuration({
+  importConfigs: [
+    {
+      default: DefaultConfig,
+      local: LocalConfig,
+    },
+  ],
+})
+export class ContainerLifeCycle {}
+```
+
+`importConfigs` 中的数组中传递配置对象，每个对象的 key 为环境，值为环境对应的配置值，midway 在启动中会根据环境来加载对应的配置。
 
 ## 配置合并规则
 
@@ -439,3 +467,13 @@ export const anotherKey = '54321';
 ```
 
 位于后面的配置将会被忽略。
+​
+
+### 3、配置没有生效
+
+可能性很多，排查思路如下：
+​
+
+- 1、检查 configuration 文件中是否显式配置 `importConfigs` 相关的文件或者目录
+- 2、检查应用启动的环境，是否和配置文件一致，比如 prod 的配置肯定不会在 local 出现
+- 3、检查是否将普通导出和方法回调导出混用，比如 "常见错误 2“

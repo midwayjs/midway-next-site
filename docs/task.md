@@ -193,6 +193,8 @@ let job = await this.queueService.getClassQueue(TestJob).getJob(id);
 
 ### 启动就触发
 
+​
+
 有朋友由于只有一台机器，希望重启后立马能执行一下对应的定时任务。
 
 ```typescript
@@ -215,8 +217,6 @@ export class ContainerConfiguration implements ILifeCycle {
   }
 }
 ```
-
-​
 
 ## 运维
 
@@ -364,6 +364,8 @@ export class QueueTask {
 
 ## 其他
 
+### Cron 表达式
+
 关于 Task 任务的配置：
 
 ```typescript
@@ -377,6 +379,21 @@ export class QueueTask {
 │    └──────────────────── minute (0 - 59)
 └───────────────────────── second (0 - 59, optional)
 ```
+
+常见表达式：
+​
+
+- 每隔 5 秒执行一次：_/5 _ \* \* \* ?
+- 每隔 1 分钟执行一次：0 _/1 _ \* \* ?
+- 每小时的 20 分执行一次：0 20 \* \* \* ?
+- 每天 0 点执行一次：0 0 0 \* \* ?
+- 每天的两点 35 分执行一次：0 35 2 \* \* ?
+
+​
+
+可以使用 [在线工具](https://cron.qqe2.com/) 执行确认下一次执行的时间。
+
+<img src="https://cdn.nlark.com/yuque/0/2021/png/501408/1637042668291-70527b75-bb33-4ad2-adc0-5f0f5dfe8c81.png#clientId=u21d1027f-3ac8-4&from=paste&height=340&id=gQnon&margin=%5Bobject%20Object%5D&name=image.png&originHeight=680&originWidth=1868&originalType=binary&ratio=1&size=98959&status=done&style=none&taskId=u0adb2151-a667-4900-8bba-b13d4aac93c&width=934" width="934" />
 
 ​
 

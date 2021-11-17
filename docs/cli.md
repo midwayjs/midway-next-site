@@ -8,7 +8,7 @@ title: midwayjs/cli
 
 `@midwayjs/cli` 提供了两个入口命令。 `midway-bin`  和 `mw`  命令。
 
-当 `@midwayjs/cli` 安装到全局时，一般使用 `mw`  命令，比如 `mw new xxx` 。当期安装到项目做 cli 工具时，我们一般使用 `midway-bin`  命令，但是请记住，这两个命令是相同的。
+当 `@midwayjs/cli` 安装到全局时，一般使用 `mw`  命令，比如 `mw new xxx` 。当安装到项目中，做 cli 工具时，我们一般使用 `midway-bin`  命令，但是请记住，这两个命令是相同的。
 
 ## 命令
 
@@ -54,7 +54,70 @@ $ mw dev --ts
 $ midway-bin dev --ts --port=7002
 ```
 
-###
+#### 参数详解
+
+- `--baseDir`：指定应用目录，一般为 package.json 所在文件夹，默认为 process.cwd()
+
+```shell
+midway-bin dev --ts --baseDir=./app
+```
+
+- `--sourceDir`：指定 ts 代码目录，默认会自动分析
+
+```shell
+midway-bin dev --ts --sourceDir=./app/src
+```
+
+- `-p` 或 `--port`：指定本地 dev server 侦听的端口，默认为 7001
+
+```shell
+midway-bin dev --ts --port=7002
+```
+
+- `--ts`：使用 TS 模式运行代码
+
+```shell
+midway-bin dev --ts
+```
+
+- `--fast`：极速模式，更快速的 dev server 启动和重启
+
+```shell
+// 使用 ts-node 的快速dev模式
+midway-bin dev --ts --fast
+
+// 使用 esbuild 的快速dev模式
+midway-bin dev --ts --fast=esbuild
+```
+
+- `--framework`：指定启动 dev server 使用的框架，默认会根据代码自动分析
+
+```shell
+midway-bin dev --ts --framework=@midwayjs/faas
+```
+
+- `-f` 或 `--entryFile`：指定使用入口文件来启动
+
+```shell
+midway-bin dev --ts --entryFile=bootstrap.js
+```
+
+- `--watchFile`：指定更多的文件或文件夹修改侦听，默认侦听 `sourceDir` 目录中 `.ts`、`.yml`和 `.json`结尾的文件（可通过 --watchExt 参数指定更多扩展名），以及 `baseDir` 目录中的 `f.yml` 文件
+
+```shell
+// 指定多个文件，使用英文逗号分隔
+midway-bin dev --ts --watchFile=./a.txt,./b.txt
+
+// 指定多个文件夹和文件，使用英文逗号分隔
+midway-bin dev --ts --watchFile=./test,./b.txt
+```
+
+- `--watchExt`：指定更多的侦听文件扩展名，默认为 `.ts`、`.yml`和 `.json`
+
+```shell
+// 指定多个文件扩展名，使用英文逗号分隔
+midway-bin dev --ts --watchExt=.js,.html
+```
 
 ### 本地单步 Debug 调试
 
@@ -62,9 +125,15 @@ $ midway-bin dev --ts --port=7002
 
 <img src="https://cdn.nlark.com/yuque/0/2021/png/128621/1635994136312-f1eda8ba-165d-4322-82b8-b21d3b9c6beb.png#clientId=u32db4720-b7d0-4&from=ui&height=177&id=z4u1f&margin=%5Bobject%20Object%5D&name=69456694-513D-4388-B52F-001562D4A520.png&originHeight=666&originWidth=1538&originalType=binary&ratio=1&size=276022&status=done&style=none&taskId=ud161d835-1e96-4246-8061-c795e9a0ff1&width=409" width="409" />
 
-通过 chrome 浏览器打开上述 `devtools` 协议的链接，给对应代码添加断点后，访问接口即可调试：
+您可以通过 `chrome://inspect/` 打开 `nodejs devtools` 进行断点调试：
 
-<img src="https://cdn.nlark.com/yuque/0/2021/png/128621/1635994137067-f663409a-483d-41f5-bc86-4798182edb38.png#clientId=u32db4720-b7d0-4&from=ui&height=135&id=RvNKH&margin=%5Bobject%20Object%5D&name=10016148-385E-46A4-8B3A-0A0110BECD18.png&originHeight=950&originWidth=2878&originalType=binary&ratio=1&size=744085&status=done&style=none&taskId=u892d9925-9206-4946-a1ed-cb6043c557d&width=409" width="409" />
+<img src="https://cdn.nlark.com/yuque/0/2021/png/128621/1635995391144-a9ec0d4a-c6fb-4638-a292-615a3588d33d.png#clientId=u069cda7c-313b-4&from=paste&height=236&id=u4986bfa4&margin=%5Bobject%20Object%5D&name=image.png&originHeight=942&originWidth=1948&originalType=binary&ratio=1&size=572568&status=done&style=none&taskId=u07555349-8e09-42b2-bd94-f93160b0431&width=488" width="488" />
+
+<img src="https://cdn.nlark.com/yuque/0/2021/png/128621/1635995418427-282d256a-de65-4eba-9a83-b474d3d74f9f.png#clientId=u069cda7c-313b-4&from=paste&height=445&id=u83271ad1&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1280&originWidth=2280&originalType=binary&ratio=1&size=710504&status=done&style=none&taskId=uc2614db9-dea9-48d7-b87d-8cb608c8770&width=792" width="792" />
+
+您也可以直接通过 chrome 浏览器打开命令行中输出的 `devtools` 协议的链接，给对应代码添加断点后调试：
+
+<img src="https://cdn.nlark.com/yuque/0/2021/png/128621/1635994137067-f663409a-483d-41f5-bc86-4798182edb38.png#clientId=u32db4720-b7d0-4&from=ui&height=135&id=GooAh&margin=%5Bobject%20Object%5D&name=10016148-385E-46A4-8B3A-0A0110BECD18.png&originHeight=950&originWidth=2878&originalType=binary&ratio=1&size=744085&status=done&style=none&taskId=u892d9925-9206-4946-a1ed-cb6043c557d&width=409" width="409" />
 
 - 如果您使用 `vscode` ，那么您可以使用 vscode 的 js debug terminal，在其中执行 dev 命令（无需添加 `--debug` 参数）启动就可以打断点调试了。
   <img src="https://cdn.nlark.com/yuque/0/2021/png/128621/1625237917317-8e7bf448-fded-4bc7-b743-6aade0ebcba2.png#clientId=u7c8a3183-c32b-4&from=paste&height=650&id=u75e3aec7&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1300&originWidth=2868&originalType=binary&ratio=1&size=1140427&status=done&style=none&taskId=ubcffa6c8-02eb-4256-ba7e-7ab3128c1ee&width=1434" width="1434" />
@@ -85,6 +154,14 @@ $ midway-bin test --ts
 ```
 
 使用 mocha 进行单测时，需要手动安装 `mocha` 和 `@types/mocha` 两个依赖到 `devDependencies` 中：`npm i mocha @types/mocha -D` 。
+​
+
+:::info
+如果项目中使用了 TypeScript 的 path alias，请参考：[midway_v2/testing](/docs/testing#BKmhH)
+:::
+​
+
+单测编写文档请参阅：[Serverless 函数的单测](/docs/serverless_testing)
 ​
 
 ### cov 单测覆盖率

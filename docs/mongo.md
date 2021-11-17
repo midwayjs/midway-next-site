@@ -9,7 +9,7 @@ title: MongoDB
 
 也可以直接选择 [mongoose](https://www.npmjs.com/package/mongoose) 库来使用，我们会分别描述。
 
-## 安装的版本选择
+## Mongoose 版本依赖
 
 mongoose 和你服务器使用的 MongoDB Server 的版本也有着一定的关系，如下，请务必注意。
 ​
@@ -27,7 +27,59 @@ mongoose 和你服务器使用的 MongoDB Server 的版本也有着一定的关�
 
 ​
 
-**现阶段，我们使用的主要是 mongoose v5 和 v6。**
+**mongoose 相关的依赖比较复杂，且对应不同的版本，现阶段，我们使用的主要是 mongoose v5 和 v6。**
+**​**
+
+:::info
+从 mongoose@v5.11.0 开始，mongoose 官方支持了定义，所以不再需要安装 @types/mongoose 依赖包。
+:::
+
+安装包依赖版本如下：
+​
+
+**支持 MongoDB Server 5.x**
+
+```json
+  "dependencies": {
+    "mongoose": "^6.0.7",
+    "@typegoose/typegoose": "^9.0.0",		// 使用 typegoose 需要安装此依赖
+  },
+```
+
+**支持 MongoDB Server 4.4.x**
+**​**
+
+以下版本不需要安装额外定义包。
+
+```json
+  "dependencies": {
+    "mongoose": "^5.13.3",
+    "@typegoose/typegoose": "^8.0.0",   // 使用 typegoose 需要安装此依赖
+  },
+```
+
+​
+
+以下版本需要安装额外定义包（不推荐）。
+
+```json
+ "dependencies": {
+    "mongodb": "3.6.3",									// mongoose 内部写死了该版本
+    "mongoose": "~5.10.18",
+    "@typegoose/typegoose": "^7.0.0",   // 使用 typegoose 需要安装此依赖
+ },
+ "devDependencies": {
+    "@types/mongodb": "3.6.3",					// 只能使用此版本
+    "@types/mongoose": "~5.10.3",
+ }
+```
+
+**​**
+
+其余的 MongoDB 安装模块类似，未测。
+**​**
+
+**​**
 
 ## 使用 Typegoose
 
@@ -35,31 +87,10 @@ mongoose 和你服务器使用的 MongoDB Server 的版本也有着一定的关�
 
 安装 Typegoose 组件，提供访问 MongoDB 的能力。
 
-**请务必注意，依赖需要确保版本相关后单独安装。**
+**请务必注意，请查看第一小节提前编写/安装 mongoose 等相关依赖包。**
 
 ```bash
-npm i -s @midwayjs/typegoose @typegoose/typegoose   # install typegoose itself
-npm i -s mongoose 																	# install peer-dependencie mongoose
-```
-
-Typegoose 和 mongoose 有特定版本的依赖关系，请查看下表或者 [官网](https://typegoose.github.io/typegoose/docs/guides/migration/migrate-9)。
-
-| **版本**           | **依赖**          |
-| ------------------ | ----------------- |
-| Typegoose 9.0.0    | Mongoose >= 6.0.7 |
-| Typegoose 8.0.0    | Node.js > 12.22   |
-| Mongoose >= 5.13.3 |
-| Typegoose 7.0.0    | Node.js > 10.15   |
-| Mongoose >=5.9.10  |
-
-你也可以直接 `package.json`  增加依赖，比如，下面是 Typegoose 8.0.0 的依赖，对应 mongoose 5.13.3。
-
-```json
-  "dependencies": {
-    "@midwayjs/typegoose": "^2.0.0",
-    "@typegoose/typegoose": "^8.1.0",
-    "mongoose": "^5.13.3"
-  },
+$ npm i -s @midwayjs/typegoose
 ```
 
 安装后需要手动在 `src/configuration.ts` 配置，代码如下。
@@ -124,7 +155,7 @@ MyProject
 ### 3、创建实体文件
 
 ```typescript
-import { getModelForClass, prop } from '@typegoose/typegoose';
+import { prop } from '@typegoose/typegoose';
 import { EntityModel } from '@midwayjs/typegoose';
 
 @EntityModel()
@@ -157,9 +188,10 @@ const User = mongoose.model('User', userSchema);
 示例代码如下：
 
 ```typescript
-import { User } from './entity/user';
+import { Provide } from '@midwayjs/decorator';
 import { InjectEntityModel } from '@midwayjs/typegoose';
 import { Model } from 'mongoose';
+import { User } from '../entity/user';
 
 @Provide()
 export class TestService {
@@ -168,10 +200,10 @@ export class TestService {
 
   async getTest() {
     // create data
-    const { _id: id } = await this.UserModel.create({ name: 'JohnDoe', jobs: ['Cleaner'] } as User); // an "as" assertion, to have types for all properties
+    const { _id: id } = await this.userModel.create({ name: 'JohnDoe', jobs: ['Cleaner'] } as User); // an "as" assertion, to have types for all properties
 
     // find data
-    const user = await this.UserModel.findById(id).exec();
+    const user = await this.userModel.findById(id).exec();
     console.log(user);
   }
 }
@@ -263,10 +295,10 @@ mongoose 组件是 typegoose 的基础组件，有时候我们可以直接使用
 
 ### 1、安装组件
 
-**请务必注意，依赖需要确保 **[**版本相关**](mongo#C5EE1)** 后安装。**
+**请务必注意，请查看第一小节提前编写/安装 mongoose 等相关依赖包。**
 
 ```bash
-npm i -s @midwayjs/mongoose mongoose
+$ npm i -s @midwayjs/mongoose
 ```
 
 ### 2、开启组件
@@ -340,8 +372,15 @@ export const mongoose = {
 在只有一个默认连接或者直接使用 default 连接时，我们可以直接使用封装好的 `MongooseConnectionService` 对象来创建 model。
 
 ```typescript
+import { Provide, Inject } from '@midwayjs/decorator';
 import { MongooseConnectionService } from '@midwayjs/mongoose';
-import { Schema } from 'mongoose';
+import { Schema, Document } from 'mongoose';
+
+interface User extends Document {
+  name: string;
+  email: string;
+  avatar: string;
+}
 
 @Provide()
 export class TestService {
@@ -354,7 +393,7 @@ export class TestService {
       email: { type: String, required: true },
       avatar: String,
     });
-    const UserModel = conn.model<User>('User', schema);
+    const UserModel = this.conn.model<User>('User', schema);
     const doc = new UserModel({
       name: 'Bill',
       email: 'bill@initech.com',

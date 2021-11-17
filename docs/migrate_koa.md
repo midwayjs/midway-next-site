@@ -146,14 +146,14 @@ $ npx midway-bin deploy --npm=cnpm				## deploy by cnpm
 可以通过 name 字段。
 
 ```yaml
-service: my-demo  						## 应用发布到云平台的名字
+service: my-demo ## 应用发布到云平台的名字
 
 provider:
-  name: aliyun       					## 发布的云平台，aliyun，tencent 等
+  name: aliyun ## 发布的云平台，aliyun，tencent 等
 
 deployType:
-	type: koa
-  name: app_idx								## 函数名
+  type: koa
+  name: app_idx ## 函数名
 ```
 
 ## 一些限制

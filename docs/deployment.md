@@ -262,7 +262,7 @@ Bootstrap.configure({
 
 首先在依赖中，确保安装 `egg-scripts`  包和 `midway`  包。
 
-```json
+```bash
 $ npm i egg-scripts --save
 ```
 
@@ -420,14 +420,14 @@ CMD ["npm", "run", "online"]
 
 步骤四：构建 docker 镜像
 
-```dockerfile
-docker build -t helloworld .
+```bash
+$ docker build -t helloworld .
 ```
 
 步骤五：运行 docker 镜像
 
-```dockerfile
-docker run -itd -P helloworld
+```bash
+$ docker run -itd -P helloworld
 ```
 
 运行效果如下：
@@ -450,7 +450,7 @@ docker run -itd -P helloworld
 然后我们同时结合 docker 的 multistage 功能，这个功能请注意要在 Docker 17.05 版本之后才能使用。
 ​
 
-```typescript
+```dockerfile
 FROM node:12 AS build
 
 WORKDIR /app
@@ -498,18 +498,17 @@ CMD ["npm", "run", "start"]
 
 新增 docker-compose.yml 文件，内容如下：（此处我们模拟我们的 midway 项目需要使用 redis）
 
-```dockerfile
-version: "3"
+```yaml
+version: '3'
 services:
   web:
     build: .
     ports:
-      - "7001:7001"
+      - '7001:7001'
     links:
       - redis
   redis:
     image: redis
-
 ```
 
 **步骤三：构建**
@@ -518,13 +517,13 @@ services:
 使用命令：
 
 ```bash
-docker-compose build
+$ docker-compose build
 ```
 
 **步骤四：运行**
 
 ```bash
-docker-compose up -d
+$ docker-compose up -d
 ```
 
 <img src="https://cdn.nlark.com/yuque/0/2020/png/187105/1608884158660-02bd2d3c-08b4-4ecc-a4dd-a18d4b9d2c12.png#height=44&id=jWw4i&margin=%5Bobject%20Object%5D&name=image.png&originHeight=62&originWidth=1054&originalType=binary&ratio=1&size=47727&status=done&style=none&width=746" width="746" />

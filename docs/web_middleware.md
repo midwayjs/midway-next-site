@@ -4,7 +4,7 @@ title: Web 中间件
 
 Web 中间件是在控制器调用  **之前**  和 **之后（部分） **调用的函数。 中间件函数可以访问请求和响应对象。
 
-<img src="https://cdn.nlark.com/yuque/0/2020/png/501408/1600592120947-c000a3a8-5da1-4a8d-839a-c6f81b771577.png#height=219&id=j94H0&margin=%5Bobject%20Object%5D&name=image.png&originHeight=438&originWidth=2196&originalType=binary&size=56855&status=done&style=none&width=1098" width="1098" />
+<img src="https://cdn.nlark.com/yuque/0/2020/png/501408/1600592120947-c000a3a8-5da1-4a8d-839a-c6f81b771577.png#height=219&id=j94H0&margin=%5Bobject%20Object%5D&name=image.png&originHeight=438&originWidth=2196&originalType=binary&ratio=1&size=56855&status=done&style=none&width=1098" width="1098" />
 
 不同的上层 Web 框架中间件形式不同，EggJS 的中间件形式和 Koa 的中间件形式相同，都是基于[洋葱圈模型](https://eggjs.org/zh-cn/intro/egg-and-koa.html#midlleware)。而 Express 则是传统的队列模型。
 
@@ -72,7 +72,7 @@ Web 中间件在写完之后，需要应用到请求流程之中。
 
 他们之间的关系一般为：
 
-<img src="https://cdn.nlark.com/yuque/0/2021/png/501408/1612801319333-17e50d3a-7baf-4bcc-af57-2be544152580.png#height=292&id=hCpBr&margin=%5Bobject%20Object%5D&name=image.png&originHeight=584&originWidth=2350&originalType=binary&size=118405&status=done&style=none&width=1175" width="1175" />
+<img src="https://cdn.nlark.com/yuque/0/2021/png/501408/1612801319333-17e50d3a-7baf-4bcc-af57-2be544152580.png#height=292&id=hCpBr&margin=%5Bobject%20Object%5D&name=image.png&originHeight=584&originWidth=2350&originalType=binary&ratio=1&size=118405&status=done&style=none&width=1175" width="1175" />
 
 ### 路由中间件
 
@@ -258,3 +258,21 @@ Midway 在各个 Web 框架的 app 上提供了一个 `generateMiddleware` 方�
 :::info
 代码编写完后，请先执行一次 `npm run dev` ，egg 需要在第一次运行后才会生成定义。
 :::
+
+### 全局路由前缀
+
+全局的路由前缀可以由反向代理工具来做，比如 nginx，也可以由中间件代码来完成，下面的中间件简单演示了如何为所有路由增加 `api` 前缀。
+
+```typescript
+import { Provide } from '@midwayjs/decorator';
+
+@Provide()
+export class PrefixMiddleware {
+  resolve() {
+    return async (ctx, next) => {
+      ctx.path = ctx.path.replace(/^\/api/, '') || '/';
+      await next();
+    };
+  }
+}
+```
