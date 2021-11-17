@@ -19,7 +19,6 @@
     "@docusaurus/core": "2.0.0-beta.6",
     "@docusaurus/preset-classic": "2.0.0-beta.6",
     "@docusaurus/theme-search-algolia": "^2.0.0-beta.6",
-    "@easyops-cn/docusaurus-search-local": "^0.19.1",
     "@mdx-js/react": "^1.6.21",
     "@react-hook/media-query": "^1.1.1",
     "@stitches/react": "^1.0.0",

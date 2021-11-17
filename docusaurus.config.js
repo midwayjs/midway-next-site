@@ -120,15 +120,15 @@ const config = {
     }),
 }
 
-if (process.env.USE_LOCAL_SEARCH) {
-  config.plugins.push([
-    require.resolve("@easyops-cn/docusaurus-search-local"),
-    {
-      indexBlog: false,
-      hashed: true,
-      language: ["en", "zh"],
-    },
-  ])
-}
+// if (process.env.USE_LOCAL_SEARCH) {
+//   config.plugins.push([
+//     require.resolve("@easyops-cn/docusaurus-search-local"),
+//     {
+//       indexBlog: false,
+//       hashed: true,
+//       language: ["en", "zh"],
+//     },
+//   ])
+// }
 
 module.exports = config;
