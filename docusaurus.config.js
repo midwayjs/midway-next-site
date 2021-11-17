@@ -8,7 +8,7 @@ const config = {
   tagline: 'Midway is a fullstack framework for web',
   url: 'https://midwayjs.org',
   baseUrl: '/',
-  onBrokenLinks: 'throw',
+  onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/logo.svg',
   organizationName: 'midwayjs', // Usually your GitHub org/user name.
