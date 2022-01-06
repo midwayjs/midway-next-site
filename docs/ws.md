@@ -9,7 +9,16 @@ title: WebSocket
 Midway 提供了对 [ws](https://www.npmjs.com/package/ws) 模块的支持和封装，能够简单的创建一个 WebSocket 服务。
 ​
 
-## 创建示例
+## 安装依赖
+
+在现有项目中安装 WebSocket 的依赖。
+
+```bash
+$ npm i @midwayjs/ws --save
+$ npm i @types/ws --save-dev
+```
+
+​
 
 ## 目录结构
 

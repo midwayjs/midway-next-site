@@ -90,7 +90,7 @@ mongoose 和你服务器使用的 MongoDB Server 的版本也有着一定的关�
 **请务必注意，请查看第一小节提前编写/安装 mongoose 等相关依赖包。**
 
 ```bash
-$ npm i -s @midwayjs/typegoose
+$ npm i @midwayjs/typegoose --save
 ```
 
 安装后需要手动在 `src/configuration.ts` 配置，代码如下。
@@ -190,13 +190,13 @@ const User = mongoose.model('User', userSchema);
 ```typescript
 import { Provide } from '@midwayjs/decorator';
 import { InjectEntityModel } from '@midwayjs/typegoose';
-import { Model } from 'mongoose';
+import { ReturnModelType } from '@typegoose/typegoose';
 import { User } from '../entity/user';
 
 @Provide()
 export class TestService {
   @InjectEntityModel(User)
-  userModel: Model<User>;
+  userModel: ReturnModelType<typeof User>;
 
   async getTest() {
     // create data
@@ -271,10 +271,10 @@ class User2 {
 @Provide()
 export class TestService {
   @InjectEntityModel(User)
-  userModel: Model<User>;
+  userModel: ReturnModelType<typeof User>;
 
   @InjectEntityModel(User2)
-  user2Model: Model<User2>;
+  user2Model: ReturnModelType<typeof User2>;
 
   async getTest() {
     const { _id: id } = await this.userModel.create({ name: 'JohnDoe', jobs: ['Cleaner'] } as User); // an "as" assertion, to have types for all properties
@@ -298,7 +298,7 @@ mongoose 组件是 typegoose 的基础组件，有时候我们可以直接使用
 **请务必注意，请查看第一小节提前编写/安装 mongoose 等相关依赖包。**
 
 ```bash
-$ npm i -s @midwayjs/mongoose
+$ npm i @midwayjs/mongoose --save
 ```
 
 ### 2、开启组件
@@ -423,4 +423,30 @@ export class TestService {
     const defaultConn = this.connFactory.get('default');
   }
 }
+```
+
+## 常见问题
+
+### 1、E002: You are using a NodeJS Version below 12.22.0
+
+在新版本 @typegoose/typegoose (v8, v9) 中增加了 Node 版本的校验，如果你的 Node.js 版本低于 v12.22.0，就会出现这个提示。
+​
+
+普通情况下，请升级 Node.js 到这个版本以上即可解决。
+​
+
+在特殊场景下，比如 Serverless 无法修改 Node.js 版本且版本低于 v12.22 的情况下，由于 v12 版本子版本其实都可以，可以通过临时修改 process.version 绕过。
+​
+
+```typescript
+// src/configuration.ts
+
+Object.defineProperty(process, 'version', {
+  value: 'v12.22.0',
+  writable: true,
+});
+
+// other code
+
+export class AutoConfiguration {}
 ```

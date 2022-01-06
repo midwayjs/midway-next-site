@@ -186,6 +186,7 @@ export class HomeController {
 ```typescript
 import { Config, Controller, Get, Provide } from '@midwayjs/decorator';
 import { Photo } from '../entity/Photo';
+import { Op } from 'sequelize';
 
 @Provide()
 @Controller('/')

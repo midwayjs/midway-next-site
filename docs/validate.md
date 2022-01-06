@@ -239,6 +239,47 @@ export class UserDTO extends CommonUserDTO {
 如果属性名相同，则取当前属性的规则进行校验，不会和父类合并。
 :::
 
+## 从原有 DTO 创建新 DTO
+
+有时候，我们会希望从某个 DTO 中获取一部分属性，变成一个新的 DTO 类。
+​
+
+Midway 提供了 `PickDto` 和 `OmitDto` 两个方法根据现有的的 DTO 类型创建新的 DTO。
+​
+
+`PickDto` 用于从现有的 DTO 中获取一些属性，变成新的 DTO，而 `OmitDto` 用于将其中某些属性剔除，比如：
+​
+
+```typescript
+// src/dto/user.ts
+import { Rule, RuleType, PickDto } from '@midwayjs/decorator';
+
+export class UserDTO {
+  @Rule(RuleType.number().required())
+  id: number;
+
+  @Rule(RuleType.string().required())
+  firstName: string;
+
+  @Rule(RuleType.string().max(10))
+  lastName: string;
+
+  @Rule(RuleType.number().max(60))
+  age: number;
+}
+
+const SimpleUserDTO = PickDto(UserDTO, ['firstName', 'lastName']);
+
+const simpleUser = new SimpleUserDTO();
+
+// simpleUser.firstName = xxx
+
+const NewUserDTO = OmitDto(UserDTO, ['age']);
+const newUser = new NewUserDTO();
+
+// newUser.age 定义和属性都不存在
+```
+
 ## 参数校验技巧
 
 有人如果我很多都是字符串必填，或者类似需求，写 `RuleType.string().required()` 有点长，有点烦，那应该怎么办？
@@ -327,3 +368,8 @@ async updateUser(@Body(ALL) user: UserDTO ) {
 import { defaults } from 'joi/lib/common.js';
 defaults.allowUnknown = true;
 ```
+
+2、用户咨询如何让对应的信息透出给端侧或者上游？
+参数校验、转换，不仅可以使用在 http 请求、websocket、task、service 等场景。
+然后当 @Validate 失败的时候，会向外抛一个 error。
+如果 http 请求想要将对应信息处理一下抛给前端，则只需要通过用一个 middleware try catch 一下即可。

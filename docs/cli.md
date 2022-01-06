@@ -123,20 +123,20 @@ midway-bin dev --ts --watchExt=.js,.html
 
 - 支持 `--debug` 参数启动 debug 模式，可以通过 `chrome devtools` 进行单步代码调试：
 
-<img src="https://cdn.nlark.com/yuque/0/2021/png/128621/1635994136312-f1eda8ba-165d-4322-82b8-b21d3b9c6beb.png#clientId=u32db4720-b7d0-4&from=ui&height=177&id=z4u1f&margin=%5Bobject%20Object%5D&name=69456694-513D-4388-B52F-001562D4A520.png&originHeight=666&originWidth=1538&originalType=binary&ratio=1&size=276022&status=done&style=none&taskId=ud161d835-1e96-4246-8061-c795e9a0ff1&width=409" width="409" />
+<img src="https://cdn.nlark.com/yuque/0/2021/png/128621/1635994136312-f1eda8ba-165d-4322-82b8-b21d3b9c6beb.png#clientId=u32db4720-b7d0-4&crop=0&crop=0&crop=1&crop=1&from=ui&height=177&id=z4u1f&margin=%5Bobject%20Object%5D&name=69456694-513D-4388-B52F-001562D4A520.png&originHeight=666&originWidth=1538&originalType=binary&ratio=1&rotation=0&showTitle=false&size=276022&status=done&style=none&taskId=ud161d835-1e96-4246-8061-c795e9a0ff1&title=&width=409" width="409" />
 
 您可以通过 `chrome://inspect/` 打开 `nodejs devtools` 进行断点调试：
 
-<img src="https://cdn.nlark.com/yuque/0/2021/png/128621/1635995391144-a9ec0d4a-c6fb-4638-a292-615a3588d33d.png#clientId=u069cda7c-313b-4&from=paste&height=236&id=u4986bfa4&margin=%5Bobject%20Object%5D&name=image.png&originHeight=942&originWidth=1948&originalType=binary&ratio=1&size=572568&status=done&style=none&taskId=u07555349-8e09-42b2-bd94-f93160b0431&width=488" width="488" />
+<img src="https://cdn.nlark.com/yuque/0/2021/png/128621/1635995391144-a9ec0d4a-c6fb-4638-a292-615a3588d33d.png#clientId=u069cda7c-313b-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=236&id=u4986bfa4&margin=%5Bobject%20Object%5D&name=image.png&originHeight=942&originWidth=1948&originalType=binary&ratio=1&rotation=0&showTitle=false&size=572568&status=done&style=none&taskId=u07555349-8e09-42b2-bd94-f93160b0431&title=&width=488" width="488" />
 
-<img src="https://cdn.nlark.com/yuque/0/2021/png/128621/1635995418427-282d256a-de65-4eba-9a83-b474d3d74f9f.png#clientId=u069cda7c-313b-4&from=paste&height=445&id=u83271ad1&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1280&originWidth=2280&originalType=binary&ratio=1&size=710504&status=done&style=none&taskId=uc2614db9-dea9-48d7-b87d-8cb608c8770&width=792" width="792" />
+<img src="https://cdn.nlark.com/yuque/0/2021/png/128621/1635995418427-282d256a-de65-4eba-9a83-b474d3d74f9f.png#clientId=u069cda7c-313b-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=445&id=u83271ad1&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1280&originWidth=2280&originalType=binary&ratio=1&rotation=0&showTitle=false&size=710504&status=done&style=none&taskId=uc2614db9-dea9-48d7-b87d-8cb608c8770&title=&width=792" width="792" />
 
 您也可以直接通过 chrome 浏览器打开命令行中输出的 `devtools` 协议的链接，给对应代码添加断点后调试：
 
-<img src="https://cdn.nlark.com/yuque/0/2021/png/128621/1635994137067-f663409a-483d-41f5-bc86-4798182edb38.png#clientId=u32db4720-b7d0-4&from=ui&height=135&id=GooAh&margin=%5Bobject%20Object%5D&name=10016148-385E-46A4-8B3A-0A0110BECD18.png&originHeight=950&originWidth=2878&originalType=binary&ratio=1&size=744085&status=done&style=none&taskId=u892d9925-9206-4946-a1ed-cb6043c557d&width=409" width="409" />
+<img src="https://cdn.nlark.com/yuque/0/2021/png/128621/1635994137067-f663409a-483d-41f5-bc86-4798182edb38.png#clientId=u32db4720-b7d0-4&crop=0&crop=0&crop=1&crop=1&from=ui&height=135&id=GooAh&margin=%5Bobject%20Object%5D&name=10016148-385E-46A4-8B3A-0A0110BECD18.png&originHeight=950&originWidth=2878&originalType=binary&ratio=1&rotation=0&showTitle=false&size=744085&status=done&style=none&taskId=u892d9925-9206-4946-a1ed-cb6043c557d&title=&width=409" width="409" />
 
 - 如果您使用 `vscode` ，那么您可以使用 vscode 的 js debug terminal，在其中执行 dev 命令（无需添加 `--debug` 参数）启动就可以打断点调试了。
-  <img src="https://cdn.nlark.com/yuque/0/2021/png/128621/1625237917317-8e7bf448-fded-4bc7-b743-6aade0ebcba2.png#clientId=u7c8a3183-c32b-4&from=paste&height=650&id=u75e3aec7&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1300&originWidth=2868&originalType=binary&ratio=1&size=1140427&status=done&style=none&taskId=ubcffa6c8-02eb-4256-ba7e-7ab3128c1ee&width=1434" width="1434" />
+  <img src="https://cdn.nlark.com/yuque/0/2021/png/128621/1625237917317-8e7bf448-fded-4bc7-b743-6aade0ebcba2.png#clientId=u7c8a3183-c32b-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=650&id=u75e3aec7&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1300&originWidth=2868&originalType=binary&ratio=1&rotation=0&showTitle=false&size=1140427&status=done&style=none&taskId=ubcffa6c8-02eb-4256-ba7e-7ab3128c1ee&title=&width=1434" width="1434" />
 
 ### test 单元测试
 
@@ -183,7 +183,7 @@ $ midway-bin cov --ts
 $ midway-bin check
 ```
 
-目前已提供 28 项问题的校验。
+目前已提供 31 项问题的校验。
 
 ### build 本地构建
 
@@ -214,6 +214,29 @@ $ midway-bin deploy
   ...兼容package命令的所有参数
 ```
 
+#### 函数发布时域名配置
+
+在 `f.yml` 中配置 `custom.customDomain` 为 `auto` ，则在发布时会配置一个临时的自动域名：
+
+```yaml
+custom:
+  customDomain: auto
+```
+
+如果要取消自动的域名，将 `customDomain` 改为 `false`：
+
+```yaml
+custom:
+  customDomain: false
+```
+
+如果有自定义域名，在 `customDomain` 中配置即可：
+
+```yaml
+custom:
+	customDomain: test.example.com
+```
+
 ### package 函数打包
 
 适用于 Serverless 项目构建
@@ -228,7 +251,43 @@ $ midway-bin package
   --skipZip					 跳过zip打包
   --skipBuild				 跳过ts代码构建
   --tsConfig    		 tsConfig json 字符串或文件位置
+  --function				 指定打包哪几个函数，多个使用英文 , 分隔
 ```
+
+#### 参数详解
+
+- `--function`：指定打包哪几个函数，多个函数使用英文 , 分隔
+
+```shell
+// 打包
+midway-bin package --function=a,b,c
+
+// 发布
+midway-bin deploy --function=a,b,c
+```
+
+####
+
+#### 函数构建打包时文件拷贝逻辑
+
+默认拷贝的内容包含 `后端代码文件夹` （一般为 `src` 、faas 前后端一体化一般为 `src/apis`）内的所有非 `.ts` 后缀的文件，以及 `项目根目录` 下的以 `.js`、`.json`、`.yml` 为扩展名的所有文件和 `config` 、`app` 文件夹内的所有文件。
+​
+
+如果要拷贝额外的文件，可以通过在 `f.yml` 文件中添加 `package`字段 中的 `include` 来指定，可以配置文件名，也可以通过 `fast-glob` [语法 ↗](https://github.com/mrmlnc/fast-glob#pattern-syntax) 匹配，使用示例如下：
+
+```cpp
+# ...已省略其他属性的展示
+
+package:
+  include:			# 通过 include 属性指定额外打包文件配置
+    - static 		# 项目根目录下的 static 文件夹
+    - a.json 		# 项目根目录下的 a.json 文件
+    - a/b/c.js		# 项目根目录下的 a 目录下的 b 目录下的 c.js 文件
+    - a/b/c.json	# 项目根目录下的 a 目录下的 b 目录下的 c.js 文件
+    - xxx/**/*.js	# 项目根目录下的 xxx 目录下的所有 js 文件
+```
+
+​
 
 ## 实验性功能
 
@@ -250,6 +309,15 @@ experimentalFeatures:
 ```
 experimentalFeatures:
     removeUselessFiles: true
+```
+
+### 3. fastInstallNodeModules
+
+在构建时从当前的 devDependencies 中挑选出 production 依赖进行发布，可能会显著提升发布速度。
+
+```shell
+experimentalFeatures:
+    fastInstallNodeModules: true
 ```
 
 ##

@@ -2,6 +2,8 @@
 title: 常见 TS 问题
 ---
 
+TS 有很多编译静态检查，比如类型不一致，对象未定义等，默认情况下是最佳的，希望用户合理考虑编码风格和习惯，谨慎开关配置，享受 TS 静态检查带来的好处。
+
 ## 依赖包定义错误
 
 如果依赖包和项目本身的 TS 版本不一致，在编译时会出现错误。
@@ -26,7 +28,7 @@ error TS2564: Property 'name' has no initializer and is not definitely assigned 
 
 原因为开启了 TS 的初始化属性检查，如果没有初始化赋值就会报错。
 
-修复方法：
+处理方法：
 
 第一种：移除 tsconfig.json 的检查规则
 
@@ -44,6 +46,34 @@ export class HomeController {
   userService!: UserService;
 }
 ```
+
+## TS6133 对象声明未使用错误
+
+错误如下：
+
+```yaml
+error TS6133: 'app' is declared but its value is never read.
+```
+
+原因为开启了 TS 的对象未使用检查，如果声明了但是没有使用就会报错。
+​
+
+处理方法：
+​
+
+第一种：移除未定义的变量
+
+第二种：移除 tsconfig.json 的检查规则
+
+```json
+{
+  "compilerOptions": {
+    "noUnusedLocals": false
+  }
+}
+```
+
+​
 
 ## tsconfig 中定义 typings 不生效
 

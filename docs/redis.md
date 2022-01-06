@@ -18,7 +18,7 @@ $ npm i @types/ioredis --save-dev			// 安装到 dev 依赖
 
 ## 引入组件
 
-首先，引入 组件，在 `configuration.ts`  中导入：
+首先，引入 组件，在 `src/configuration.ts`  中导入：
 
 ```typescript
 import { Configuration } from '@midwayjs/decorator';
@@ -42,6 +42,8 @@ export class ContainerLifeCycle {}
 **单客户端配置**
 
 ```typescript
+// src/config.default
+
 // Single Redis
 export const redis = {
   client: {

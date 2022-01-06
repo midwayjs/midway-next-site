@@ -4,7 +4,7 @@ title: RabbitMQ
 
 在复杂系统的架构中，会有负责处理消息队列的微服务，如下图：服务 A 负责产生消息给消息队列，而服务 B 则负责消费消息队列中的任务。
 
-<img src="https://cdn.nlark.com/yuque/0/2021/png/187105/1610433906644-871308e0-01de-4f33-a9b2-b9c53fc362be.png#height=174&id=im7Ob&margin=%5Bobject%20Object%5D&name=image.png&originHeight=251&originWidth=646&originalType=binary&ratio=1&size=26456&status=done&style=none&width=448" width="448" />
+<img src="https://cdn.nlark.com/yuque/0/2021/png/187105/1610433906644-871308e0-01de-4f33-a9b2-b9c53fc362be.png#crop=0&crop=0&crop=1&crop=1&height=174&id=im7Ob&margin=%5Bobject%20Object%5D&name=image.png&originHeight=251&originWidth=646&originalType=binary&ratio=1&rotation=0&showTitle=false&size=26456&status=done&style=none&title=&width=448" width="448" />
 
 在 Midway 中，我们提供了订阅 rabbitMQ 的能力，专门来满足用户的这类需求。
 ​
@@ -30,7 +30,7 @@ AMQP 有一些概念，Queue、Exchange 和 Binding 构成了 AMQP 协议的核�
 简单的理解，消息通过 Publisher 发布到 Exchange（交换机），Consumer 通过订阅 Queue 来接受消息，Exchange 和 Queue 通过路由做连接。
 ​
 
-<img src="https://cdn.nlark.com/yuque/0/2021/png/501408/1623914924280-ad0d2f20-018f-4d5e-9825-1120c52c747f.png#clientId=u2ace4f48-26d7-4&from=paste&height=328&id=uaa4f930a&margin=%5Bobject%20Object%5D&name=image.png&originHeight=328&originWidth=700&originalType=binary&ratio=1&size=59458&status=done&style=none&taskId=ua324994f-d9b2-414c-960a-d20c5824834&width=700" width="700" />
+<img src="https://cdn.nlark.com/yuque/0/2021/png/501408/1623914924280-ad0d2f20-018f-4d5e-9825-1120c52c747f.png#clientId=u2ace4f48-26d7-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=328&id=uaa4f930a&margin=%5Bobject%20Object%5D&name=image.png&originHeight=328&originWidth=700&originalType=binary&ratio=1&rotation=0&showTitle=false&size=59458&status=done&style=none&taskId=ua324994f-d9b2-414c-960a-d20c5824834&title=&width=700" width="700" />
 
 ​
 
@@ -426,7 +426,10 @@ await closeApp(app);
 
 ## 生产者（Producer）使用方法
 
-生产者（Producer）也就是第一节中的消息产生者。
+生产者（Producer）也就是第一节中的消息产生者，简单的来说就是会创建一个客户端，将消息发送到 RabbitMQ 服务。
+​
+
+注意：当前 Midway 并没有使用组件来支持消息发送，这里展示的示例只是使用纯 SDK 在 Midway 中的写法。
 ​
 
 ### 安装依赖
@@ -441,34 +444,29 @@ $ npm i @types/amqplib --save-dev
 比如，我们在 service 文件下，新增一个 `rabbitmq.ts`  文件。
 
 ```typescript
-import { Provide, Scope, ScopeEnum, Init, Config, AutoLoad } from '@midwayjs/decorator';
+import { Provide, Scope, ScopeEnum, Init, Autoload, Destroy } from '@midwayjs/decorator';
 import * as amqp from 'amqp-connection-manager';
-import { Channel, Connection } from 'amqplib';
 
-@AutoLoad()
+@Autoload()
+@Provide()
 @Scope(ScopeEnum.Singleton) // Singleton 单例，全局唯一（进程级别）
-@Provide('rabbitmqService')
 export class RabbitmqService {
-  private channel: Channel;
-
-  private connection: Connection;
+  private connection: amqp.AmqpConnectionManager;
 
   private channelWrapper;
 
   @Init()
   async connect() {
-    // 创建连接
+    // 创建连接，你可以把配置放在 Config 中，然后注入进来
     this.connection = await amqp.connect('amqp://localhost');
 
     // 创建 channel
-    this.channelWrapper = connection.createChannel({
+    this.channelWrapper = this.connection.createChannel({
       json: true,
       setup: function (channel) {
         return Promise.all([
           // 绑定队列
-          channel.assertQueue('my-queue', { exclusive: true, autoDelete: true }),
-          // 绑定交换机
-          channel.bindQueue('my-queue', 'my-exchange', 'create'),
+          channel.assertQueue('tasks', { durable: true }),
         ]);
       },
     });
@@ -479,9 +477,9 @@ export class RabbitmqService {
     return this.channelWrapper.sendToQueue(queueName, data);
   }
 
-  @Destory()
+  @Destroy()
   async close() {
-    await this.channel.close();
+    await this.channelWrapper.close();
     await this.connection.close();
   }
 }
@@ -506,7 +504,7 @@ export class UserService {
     // TODO
 
     // 发送消息
-    await this.rabbitmqService.sendToQueue('my-queue', { hello: 'world' });
+    await this.rabbitmqService.sendToQueue('tasks', { hello: 'world' });
   }
 }
 ```

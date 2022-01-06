@@ -1135,3 +1135,87 @@ export async function getPhoto() {
 ```shell
 sudo sysctl -w net.inet.tcp.sack=0
 ```
+
+###
+
+### 关于 mysql 时间列的当前时区展示
+
+如果使用 `@UpdateDateColumn` 和 `@CreateDateColumn` 列，一般情况下，数据库中保存的是 UTC 时间，如果你希望返回当前时区的时间，可以使用下面的方式。
+​
+
+在配置时，开启时间转字符串的选项。
+
+```typescript
+// src/config/config/default
+
+config.orm = {
+  //...
+  dateStrings: true,
+};
+```
+
+实体中的时间列需要列类型。
+
+```typescript
+@EntityModel()
+export class Photo {
+  //...
+  @UpdateDateColumn({
+    name: 'gmt_modified',
+    type: 'timestamp',
+  })
+  gmtModified: Date;
+
+  @CreateDateColumn({
+    name: 'gmt_create',
+    type: 'timestamp',
+  })
+  gmtCreate: Date;
+}
+```
+
+这样，输出的时间字段就是当前的时区了。
+​
+
+效果如下：
+​
+
+**配置前：**
+
+```typescript
+gmtModified: 2021-12-13T03:49:43.000Z,
+gmtCreate: 2021-12-13T03:49:43.000Z
+```
+
+**配置后：**
+
+```typescript
+gmtModified: '2021-12-13 11:49:43',
+gmtCreate: '2021-12-13 11:49:43'
+```
+
+### 关于时间列的默认值
+
+如果使用 `@UpdateDateColumn` 和 `@CreateDateColumn` 列，那么注意，typeorm 是在建表语句中自动添加了默认值，如果表是用户自建的，该字段会由于没有默认值而写入 00:00:00 的时间。
+​
+
+解决方案有两个 **1、修改表的默认值** 或者 **2、修改代码中列的默认值**
+**​**
+
+**如果不想修改表，而想修改代码，请参考下面的代码。**
+
+```typescript
+@Column({
+  default: () => "NOW()",
+  type: 'timestamp'
+})
+createdOn: Date;
+
+@Column({
+  default: () => "NOW()",
+  type: 'timestamp'
+})
+modifiedOn: Date;
+```
+
+​

@@ -67,7 +67,7 @@ export class UserService {
   httpService: HttpService;
 
   async invoke() {
-    const url = 'https://api.github.com/users/octocat/orgs';
+    const url = 'http://www.weather.com.cn/data/cityinfo/101010100.html';
     const result = await this.httpService.get(url);
     // TODO resut
   }

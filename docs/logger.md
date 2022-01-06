@@ -25,15 +25,21 @@ import { Inject, Controller, Provide } from '@midwayjs/decorator';
 @Controller()
 export class HelloController {
   @Inject()
-  logger;
+  logger; // 获取上下文日志，等价于 ctx.logger
+
+  @Logger('logger')
+  appLogger; // 获取 appLogger，非请求链路下，比如 configuration 或者单例中
 
   @Inject()
   ctx;
 
   @Get('/')
   async ctx() {
+    // 请求链路的日志，包含请求的 url，请求协议等信息
     this.logger.info('hello world');
-    this.ctx.body = 'hello world';
+
+    // 普通日志
+    this.appLogger.info('hello world');
   }
 }
 ```

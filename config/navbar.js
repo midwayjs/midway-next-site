@@ -2,7 +2,7 @@ module.exports = [
   {
     "type": "doc",
     "docId": "introduction",
-    "label": "基础",
+    "label": "新手指南",
     "position": "right"
   },
   {
@@ -26,13 +26,14 @@ module.exports = [
         "label": "WebSocket"
       },
       {
-        "label": "示例",
-        "href": "https://github.com/midwayjs/midway-examples"
+        "type": "doc",
+        "docId": "sample",
+        "label": "示例列表"
       },
       {
         "type": "doc",
         "docId": "v1_upgrade_v2",
-        "label": "迁移和升级"
+        "label": "升级"
       }
     ]
   },
@@ -66,7 +67,7 @@ module.exports = [
       {
         "type": "doc",
         "docId": "testing",
-        "label": "基础能力"
+        "label": "通用能力"
       },
       {
         "type": "doc",

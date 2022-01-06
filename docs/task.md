@@ -107,8 +107,6 @@ export class UserService {
 }
 ```
 
-### ​
-
 ### 手动触发任务
 
 任务的定义，通过 `@Queue` 装饰器，定义一个任务类，内必须含有 execute 方法，并且是 async 的。为什么需要是 async 的因为，这个代码，是为了分布式，相当于有个内部的任务调度过程。
@@ -158,7 +156,7 @@ export class UserTask {
 
 例如我们在做音视频或者发布这种比较耗时的任务的时候，我们希望能设置进度。
 
-<img src="https://cdn.nlark.com/yuque/0/2021/png/187105/1620884757992-fb18a58f-9e56-4eda-92d9-68965df73e8a.png#clientId=uecb893ec-cfee-4&from=paste&height=342&id=ubf7a3918&margin=%5Bobject%20Object%5D&name=image.png&originHeight=454&originWidth=576&originalType=binary&ratio=1&size=29448&status=done&style=none&taskId=uffac1111-2306-44ac-bd3e-906503e1764&width=434" width="434" />
+<img src="https://cdn.nlark.com/yuque/0/2021/png/187105/1620884757992-fb18a58f-9e56-4eda-92d9-68965df73e8a.png#clientId=uecb893ec-cfee-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=342&id=ubf7a3918&margin=%5Bobject%20Object%5D&name=image.png&originHeight=454&originWidth=576&originalType=binary&ratio=1&rotation=0&showTitle=false&size=29448&status=done&style=none&taskId=uffac1111-2306-44ac-bd3e-906503e1764&title=&width=434" width="434" />
 
 相当于第二个参数，将 bull 的 job 传递给了用户。用户可以通过 job.progress 来设置进度。
 ​
@@ -211,8 +209,9 @@ import { QueueService } from '@midwayjs/task';
 })
 export class ContainerConfiguration implements ILifeCycle {
   async onReady(container: IMidwayContainer, app?: IMidwayBaseApplication<Context>): Promise<void> {
+    // Task这块的启动后立马执行
     let result: any = await container.getAsync(QueueService);
-    let job: Queue = await result.getQueueTask(`HelloTask`, 'task'); // 此处第一个是你任务的类名，第二个任务的名字
+    let job: Queue = result.getQueueTask(`HelloTask`, 'task'); // 此处第一个是你任务的类名，第二个任务的名字也就是装饰器Task的函数名
     job.add({}, { delay: 0 }); // 表示立即执行。
   }
 }
@@ -271,7 +270,7 @@ logger.info(`queue process end.`);
 
 ### 排查问题链路：
 
-<img src="https://cdn.nlark.com/yuque/0/2021/png/187105/1626926172431-ce41c896-fc64-4c73-8d3b-f2633a916b5f.png#clientId=u62783ce8-4645-4&from=paste&height=504&id=viDCK&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1008&originWidth=1992&originalType=binary&ratio=1&size=2693469&status=done&style=none&taskId=u467a4354-7dc2-49c3-9bb6-3c6dea1903e&width=996" width="996" />
+<img src="https://cdn.nlark.com/yuque/0/2021/png/187105/1626926172431-ce41c896-fc64-4c73-8d3b-f2633a916b5f.png#clientId=u62783ce8-4645-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=504&id=viDCK&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1008&originWidth=1992&originalType=binary&ratio=1&rotation=0&showTitle=false&size=2693469&status=done&style=none&taskId=u467a4354-7dc2-49c3-9bb6-3c6dea1903e&title=&width=996" width="996" />
 
 用户可以搜索这个相同的 id，找到同一次请求的日志。
 为了方便用户在自己的业务代码中串联对应的日志，我在 ctx 上面挂了 traceId 变量。
@@ -281,15 +280,15 @@ logger.info(`queue process end.`);
 当异常的时候，
 **本地 可以在 console 栏内看到这个错误相关的情况：**
 
-<img src="https://cdn.nlark.com/yuque/0/2021/png/187105/1626929372403-df50b85d-c71e-4b87-b602-275d10d3dc83.png#clientId=u8f28ddc7-5bc1-4&from=paste&height=162&id=UlGrO&margin=%5Bobject%20Object%5D&name=image.png&originHeight=324&originWidth=1964&originalType=binary&ratio=1&size=669523&status=done&style=none&taskId=u4b77719b-978b-4a21-90f8-3ee205dbf9d&width=982" width="982" />
+<img src="https://cdn.nlark.com/yuque/0/2021/png/187105/1626929372403-df50b85d-c71e-4b87-b602-275d10d3dc83.png#clientId=u8f28ddc7-5bc1-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=162&id=UlGrO&margin=%5Bobject%20Object%5D&name=image.png&originHeight=324&originWidth=1964&originalType=binary&ratio=1&rotation=0&showTitle=false&size=669523&status=done&style=none&taskId=u4b77719b-978b-4a21-90f8-3ee205dbf9d&title=&width=982" width="982" />
 
 日志： 可以在 midway-task.log 文件中查看完整日志：
 
-<img src="https://cdn.nlark.com/yuque/0/2021/png/187105/1626929372403-df50b85d-c71e-4b87-b602-275d10d3dc83.png#clientId=u8f28ddc7-5bc1-4&from=paste&height=162&id=binL0&margin=%5Bobject%20Object%5D&name=image.png&originHeight=324&originWidth=1964&originalType=binary&ratio=1&size=669523&status=done&style=none&taskId=u4b77719b-978b-4a21-90f8-3ee205dbf9d&width=982" width="982" />
+<img src="https://cdn.nlark.com/yuque/0/2021/png/187105/1626929372403-df50b85d-c71e-4b87-b602-275d10d3dc83.png#clientId=u8f28ddc7-5bc1-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=162&id=binL0&margin=%5Bobject%20Object%5D&name=image.png&originHeight=324&originWidth=1964&originalType=binary&ratio=1&rotation=0&showTitle=false&size=669523&status=done&style=none&taskId=u4b77719b-978b-4a21-90f8-3ee205dbf9d&title=&width=982" width="982" />
 
 如果调用情况比较多的时候，会出现 A 还没执行完成，B 又进来，导致日志区分比较麻烦，所以用户可以搜索调用的 traceId，也就是下图红色圈起来的地方：
 
-<img src="https://cdn.nlark.com/yuque/0/2021/png/187105/1626929496543-7d79db19-622f-4f99-a2fd-60b7f00bd57d.png#clientId=u8f28ddc7-5bc1-4&from=paste&height=163&id=DM3xz&margin=%5Bobject%20Object%5D&name=image.png&originHeight=326&originWidth=2034&originalType=binary&ratio=1&size=691391&status=done&style=none&taskId=ucd8b1d59-b13d-4fc4-81e2-2d4f43bab7b&width=1017" width="1017" />
+<img src="https://cdn.nlark.com/yuque/0/2021/png/187105/1626929496543-7d79db19-622f-4f99-a2fd-60b7f00bd57d.png#clientId=u8f28ddc7-5bc1-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=163&id=DM3xz&margin=%5Bobject%20Object%5D&name=image.png&originHeight=326&originWidth=2034&originalType=binary&ratio=1&rotation=0&showTitle=false&size=691391&status=done&style=none&taskId=ucd8b1d59-b13d-4fc4-81e2-2d4f43bab7b&title=&width=1017" width="1017" />
 
 相当于 ctrl + f 搜索相同的 traceId 即可。
 ​
@@ -393,13 +392,13 @@ export class QueueTask {
 
 可以使用 [在线工具](https://cron.qqe2.com/) 执行确认下一次执行的时间。
 
-<img src="https://cdn.nlark.com/yuque/0/2021/png/501408/1637042668291-70527b75-bb33-4ad2-adc0-5f0f5dfe8c81.png#clientId=u21d1027f-3ac8-4&from=paste&height=340&id=gQnon&margin=%5Bobject%20Object%5D&name=image.png&originHeight=680&originWidth=1868&originalType=binary&ratio=1&size=98959&status=done&style=none&taskId=u0adb2151-a667-4900-8bba-b13d4aac93c&width=934" width="934" />
+<img src="https://cdn.nlark.com/yuque/0/2021/png/501408/1637042668291-70527b75-bb33-4ad2-adc0-5f0f5dfe8c81.png#clientId=u21d1027f-3ac8-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=340&id=gQnon&margin=%5Bobject%20Object%5D&name=image.png&originHeight=680&originWidth=1868&originalType=binary&ratio=1&rotation=0&showTitle=false&size=98959&status=done&style=none&taskId=u0adb2151-a667-4900-8bba-b13d4aac93c&title=&width=934" width="934" />
 
 ​
 
 ### EVALSHA 错误
 
-<img src="https://cdn.nlark.com/yuque/0/2021/png/187105/1633771728525-1efeb2a6-cefd-4fc3-a16d-0e9a97f371d1.png#clientId=u52b8d912-3ffa-4&from=paste&height=51&id=u0c96f70a&margin=%5Bobject%20Object%5D&name=image.png&originHeight=102&originWidth=3540&originalType=binary&ratio=1&size=164783&status=done&style=none&taskId=uc38084d4-e2cf-435d-a8b9-6a9bec80c9b&width=1770" width="1770" />
+<img src="https://cdn.nlark.com/yuque/0/2021/png/187105/1633771728525-1efeb2a6-cefd-4fc3-a16d-0e9a97f371d1.png#clientId=u52b8d912-3ffa-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=51&id=u0c96f70a&margin=%5Bobject%20Object%5D&name=image.png&originHeight=102&originWidth=3540&originalType=binary&ratio=1&rotation=0&showTitle=false&size=164783&status=done&style=none&taskId=uc38084d4-e2cf-435d-a8b9-6a9bec80c9b&title=&width=1770" width="1770" />
 
 这个问题基本明确，问题会出现在 redis 的集群版本上。原因是 redis 会对 key 做 hash 来确定存储的 slot，集群下这一步@midwayjs/task 的 key 命中了不同的 slot。临时的解决办法是 taskConfig 里的 prefix 配置用{}包括，强制 redis 只计算{}里的 hash，例如 prefix: '{midway-task}'
 ​

@@ -1,5 +1,5 @@
 module.exports = {
-  "基础": [
+  "新手指南": [
     {
       "type": "doc",
       "id": "introduction",
@@ -71,7 +71,7 @@ module.exports = {
         {
           "type": "doc",
           "id": "file_upload",
-          "label": "文件上传"
+          "label": "FaaS 文件上传"
         },
         {
           "type": "doc",
@@ -122,49 +122,13 @@ module.exports = {
       ]
     },
     {
-      "type": "category",
-      "label": "示例",
-      "collapsed": true,
-      "collapsible": true,
-      "items": [
-        {
-          "type": "link",
-          "label": "官方示例库",
-          "href": "https://github.com/midwayjs/midway-examples"
-        },
-        {
-          "type": "category",
-          "label": "社区示例",
-          "collapsed": true,
-          "collapsible": true,
-          "items": [
-            {
-              "type": "link",
-              "label": "一个社区的 Midway 最佳实践",
-              "href": "https://github.com/fsd-nodejs/service-mw2"
-            },
-            {
-              "type": "link",
-              "label": "一个组件示例",
-              "href": "https://github.com/czy88840616/midway-test-component/"
-            },
-            {
-              "type": "link",
-              "label": "一个基于 Midway 的后台管理系统",
-              "href": "https://github.com/cool-team-official/cool-admin-midway"
-            },
-            {
-              "type": "link",
-              "label": "一个包含 nacos + crud 的示例",
-              "href": "https://github.com/developeryvan/midwayjs-crud"
-            }
-          ]
-        }
-      ]
+      "type": "doc",
+      "id": "sample",
+      "label": "示例列表"
     },
     {
       "type": "category",
-      "label": "迁移和升级",
+      "label": "升级",
       "collapsed": true,
       "collapsible": true,
       "items": [
@@ -267,7 +231,7 @@ module.exports = {
   "功能": [
     {
       "type": "category",
-      "label": "基础能力",
+      "label": "通用能力",
       "collapsed": true,
       "collapsible": true,
       "items": [
@@ -333,6 +297,11 @@ module.exports = {
           "type": "doc",
           "id": "render",
           "label": "模板渲染"
+        },
+        {
+          "type": "doc",
+          "id": "passport",
+          "label": "Passport"
         },
         {
           "type": "doc",
@@ -735,6 +704,11 @@ module.exports = {
       "type": "doc",
       "id": "ts_problem",
       "label": "常见 TS 问题"
+    },
+    {
+      "type": "doc",
+      "id": "change_start_dir",
+      "label": "修改源码目录"
     },
     {
       "type": "doc",

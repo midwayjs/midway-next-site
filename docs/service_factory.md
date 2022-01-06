@@ -178,13 +178,16 @@ import { join } from 'path';
 
 @Provide()
 export class UserService {
+
   @Inject()
   serviceFactory: HTTPClientServiceFactory;
 
   async invoke() {
+
     const httpClient = this.serviceFactory.get();
+
   }
-}
+
 ```
 
 ### 多个实例
@@ -248,7 +251,7 @@ export class UserService {
   serviceFactory: HTTPClientServiceFactory;
 
   async invoke() {
-    // 会合并 config.bucket3 和 config.oss.default
+    // 会合并 config.bucket3 和 config.default
     let customHttpClient = await this.serviceFactory.createInstance(
       {
         baseUrl: 'xxxxx',

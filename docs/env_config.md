@@ -410,6 +410,49 @@ export default {
 };
 ```
 
+## 使用环境变量
+
+社区有一些库，比如 `dotenv` 可以加载 `.env` 文件注入到环境中，从而将一些秘钥放在环境中，在 Midway 中可以直接依赖它使用。
+
+```bash
+$ npm i dotenv --save
+```
+
+可以在项目根目录增加 `.env` 文件，比如下面的内容：
+
+```
+OSS_SECRET=12345
+OSS_ACCESSKEY=54321
+```
+
+我们可以在入口中初始化，比如 `bootstrap.js` 或者 `configuration` 。
+
+```typescript
+import { Configuration } from '@midwayjs/decorator';
+import * as dotenv from 'dotenv';
+
+// load .env file in process.cwd
+dotenv.config();
+
+@Configuration({
+  //...
+})
+export class AutoConfiguration {
+  async onReady(container) {}
+}
+```
+
+我们可以在环境配置中使用了。
+
+```typescript
+// src/config/config.default
+
+export const oss = {
+  accessKey: process.env.OSS_ACCESSKEY, // 54321
+  secret: process.env.OSS_SECRET, // 12345
+};
+```
+
 ## 常见错误
 
 ### 1、在构造器（constructor）中获取 @Config 注入的值

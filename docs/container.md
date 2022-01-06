@@ -69,7 +69,7 @@ container.bind(UserService);
 
 这里的依赖注入容器类似于一个 Map。Map 的 key 是**类名的驼峰形式**，Value 则是**类本身**。
 
-<img src="https://cdn.nlark.com/yuque/0/2020/png/501408/1600847625069-c32258a0-9332-4691-896f-27b19d7b2534.png#height=269&id=Wi3Zx&margin=%5Bobject%20Object%5D&name=image.png&originHeight=269&originWidth=623&originalType=binary&ratio=1&size=16422&status=done&style=none&width=623" width="623" />
+<img src="https://cdn.nlark.com/yuque/0/2020/png/501408/1600847625069-c32258a0-9332-4691-896f-27b19d7b2534.png#crop=0&crop=0&crop=1&crop=1&height=269&id=Wi3Zx&margin=%5Bobject%20Object%5D&name=image.png&originHeight=269&originWidth=623&originalType=binary&ratio=1&rotation=0&showTitle=false&size=16422&status=done&style=none&title=&width=623" width="623" />
 
 在请求时，会动态实例化这些 Class，并且处理属性的赋值，比如下面的伪代码，很容易理解。
 
@@ -210,6 +210,8 @@ export class UserController {
 
 - Singleton 单例，全局唯一（进程级别）
 - Request  **默认**，请求作用域，生命周期绑定**请求链路**，实例在请求链路上唯一，请求结束立即销毁
+  - 例如 http 请求进来的时候，会创建一个请求作用域 ctx，我们通过@Inject()ctx 可以拿到这个请求作用域。
+  - 例如定时器触发，也相当于创建了请求作用于 ctx，我们可以通过@Inject()ctx 可以拿到这个请求作用域。
 - Prototype 原型作用域，每次调用都会重复创建一个新的对象
 
 不同的作用域有不同的作用，**单例 **可以用来做进程级别的数据缓存，或者数据库连接等只需要执行一次的工作，同时单例由于全局唯一，只初始化一次，所以调用的时候速度比较快。而 **请求作用域 **则是大部分需要获取请求参数和数据的服务的选择，**原型作用域 **使用比较少，在一些特殊的场景下也有它独特的作用。
@@ -269,7 +271,7 @@ export class UserService {
 
 调用的情况如下。
 
-<img src="https://cdn.nlark.com/yuque/0/2020/png/501408/1606918854743-338c689a-21d1-4ed3-893a-1ac6e0d009a4.png#height=194&id=7zjMV&margin=%5Bobject%20Object%5D&name=image.png&originHeight=388&originWidth=1110&originalType=binary&ratio=1&size=32617&status=done&style=none&width=555" width="555" />
+<img src="https://cdn.nlark.com/yuque/0/2020/png/501408/1606918854743-338c689a-21d1-4ed3-893a-1ac6e0d009a4.png#crop=0&crop=0&crop=1&crop=1&height=194&id=7zjMV&margin=%5Bobject%20Object%5D&name=image.png&originHeight=388&originWidth=1110&originalType=binary&ratio=1&rotation=0&showTitle=false&size=32617&status=done&style=none&title=&width=555" width="555" />
 
 这种情况下，不论调用 `HomeController` 多少次，每次请求的 `HomeController` 实例是不同的，而 `UserService` 都会固定的那个。
 
@@ -279,7 +281,7 @@ export class UserService {
 这里的 `DBManager` 我们特地设置成请求作用域，来演示一下特殊场景。
 :::
 
-<img src="https://cdn.nlark.com/yuque/0/2020/png/501408/1600597162226-5960d3e5-ac89-47c3-ab27-022005836225.png#height=167&id=oR5we&margin=%5Bobject%20Object%5D&name=image.png&originHeight=334&originWidth=1964&originalType=binary&ratio=1&size=44473&status=done&style=none&width=982" width="982" />
+<img src="https://cdn.nlark.com/yuque/0/2020/png/501408/1600597162226-5960d3e5-ac89-47c3-ab27-022005836225.png#crop=0&crop=0&crop=1&crop=1&height=167&id=oR5we&margin=%5Bobject%20Object%5D&name=image.png&originHeight=334&originWidth=1964&originalType=binary&ratio=1&rotation=0&showTitle=false&size=44473&status=done&style=none&title=&width=982" width="982" />
 
 ```typescript
 // 这个类是默认的请求作用域（Request）
@@ -308,7 +310,7 @@ export class DBManager {}
 
 这种情况下，不论调用 `HomeController` 多少次，每次请求的 `HomeController` 实例是不同的，而 `UserService` 和 `DBManager` 都会固定的那个。
 
-<img src="https://cdn.nlark.com/yuque/0/2020/png/501408/1600597433574-a3c46886-146f-4e54-8659-858f4af307a6.png#height=381&id=COok3&margin=%5Bobject%20Object%5D&name=image.png&originHeight=762&originWidth=1870&originalType=binary&ratio=1&size=85746&status=done&style=none&width=935" width="935" />
+<img src="https://cdn.nlark.com/yuque/0/2020/png/501408/1600597433574-a3c46886-146f-4e54-8659-858f4af307a6.png#crop=0&crop=0&crop=1&crop=1&height=381&id=COok3&margin=%5Bobject%20Object%5D&name=image.png&originHeight=762&originWidth=1870&originalType=binary&ratio=1&rotation=0&showTitle=false&size=85746&status=done&style=none&title=&width=935" width="935" />
 
 简单的理解为，单例就像一个缓存，**其中依赖的所有对象都将被冻结，不再变化。**
 
